@@ -3,32 +3,29 @@ package Warehouses.hibernate;
 import java.util.ArrayList;
 
 public class Shelf {
+
     private int ShelfID;
-    private Integer Capacity; //Вместимость стеллажа
-    private ArrayList<Product> Products; //Грузы
-    public String GetInfo() {
-        return("1");
+    private float Capacity;
+    private ArrayList<Product> Products;
+
+    public int GetShelfID(){
+        return ShelfID;
+    }
+    public void SetShelfID(int ShelfID){
+        this.ShelfID = ShelfID;
     }
 
-    public void SetInfo(String Info) {
-
+    public float GetShelfCapacity(){
+        return Capacity;
+    }
+    public void SetShelfCapacity(float ShelfCapacity){
+        this.Capacity = ShelfCapacity;
     }
 
-    public void SetCapacity(Integer Capacity){
-
+    public ArrayList<Product> GetListOfProducts(){
+        return Products;
     }
-    public String GetFullnessOfShelf(){
 
-        return("1");
-    }
-    public String GetFullness(){
-
-        return("1");
-    }
-    public String GetProductList(){
-
-        return("1");
-    }
     public static void main(String[] args) {
 
     }

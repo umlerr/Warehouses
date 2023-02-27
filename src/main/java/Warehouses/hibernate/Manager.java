@@ -1,21 +1,33 @@
 package Warehouses.hibernate;
 
+import java.util.ArrayList;
+
 public class Manager {
+    private int ManagerID;
     private String Name;
     private String Surname;
-    private String ID;
-    public String GetInfo() {
-        /**
-         * @return Информация о диспетчере
-         */
-        return("1");
-    }
-    /**
-     * @param Info Информация о диспетчере
-     */
-    public void SetName(String Info) {
 
+    public int GetManagerID(){
+        return ManagerID;
     }
+    public void SetManagerID(int ManagerID){
+        this.ManagerID = ManagerID;
+    }
+
+    public String GetManagerName(){
+        return Name;
+    }
+    public void SetManagerName(String ManagerName){
+        this.Name = ManagerName;
+    }
+
+    public String GetManagerSurname(){
+        return Surname;
+    }
+    public void SetManagerSurname(String ManagerSurname){
+        this.Surname = ManagerSurname;
+    }
+
     public static void main(String[] args) {
 
     }

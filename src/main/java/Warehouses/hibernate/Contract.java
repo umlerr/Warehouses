@@ -3,22 +3,36 @@ package Warehouses.hibernate;
 import java.util.ArrayList;
 
 public class Contract {
-    private ArrayList<Company> Company;
+    private int ContractID;
+    private ArrayList<Company> Companies;
+    private String StartDate;
     private String EndDate;
-    private String ID;
-    public String GetInfo() {
-        /**
-         * @return Информация о договоре
-         */
-        return("1");
+
+    public int GetContractID(){
+        return ContractID;
+    }
+    public void SetContractID(int ContractID){
+        this.ContractID = ContractID;
     }
 
-    /**
-     * @param Info Информация о договоре
-     */
-    public void SetInfo(String Info) {
-
+    public String GetStartDate(){
+        return StartDate;
     }
+    public void SetStartDate(String StartDate){
+        this.StartDate = StartDate;
+    }
+
+    public String GetEndDate(){
+        return EndDate;
+    }
+    public void SetEndDate(String EndDate){
+        this.EndDate = EndDate;
+    }
+
+    public ArrayList<Company> GetListOfCompanies(){
+        return Companies;
+    }
+
     public static void main(String[] args) {
 
     }

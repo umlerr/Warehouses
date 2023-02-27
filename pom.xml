@@ -4,7 +4,11 @@
   <groupId>Warehouses.hibernate</groupId>
   <artifactId>Warehouses</artifactId>
   <version>0.0.1</version>
-  <name>Archetype - Warehouses</name>
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+    <name>Archetype - Warehouses</name>
   <url>http://maven.apache.org</url>
 
 
