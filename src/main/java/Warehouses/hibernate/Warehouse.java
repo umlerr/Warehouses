@@ -1,57 +1,47 @@
 package Warehouses.hibernate;
 
+import javax.persistence.*;
 import java.lang.String;
 import java.util.*;
 
+@Entity
+@Table(name="Warehouses")
 public class Warehouse {
+    private int WarehouseID;
     private String Address;
     private ArrayList<Contract> Contracts;
     private ArrayList<Manager> Managers;
     private ArrayList<Room> Rooms;
-
+    @Id
+    @Column(name = "WarehouseID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int GetWarehouseID(){
+        return WarehouseID;
+    }
+    public void SetWarehouseID(int WarehouseID){
+        this.WarehouseID = WarehouseID;
+    }
+    @Column(name = "Address")
     public String GetAddress(){
-        /**
-         * @return Адрес склада
-         */
-        return("1");
+        return Address;
     }
-    public String GetContractList(){
-        /**
-         * @return Перечень договоров
-         */
-        return("1");
+    public void SetAddress(String Address){
+        this.Address = Address;
     }
-    public String GetManagersList(){
-        /**
-         * @return Список диспетчеров
-         */
-        return("1");
+    public ArrayList<Contract> GetContractList(){
+        return Contracts;
     }
-    public String GetRoomsList(){
-        /**
-         * @return Список помещений
-         */
-        return("1");
+    public ArrayList<Manager> GetManagersList(){
+        return Managers;
+    }
+    public ArrayList<Room> GetRoomsList(){
+        return Rooms;
     }
     public String GetFullness(){
-        /**
-         * @return Заполненность склада
-         */
-        return("1");
+        return("Fullness:");
     }
     public String GetTypeNumber(){
-        /**
-         * @return Заполненность склада
-         */
-        return("1");
-    }
-    /**
-     * @param Info Данные о складе
-     */
-    public void SetInfo(String Info){
-        /**
-         * @return Установка\изменения данных класса Warehouse
-         */
+        return("Type:");
     }
     public static void main(String[] args) {
 

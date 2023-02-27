@@ -4,7 +4,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                                  http://xmlmns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="Warehouses">
+    <persistence-unit name="Persistence-Warehouses">
         <description>Warehouses LAB-2</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 

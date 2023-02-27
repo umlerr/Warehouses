@@ -3,32 +3,23 @@ package Warehouses.hibernate;
 import java.util.ArrayList;
 
 public class Room {
-    private String RoomNumber;
+    private int RoomID;
     private ArrayList<Shelf> Shelfs;
-    public String GetInfo() {
-        /**
-         * @return Информация о помещении
-         */
-        return("1");
+
+    public int RoomID(){
+        return RoomID;
     }
-
-    /**
-     * @param Info Информация о помещении
-     */
-    public void SetInfo(String Info) {
-
+    public void RoomID(int RoomID){
+        this.RoomID = RoomID;
+    }
+    public ArrayList<Shelf> GetListOfShelfs(){
+        return Shelfs;
     }
     public String GetNumberOfShelfs(){
-        /**
-         * @return Кол-во стеллажей
-         */
-        return("1");
+        return("Number of Shelfs: ");
     }
     public String GetFullnessOfShelfs(){
-        /**
-         * @return Заполненность стеллажей
-         */
-        return("1");
+        return("Fullness of shelfs: ");
     }
     public static void main(String[] args) {
 
