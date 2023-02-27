@@ -1,10 +1,10 @@
 package Warehouses.hibernate;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Room {
     private int RoomID;
-    private ArrayList<Shelf> Shelfs;
+    private List<Shelf> Shelfs;
 
     public int GetRoomID(){
         return RoomID;
@@ -13,7 +13,7 @@ public class Room {
         this.RoomID = RoomID;
     }
 
-    public ArrayList<Shelf> GetListOfShelfs(){
+    public List<Shelf> GetListOfShelfs(){
         return Shelfs;
     }
 

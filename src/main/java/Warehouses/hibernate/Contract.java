@@ -1,10 +1,10 @@
 package Warehouses.hibernate;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Contract {
     private int ContractID;
-    private ArrayList<Company> Companies;
+    private List<Company> Companies;
     private String StartDate;
     private String EndDate;
 
@@ -29,7 +29,7 @@ public class Contract {
         this.EndDate = EndDate;
     }
 
-    public ArrayList<Company> GetListOfCompanies(){
+    public List<Company> GetListOfCompanies(){
         return Companies;
     }
 

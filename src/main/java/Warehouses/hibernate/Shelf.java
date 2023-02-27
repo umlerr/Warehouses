@@ -1,12 +1,12 @@
 package Warehouses.hibernate;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Shelf {
 
     private int ShelfID;
     private float Capacity;
-    private ArrayList<Product> Products;
+    private List<Product> Products;
 
     public int GetShelfID(){
         return ShelfID;
@@ -22,7 +22,7 @@ public class Shelf {
         this.Capacity = ShelfCapacity;
     }
 
-    public ArrayList<Product> GetListOfProducts(){
+    public List<Product> GetListOfProducts(){
         return Products;
     }
 

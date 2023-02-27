@@ -5,13 +5,13 @@ import java.lang.String;
 import java.util.*;
 
 @Entity
-@Table(name="Warehouses")
+@Table(name="Warehouses.Warehouses")
 public class Warehouse {
     private int WarehouseID;
     private String Address;
-    private ArrayList<Contract> Contracts;
-    private ArrayList<Manager> Managers;
-    private ArrayList<Room> Rooms;
+    private List<Contract> Contracts;
+    private List<Manager> Managers;
+    private List<Room> Rooms;
     @Id
     @Column(name = "WarehouseID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +28,13 @@ public class Warehouse {
     public void SetAddress(String Address){
         this.Address = Address;
     }
-    public ArrayList<Contract> GetContractList(){
+    public List<Contract> GetContractList(){
         return Contracts;
     }
-    public ArrayList<Manager> GetManagersList(){
+    public List<Manager> GetManagersList(){
         return Managers;
     }
-    public ArrayList<Room> GetRoomsList(){
+    public List<Room> GetRoomsList(){
         return Rooms;
     }
     public String GetFullness(){

@@ -1,6 +1,6 @@
 package Warehouses.hibernate;
 
-import javax.persistence.*;
+import javax.persistence.*  ;
 import java.lang.String;
 
 public class AppClass {

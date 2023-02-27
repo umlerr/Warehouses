@@ -1,7 +1,5 @@
 package Warehouses.hibernate;
 
-import java.util.ArrayList;
-
 public class Manager {
     private int ManagerID;
     private String Name;
