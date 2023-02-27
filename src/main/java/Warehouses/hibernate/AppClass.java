@@ -2,8 +2,6 @@ package Warehouses.hibernate;
 
 import javax.persistence.*;
 import java.lang.String;
-import java.util.*;
-import Warehouses.hibernate.Warehouse;
 
 public class AppClass {
     public static void main(String[] args){
