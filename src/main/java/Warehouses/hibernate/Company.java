@@ -1,11 +1,23 @@
 package Warehouses.hibernate;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Companies")
 public class Company {
+    @Id
+    @Column(name = "CompanyID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int CompanyID;
+    @Column(name = "Name")
     private String Name;
+    @Column(name = "Address")
     private String Address;
+    @Column(name = "PhoneNumber")
     private String PhoneNumber;
+    @Column(name = "MSRN")
     private String MSRN; // ОГРН
+    @Column(name = "TIN")
     private String TIN; // ИНН
 
     public int getCompanyID(){
@@ -14,7 +26,6 @@ public class Company {
     public void setCompanyID(int CompanyID){
         this.CompanyID = CompanyID;
     }
-
     public String getName(){
         return Name;
     }
