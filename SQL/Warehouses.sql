@@ -21,7 +21,7 @@ USE `Warehouses` ;
 -- Table `Warehouses`.`Warehouses`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Warehouses`.`Warehouses` (
-  `idWarehouse` INT NOT NULL,
+  `idWarehouse` INT NOT NULL auto_increment, 
   `Address` VARCHAR(256) NOT NULL,
   PRIMARY KEY (`idWarehouse`))
 ENGINE = InnoDB;
@@ -31,7 +31,7 @@ ENGINE = InnoDB;
 -- Table `Warehouses`.`Managers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Warehouses`.`Managers` (
-  `idManager` INT NOT NULL,
+  `idManager` INT NOT NULL auto_increment,
   `Name` VARCHAR(32) NOT NULL,
   `Surname` VARCHAR(32) NOT NULL,
   `WarehouseID` INT NOT NULL,
@@ -49,7 +49,7 @@ ENGINE = InnoDB;
 -- Table `Warehouses`.`Companies`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Warehouses`.`Companies` (
-  `idCompany` INT NOT NULL,
+  `idCompany` INT NOT NULL auto_increment,
   `Name` VARCHAR(64) NOT NULL,
   `Address` VARCHAR(64) NOT NULL,
   `Phone number` VARCHAR(18) NOT NULL,
@@ -63,7 +63,7 @@ ENGINE = InnoDB;
 -- Table `Warehouses`.`Contracts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Warehouses`.`Contracts` (
-  `idContract` INT NOT NULL,
+  `idContract` INT NOT NULL auto_increment,
   `Start Date` DATE NOT NULL,
   `End Date` DATE NOT NULL,
   `WarehouseID` INT NOT NULL,
@@ -88,7 +88,7 @@ ENGINE = InnoDB;
 -- Table `Warehouses`.`Rooms`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Warehouses`.`Rooms` (
-  `idRoom` INT NOT NULL,
+  `idRoom` INT NOT NULL auto_increment,
   `WarehouseID` INT NOT NULL,
   PRIMARY KEY (`idRoom`, `WarehouseID`),
   INDEX `fk_Room_Warehouse1_idx` (`WarehouseID` ASC) VISIBLE,
@@ -104,7 +104,7 @@ ENGINE = InnoDB;
 -- Table `Warehouses`.`Shelfs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Warehouses`.`Shelfs` (
-  `idShelf` INT NOT NULL,
+  `idShelf` INT NOT NULL auto_increment,
   `Capacity` FLOAT NOT NULL,
   `RoomID` INT NOT NULL,
   PRIMARY KEY (`idShelf`),
@@ -121,7 +121,7 @@ ENGINE = InnoDB;
 -- Table `Warehouses`.`Products`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Warehouses`.`Products` (
-  `idProduct` INT NOT NULL,
+  `idProduct` INT NOT NULL auto_increment,
   `Name` VARCHAR(32) NOT NULL,
   `Type` VARCHAR(32) NOT NULL,
   `ShelfID` INT NOT NULL,

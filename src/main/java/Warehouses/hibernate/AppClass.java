@@ -1,6 +1,6 @@
 package Warehouses.hibernate;
 
-import javax.persistence.*  ;
+import javax.persistence.*;
 import java.lang.String;
 
 public class AppClass {
@@ -11,11 +11,11 @@ public class AppClass {
         EM.getTransaction().begin();
 
         Warehouse ST = new Warehouse();
-        ST.SetAddress("St.Petersburg ul. Professora Popova 5, 197022 St. Petersburg, Russian Federation");
+        ST.setAddress("St.Petersburg ul. Professora Popova 5, 197022 St. Petersburg, Russian Federation");
         EM.persist(ST);
 
         EM.getTransaction().commit();
 
-        System.out.println("New station ID is" + ST.GetWarehouseID());
+        System.out.println("New station ID is" + ST.getWarehouseID());
     }
 }

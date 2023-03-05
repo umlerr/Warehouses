@@ -15,17 +15,17 @@ public class Warehouse {
     @Id
     @Column(name = "WarehouseID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int GetWarehouseID(){
+    public int getWarehouseID(){
         return WarehouseID;
     }
-    public void SetWarehouseID(int WarehouseID){
+    public void setWarehouseID(int WarehouseID){
         this.WarehouseID = WarehouseID;
     }
     @Column(name = "Address")
-    public String GetAddress(){
+    public String getAddress(){
         return Address;
     }
-    public void SetAddress(String Address){
+    public void setAddress(String Address){
         this.Address = Address;
     }
     public List<Contract> GetContractList(){
