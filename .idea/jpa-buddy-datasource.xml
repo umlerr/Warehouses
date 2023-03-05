@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="eefa5e4a-9f3c-466a-8dd7-42888a59ac5b" name="Warehouses" url="jdbc:mysql://localhost/Warehouses?useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=UTC" driverClass="com.mysql.cj.jdbc.Driver" />
+    </data-sources>
+    <data-source-infos>
+      <data-source-info id="eefa5e4a-9f3c-466a-8dd7-42888a59ac5b" persistence-unit-name="Persistence" />
+    </data-source-infos>
+  </component>
+</project>

@@ -1,31 +1,45 @@
 package Warehouses.hibernate;
 
-public class Manager {
-    private int ManagerID;
-    private String Name;
-    private String Surname;
+import javax.persistence.*;
 
-    public int GetManagerID(){
+@Entity
+@Table(name="Managers")
+public class Manager {
+    @Id
+    @Column(name = "ManagerID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ManagerID;
+    @Column(name = "Name")
+    private String Name;
+    @Column(name = "Surname")
+    private String Surname;
+    @ManyToOne
+    @JoinColumn(name = "WarehouseID")
+    private Warehouse WarehouseID;
+    public Warehouse getWarehouseID(){
+        return this.WarehouseID;
+    }
+    public void setWarehouseID(Warehouse WarehouseID){
+        this.WarehouseID = WarehouseID;
+    }
+    public int getManagerID(){
         return ManagerID;
     }
-    public void SetManagerID(int ManagerID){
+    public void setManagerID(int ManagerID){
         this.ManagerID = ManagerID;
     }
-
-    public String GetManagerName(){
+    public String getName(){
         return Name;
     }
-    public void SetManagerName(String ManagerName){
+    public void setName(String ManagerName){
         this.Name = ManagerName;
     }
-
-    public String GetManagerSurname(){
+    public String getSurname(){
         return Surname;
     }
-    public void SetManagerSurname(String ManagerSurname){
+    public void setSurname(String ManagerSurname){
         this.Surname = ManagerSurname;
     }
-
     public static void main(String[] args) {
 
     }

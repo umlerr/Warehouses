@@ -5,42 +5,55 @@ import java.lang.String;
 import java.util.*;
 
 @Entity
-@Table(name="Warehouses.Warehouses")
+@Table(name="Warehouses")
 public class Warehouse {
-    private int WarehouseID;
-    private String Address;
-    private List<Contract> Contracts;
-    private List<Manager> Managers;
-    private List<Room> Rooms;
     @Id
     @Column(name = "WarehouseID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int WarehouseID;
+    @Column(name = "Address")
+    private String Address;
+    @OneToMany(mappedBy = "Contracts")
+    private List<Contract> Contracts;
+    @OneToMany(mappedBy = "Managers")
+    private List<Manager> Managers;
+    @OneToMany(mappedBy = "Rooms")
+    private List<Room> Rooms;
     public int getWarehouseID(){
         return WarehouseID;
     }
     public void setWarehouseID(int WarehouseID){
         this.WarehouseID = WarehouseID;
     }
-    @Column(name = "Address")
     public String getAddress(){
         return Address;
     }
     public void setAddress(String Address){
         this.Address = Address;
     }
-    public List<Contract> GetContractList(){
-        return Contracts;
+    public List<Contract> getContracts(){
+        return this.Contracts;
     }
-    public List<Manager> GetManagersList(){
+    public void setContracts(List<Contract> Contracts){
+        this.Contracts = Contracts;
+    }
+
+    public List<Manager> getManagers(){
         return Managers;
     }
-    public List<Room> GetRoomsList(){
+    public void setManagers(List<Manager> Managers){
+        this.Managers = Managers;
+    }
+    public List<Room> getRooms(){
         return Rooms;
     }
-    public String GetFullness(){
+    public void setRooms(List<Room> Rooms){
+        this.Rooms = Rooms;
+    }
+    public String Fullness(){
         return("Fullness:");
     }
-    public String GetTypeNumber(){
+    public String TypeNumber(){
         return("Type:");
     }
     public static void main(String[] args) {

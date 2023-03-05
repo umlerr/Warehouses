@@ -8,45 +8,45 @@ public class Company {
     private String MSRN; // ОГРН
     private String TIN; // ИНН
 
-    public int GetCompanyID(){
+    public int getCompanyID(){
         return CompanyID;
     }
-    public void SetCompanyID(int CompanyID){
+    public void setCompanyID(int CompanyID){
         this.CompanyID = CompanyID;
     }
 
-    public String GetCompanyName(){
+    public String getName(){
         return Name;
     }
-    public void SetCompanyName(String CompanyName){
+    public void setName(String CompanyName){
         this.Name = CompanyName;
     }
 
-    public String GetCompanyAddress(){
+    public String getAddress(){
         return Address;
     }
-    public void SetCompanyAddress(String CompanyAddress){
+    public void setAddress(String CompanyAddress){
         this.Address = CompanyAddress;
     }
 
-    public String GetCompanyPhoneNumber(){
+    public String getPhoneNumber(){
         return PhoneNumber;
     }
-    public void SetCompanyPhoneNumber(String CompanyPhoneNumber){
+    public void setPhoneNumber(String CompanyPhoneNumber){
         this.PhoneNumber = CompanyPhoneNumber;
     }
 
-    public String GetCompanyMSRN(){
+    public String getMSRN(){
         return MSRN;
     }
-    public void SetCompanyMSRN(String CompanyMSRN){
+    public void setMSRN(String CompanyMSRN){
         this.MSRN = CompanyMSRN;
     }
 
-    public String GetCompanyTIN(){
+    public String getTIN(){
         return TIN;
     }
-    public void SetCompanyTIN(String CompanyTIN){
+    public void setTIN(String CompanyTIN){
         this.TIN = CompanyTIN;
     }
 
