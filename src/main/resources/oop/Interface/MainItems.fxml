@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,7 +9,7 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.Interface.InterfaceController">
    <children>
-      <TableView fx:id="table" layoutX="547.0" layoutY="105.0" prefHeight="415.0" prefWidth="300.0">
+      <TableView fx:id="table" editable="true" layoutX="547.0" layoutY="105.0" prefHeight="415.0" prefWidth="300.0">
          <columns>
             <TableColumn fx:id="id_column" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="name_column" prefWidth="75.0" text="Name" />
@@ -18,5 +19,10 @@
       </TableView>
       <ChoiceBox fx:id="choice_box" layoutX="164.0" layoutY="300.0" prefWidth="150.0" />
       <TextField fx:id="search" alignment="CENTER_RIGHT" layoutX="547.0" layoutY="38.0" prefHeight="25.0" prefWidth="300.0" promptText="Search" />
+      <Button fx:id="plus_btn" layoutX="547.0" layoutY="71.0" mnemonicParsing="false" onAction="#add" text="+" />
+      <Button fx:id="minus_btn" layoutX="581.0" layoutY="71.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="25.0" text="-" />
+      <Button fx:id="save_btn" layoutX="743.0" layoutY="71.0" mnemonicParsing="false" text="Save" />
+      <Button fx:id="upload_btn" layoutX="792.0" layoutY="71.0" mnemonicParsing="false" text="Upload" />
+      <Button fx:id="edit_btn" layoutX="697.0" layoutY="71.0" mnemonicParsing="false" onAction="#edit" text="Edit" />
    </children>
 </AnchorPane>
