@@ -57,11 +57,11 @@ public class InterfaceController implements Initializable {
     }
 
     ObservableList<User> List = FXCollections.observableArrayList(
-            new User("David","Airapetov","20","1"),
+            new User("1","David","Airapetov","20"),
 
-            new User("Andrey","Vinogradov","20","2"),
-            new User("Klim","Nikolaev","19","3"),
-            new User("Vlad","Talankov","19","4")
+            new User("2","Andrey","Vinogradov","20"),
+            new User("3","Klim","Nikolaev","19"),
+            new User("4","Vlad","Talankov","19")
     );
     @FXML
     private void add(ActionEvent event)
@@ -78,7 +78,7 @@ public class InterfaceController implements Initializable {
     @FXML
     private void save(ActionEvent event) throws IOException {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("save.csv"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save.csv"));
             for(User users : List)
             {
                 writer.write(users.getID() + ";" + users.getName() + ";" + users.getSurname() + ";" + users.getAge());
@@ -100,7 +100,7 @@ public class InterfaceController implements Initializable {
     @FXML
     private void upload(ActionEvent event) throws IOException {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("save.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader("saves/save.csv"));
             ObservableList<User> List = FXCollections.observableArrayList();
             String temp;
             do{
