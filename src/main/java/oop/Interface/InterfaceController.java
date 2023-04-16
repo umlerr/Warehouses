@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -57,15 +57,16 @@ public class InterfaceController implements Initializable {
     }
 
     ObservableList<User> List = FXCollections.observableArrayList(
-            new User("David","Airapetov",21,1),
-            new User("Andrey","Vinogradov",20,2),
-            new User("Klim","Nikolaev",19,3),
-            new User("Vlad","Talankov",19,4)
+            new User("David","Airapetov","20","1"),
+
+            new User("Andrey","Vinogradov","20","2"),
+            new User("Klim","Nikolaev","19","3"),
+            new User("Vlad","Talankov","19","4")
     );
     @FXML
     private void add(ActionEvent event)
     {
-        List.add(new User("Misha","Ugryumov",19,5));
+        List.add(new User("Misha","Ugryumov","19","5"));
         table.setItems(List);
     }
     @FXML
@@ -75,10 +76,55 @@ public class InterfaceController implements Initializable {
         table.getItems().remove(selectedID);
     }
     @FXML
-    private void edit(ActionEvent event)
-    {
-        int selectedID = table.getSelectionModel().getSelectedIndex();
-        table.getItems().remove(selectedID);
+    private void save(ActionEvent event) throws IOException {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("save.csv"));
+            for(User users : List)
+            {
+                writer.write(users.getID() + ";" + users.getName() + ";" + users.getSurname() + ";" + users.getAge());
+                writer.newLine();
+            }
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "POSHEL NAHUY!", ButtonType.OK);
+            IOAlert.setContentText("Sorry, David, you are gay");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+        }
+    }
+    @FXML
+    private void upload(ActionEvent event) throws IOException {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("save.csv"));
+            ObservableList<User> List = FXCollections.observableArrayList();
+            String temp;
+            do{
+                temp = reader.readLine();
+                if(temp!=null){
+                    String[] temp2 = temp.split(";");
+                    List.add(new User(temp2[0],temp2[1],temp2[2],temp2[3]));
+                }
+
+            }
+            while(temp!=null);
+            table.setItems(List);
+            reader.close();
+        }
+        catch (IOException e)
+        {
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "POSHEL NAHUY!", ButtonType.OK);
+            IOAlert.setContentText("Sorry, David, you are gay");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+        }
     }
 
     @Override

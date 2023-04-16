@@ -1,24 +1,23 @@
 package oop.Interface;
 
 public class User {
+    private String ID;
     private String Name;
     private String Surname;
-    private Integer Age;
-    private Integer ID;
+    private String Age;
 
-
-    public User(String name, String surname, Integer age, Integer id) {
+    public User(String id, String name, String surname, String age) {
         Name = name;
         Surname = surname;
         Age = age;
         ID = id;
     }
 
-    public void setID(Integer ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
-    public Integer getID() {
+    public String getID() {
         return ID;
     }
 
@@ -30,7 +29,7 @@ public class User {
         return Surname;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return Age;
     }
 
@@ -42,7 +41,7 @@ public class User {
         Surname = surname;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         Age = age;
     }
 }
