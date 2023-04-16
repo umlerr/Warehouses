@@ -21,13 +21,13 @@ public class InterfaceController implements Initializable {
 
 
     @FXML
-    private TableColumn<User, Integer> age_column;
+    private TableColumn<User, String> age_column;
 
     @FXML
     private ChoiceBox<String> choice_box;
 
     @FXML
-    private TableColumn<User, Integer> id_column;
+    private TableColumn<User, String> id_column;
 
     @FXML
     private TableColumn<User, String> name_column;
@@ -88,13 +88,13 @@ public class InterfaceController implements Initializable {
 
         name_column.setCellValueFactory(new PropertyValueFactory<User, String>("Name"));
         surname_column.setCellValueFactory(new PropertyValueFactory<User, String>("Surname"));
-        age_column.setCellValueFactory(new PropertyValueFactory<User, Integer>("Age"));
-        id_column.setCellValueFactory(new PropertyValueFactory<User, Integer>("ID"));
+        age_column.setCellValueFactory(new PropertyValueFactory<User, String>("Age"));
+        id_column.setCellValueFactory(new PropertyValueFactory<User, String>("ID"));
 
         name_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
         surname_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
-        age_column.setCellFactory();
-        id_column.setCellFactory();
+        age_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
+        id_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
 
         table.setItems(List);
     }
