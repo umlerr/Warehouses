@@ -19,7 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.ir.Statement;
 
 /**
  *
@@ -71,7 +70,7 @@ public class LoginController implements Initializable {
         Connection Connection = null;
         java.sql.Statement Statement = null;
         try {
-            Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/LoginDB", "root", "Umler1337228");
+            Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/LoginDB", "root", "1234");
             Connection.setAutoCommit(false);
 
 //            System.out.println("Opened database successfully");

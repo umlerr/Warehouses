@@ -19,7 +19,7 @@ public class Interface extends Application {
         //String css = "LoginStyle.css";
         //scene.getStylesheets().add(css);
         MainStage.setScene(LoginScene);
-        MainStage.initStyle(StageStyle.UTILITY);
+//        MainStage.initStyle(StageStyle.UTILITY);
         MainStage.setTitle("Login");
         MainStage.show();
     }

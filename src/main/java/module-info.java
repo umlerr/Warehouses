@@ -5,6 +5,7 @@ module sample {
     requires java.desktop;
     requires java.sql;
     requires jdk.scripting.nashorn;
+    requires itextpdf;
 
 
     opens oop.Interface to javafx.fxml;
