@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -20,15 +19,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Phil
- */
 public class LoginController implements Initializable {
 
     public Button LoginButton;
-    @FXML
-    private Label good_label;
 
     @FXML
     private Label invalid_label;
@@ -51,18 +44,20 @@ public class LoginController implements Initializable {
 
         MainStage.setTitle("Hotel");
 
-        if (isValidCredentials())
-        {
-            MainStage.setScene(MainScene);
-            MainStage.show();
-            good_label.setText("Ты скала");
-        }
-        else
-        {
-            username_box.clear();
-            password_box.clear();
-            invalid_label.setText("Sorry, invalid credentials");
-        }
+        MainStage.setScene(MainScene);
+        MainStage.show();
+
+//        if (isValidCredentials())
+//        {
+//            MainStage.setScene(MainScene);
+//            MainStage.show();
+//        }
+//        else
+//        {
+//            username_box.clear();
+//            password_box.clear();
+//            invalid_label.setText("Sorry, invalid credentials");
+//        }
     }
     private boolean isValidCredentials()
     {

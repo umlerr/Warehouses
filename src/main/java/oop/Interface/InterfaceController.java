@@ -1,29 +1,23 @@
 package oop.Interface;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import javafx.beans.Observable;
+import com.itextpdf.text.pdf.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
-import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.collections.transformation.FilteredList;
 
-
-import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
-import com.itextpdf.text.pdf.PdfWriter;
 
 public class InterfaceController implements Initializable {
 
@@ -50,9 +44,6 @@ public class InterfaceController implements Initializable {
     private TableView<User> table;
 
     @FXML
-    private Button plus_btn;
-
-    @FXML
     private Label search_invalid_label;
 
 
@@ -63,7 +54,7 @@ public class InterfaceController implements Initializable {
         String choice = choice_box.getValue();
         if (Objects.equals(choice, "Workers"))
         {
-            System.out.println("IDI NAHUY");
+            System.out.println("Workers");
         }
     }
 
@@ -81,11 +72,17 @@ public class InterfaceController implements Initializable {
         table.setItems(List);
     }
 
-    private void remove_row() throws NullPointerException{
+    private void remove_row() throws MyException{
         table.setItems(List);
         int selectedID = table.getSelectionModel().getSelectedIndex();
-        if (selectedID == -1) throw new NullPointerException();
+        if (selectedID == -1) throw new MyException();
         else table.getItems().remove(selectedID);
+    }
+
+    static class MyException extends Exception {
+        public MyException(){
+            super("Выберите строчку для удаления");
+        }
     }
 
     @FXML
@@ -95,8 +92,15 @@ public class InterfaceController implements Initializable {
             search_invalid_label.setText("");
             remove_row();
         }
-        catch (NullPointerException ex){
+        catch (MyException myEx){
             search_invalid_label.setText("Choose a row to delete");
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, myEx.getMessage(), ButtonType.OK);
+            IOAlert.setContentText(myEx.getMessage());
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
         }
 
     }
@@ -113,8 +117,8 @@ public class InterfaceController implements Initializable {
         }
         catch (IOException e)
         {
-            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "POSHEL NAHUY!", ButtonType.OK);
-            IOAlert.setContentText("Sorry, David, you are gay");
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Error!", ButtonType.OK);
+            IOAlert.setContentText("Error");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -141,8 +145,8 @@ public class InterfaceController implements Initializable {
         }
         catch (IOException e)
         {
-            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "POSHEL NAHUY!", ButtonType.OK);
-            IOAlert.setContentText("Sorry, David, you are gay");
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
+            IOAlert.setContentText("Error");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -212,21 +216,27 @@ public class InterfaceController implements Initializable {
         search();
     }
 
+
+
+
     public void toPDF(ActionEvent actionEvent) throws Exception{
             try {
-                /* Step-2: Initialize PDF documents - logical objects */
                 Document my_pdf_report = new Document();
-                PdfWriter.getInstance(my_pdf_report, new FileOutputStream("pdf_report_from_sql_using_java.pdf"));
+                PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report.pdf"));
                 my_pdf_report.open();
-                //we have four columns in our table
+
                 PdfPTable my_report_table = new PdfPTable(4);
-                //create a cell object
+
                 PdfPCell table_cell;
+                my_report_table.setHeaderRows(1);
 
                 my_report_table.addCell(new PdfPCell(new Phrase("ID", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
                 my_report_table.addCell(new PdfPCell(new Phrase("Name", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
                 my_report_table.addCell(new PdfPCell(new Phrase("Surname", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
                 my_report_table.addCell(new PdfPCell(new Phrase("Age", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+
+
+                if (List.isEmpty()) throw new MyException();
 
                 for(User users : List)
                 {
@@ -246,8 +256,7 @@ public class InterfaceController implements Initializable {
 
 
 
-            } catch (FileNotFoundException | DocumentException e) {
-                // TODO Auto-generated catch block
+            } catch (FileNotFoundException | DocumentException | MyException e) {
                 e.printStackTrace();
             }
     }
