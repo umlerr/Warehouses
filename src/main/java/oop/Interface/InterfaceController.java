@@ -66,7 +66,7 @@ public class InterfaceController implements Initializable {
     @FXML
     private void add(ActionEvent event)
     {
-        List.add(new User("Misha","Ugryumov","19","5"));
+        List.add(new User("5","Misha","Ugryumov","19"));
         table.setItems(List);
     }
     @FXML
