@@ -19,9 +19,8 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class InterfaceController implements Initializable {
-
-
+public class InterfaceController implements Initializable
+{
     @FXML
     private TableColumn<User, String> age_column;
 
@@ -46,7 +45,6 @@ public class InterfaceController implements Initializable {
     @FXML
     private Label search_invalid_label;
 
-
     private final String[] choices = {"Workers","Clients","Rooms","Reports"};
 
     private void getChoices(ActionEvent event)
@@ -58,30 +56,28 @@ public class InterfaceController implements Initializable {
         }
     }
 
-    ObservableList<User> List = FXCollections.observableArrayList(
-            new User("1","David","Airapetov","20"),
+    ObservableList<User> List = FXCollections.observableArrayList();
 
-            new User("2","Andrey","Vinogradov","20"),
-            new User("3","Klim","Nikolaev","19"),
-            new User("4","Vlad","Talankov","19")
-    );
     @FXML
     private void add(ActionEvent event)
     {
-        List.add(new User("5","Misha","Ugryumov","19"));
+        List.add(new User("-","-","-","-"));
         table.setItems(List);
     }
 
-    private void remove_row() throws MyException{
+    private void remove_row() throws MyException
+    {
         table.setItems(List);
         int selectedID = table.getSelectionModel().getSelectedIndex();
         if (selectedID == -1) throw new MyException();
         else table.getItems().remove(selectedID);
     }
 
-    static class MyException extends Exception {
-        public MyException(){
-            super("Выберите строчку для удаления");
+    static class MyException extends Exception
+    {
+        public MyException()
+        {
+            super("Choose a row to delete");
         }
     }
 
@@ -105,8 +101,10 @@ public class InterfaceController implements Initializable {
 
     }
     @FXML
-    private void save(ActionEvent event) throws IOException {
-        try {
+    private void save(ActionEvent event) throws IOException
+    {
+        try
+        {
             BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save.csv"));
             for(User users : List)
             {
@@ -127,8 +125,10 @@ public class InterfaceController implements Initializable {
         }
     }
     @FXML
-    private void upload(ActionEvent event) throws IOException {
-        try {
+    private void upload(ActionEvent event) throws IOException
+    {
+        try
+        {
             BufferedReader reader = new BufferedReader(new FileReader("saves/save.csv"));
             String temp;
             do{
@@ -137,7 +137,6 @@ public class InterfaceController implements Initializable {
                     String[] temp2 = temp.split(";");
                     List.add(new User(temp2[0],temp2[1],temp2[2],temp2[3]));
                 }
-
             }
             while(temp!=null);
             table.setItems(List);
@@ -156,7 +155,8 @@ public class InterfaceController implements Initializable {
     }
 
     @FXML
-    private void search() {
+    private void search()
+    {
         FilteredList<User> filteredData = new FilteredList<>(List, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(person ->
@@ -174,28 +174,70 @@ public class InterfaceController implements Initializable {
         table.setItems(sortedData);
     }
 
-    public void onEditChanged1(TableColumn.CellEditEvent<User, String> userStringCellEditEvent) {
+    public void onEditChanged1(TableColumn.CellEditEvent<User, String> userStringCellEditEvent)
+    {
         User user = table.getSelectionModel().getSelectedItem();
         user.setID(userStringCellEditEvent.getNewValue());
     }
-    public void onEditChanged2(TableColumn.CellEditEvent<User, String> userStringCellEditEvent) {
+    public void onEditChanged2(TableColumn.CellEditEvent<User, String> userStringCellEditEvent)
+    {
         User user = table.getSelectionModel().getSelectedItem();
         user.setName(userStringCellEditEvent.getNewValue());
     }
-    public void onEditChanged3(TableColumn.CellEditEvent<User, String> userStringCellEditEvent) {
+    public void onEditChanged3(TableColumn.CellEditEvent<User, String> userStringCellEditEvent)
+    {
         User user = table.getSelectionModel().getSelectedItem();
         user.setSurname(userStringCellEditEvent.getNewValue());
     }
-    public void onEditChanged4(TableColumn.CellEditEvent<User, String> userStringCellEditEvent) {
+    public void onEditChanged4(TableColumn.CellEditEvent<User, String> userStringCellEditEvent)
+    {
         User user = table.getSelectionModel().getSelectedItem();
         user.setAge(userStringCellEditEvent.getNewValue());
     }
 
+    public void toPDF(ActionEvent actionEvent) throws Exception
+    {
+        try {
+            Document my_pdf_report = new Document();
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report.pdf"));
+            my_pdf_report.open();
 
+            PdfPTable my_report_table = new PdfPTable(4);
+
+            PdfPCell table_cell;
+            my_report_table.setHeaderRows(1);
+
+            my_report_table.addCell(new PdfPCell(new Phrase("ID", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table.addCell(new PdfPCell(new Phrase("Name", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table.addCell(new PdfPCell(new Phrase("Surname", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table.addCell(new PdfPCell(new Phrase("Age", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+
+            if (List.isEmpty()) throw new MyException();
+
+            for(User users : List)
+            {
+                table_cell=new PdfPCell(new Phrase(users.getID()));
+                my_report_table.addCell(table_cell);
+                table_cell=new PdfPCell(new Phrase(users.getName()));
+                my_report_table.addCell(table_cell);
+                table_cell=new PdfPCell(new Phrase(users.getSurname()));
+                my_report_table.addCell(table_cell);
+                table_cell=new PdfPCell(new Phrase(users.getAge()));
+                my_report_table.addCell(table_cell);
+            }
+            my_pdf_report.add(my_report_table);
+            my_pdf_report.close();
+        }
+        catch (FileNotFoundException | DocumentException | MyException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)
+    {
         choice_box.getItems().addAll(choices);
         choice_box.setOnAction(this::getChoices);
 
@@ -212,52 +254,12 @@ public class InterfaceController implements Initializable {
         surname_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
         age_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
 
-
         search();
     }
 
 
 
 
-    public void toPDF(ActionEvent actionEvent) throws Exception{
-            try {
-                Document my_pdf_report = new Document();
-                PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report.pdf"));
-                my_pdf_report.open();
 
-                PdfPTable my_report_table = new PdfPTable(4);
-
-                PdfPCell table_cell;
-                my_report_table.setHeaderRows(1);
-
-                my_report_table.addCell(new PdfPCell(new Phrase("ID", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
-                my_report_table.addCell(new PdfPCell(new Phrase("Name", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
-                my_report_table.addCell(new PdfPCell(new Phrase("Surname", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
-                my_report_table.addCell(new PdfPCell(new Phrase("Age", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
-
-
-                if (List.isEmpty()) throw new MyException();
-
-                for(User users : List)
-                {
-                    table_cell=new PdfPCell(new Phrase(users.getID()));
-                    my_report_table.addCell(table_cell);
-                    table_cell=new PdfPCell(new Phrase(users.getName()));
-                    my_report_table.addCell(table_cell);
-                    table_cell=new PdfPCell(new Phrase(users.getSurname()));
-                    my_report_table.addCell(table_cell);
-                    table_cell=new PdfPCell(new Phrase(users.getAge()));
-                    my_report_table.addCell(table_cell);
-                }
-
-                /* Attach report table to PDF */
-                my_pdf_report.add(my_report_table);
-                my_pdf_report.close();
-
-
-
-            } catch (FileNotFoundException | DocumentException | MyException e) {
-                e.printStackTrace();
-            }
-    }
 }
+

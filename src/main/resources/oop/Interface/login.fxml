@@ -11,10 +11,9 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="270.0" prefWidth="480.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.Interface.LoginController">
-   <ImageView fitHeight="194.0" fitWidth="338.0" layoutX="-93.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@login.png" />
-      </image>
+   <ImageView fitHeight="194.0" fitWidth="338.0" layoutX="-93.0" layoutY="76.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@login.png"/>
    </ImageView>
    <PasswordField fx:id="password_box" layoutX="165.0" layoutY="158.0" />
    <Text layoutX="195.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите пароль">

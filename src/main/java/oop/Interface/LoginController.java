@@ -44,20 +44,17 @@ public class LoginController implements Initializable {
 
         MainStage.setTitle("Hotel");
 
-        MainStage.setScene(MainScene);
-        MainStage.show();
-
-//        if (isValidCredentials())
-//        {
-//            MainStage.setScene(MainScene);
-//            MainStage.show();
-//        }
-//        else
-//        {
-//            username_box.clear();
-//            password_box.clear();
-//            invalid_label.setText("Sorry, invalid credentials");
-//        }
+        if (/*isValidCredentials()*/true)
+        {
+            MainStage.setScene(MainScene);
+            MainStage.show();
+        }
+        else
+        {
+            username_box.clear();
+            password_box.clear();
+            invalid_label.setText("Sorry, invalid credentials");
+        }
     }
     private boolean isValidCredentials()
     {
@@ -67,8 +64,6 @@ public class LoginController implements Initializable {
         try {
             Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/LoginDB", "root", "1234");
             Connection.setAutoCommit(false);
-
-//            System.out.println("Opened database successfully");
             Statement = Connection.createStatement();
 
             ResultSet Result = Statement.executeQuery( "SELECT * FROM Users WHERE UserName= " + "'" + username_box.getText() + "'"

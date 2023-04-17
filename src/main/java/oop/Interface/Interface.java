@@ -16,8 +16,6 @@ public class Interface extends Application {
     {
         Parent LoginParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         Scene LoginScene = new Scene(LoginParent);
-        //String css = "LoginStyle.css";
-        //scene.getStylesheets().add(css);
         MainStage.setScene(LoginScene);
 //        MainStage.initStyle(StageStyle.UTILITY);
         MainStage.setTitle("Login");
