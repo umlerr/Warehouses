@@ -1,20 +1,14 @@
 package warehouses.Interface;
 
-public class User {
+public class Manager {
     private String ID;
     private String Name;
     private String Surname;
-    private String Age;
 
-    public User(String id, String name, String surname, String age) {
+    public Manager(String id, String name, String surname) {
+        ID = id;
         Name = name;
         Surname = surname;
-        Age = age;
-        ID = id;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
     public String getID() {
@@ -29,8 +23,8 @@ public class User {
         return Surname;
     }
 
-    public String getAge() {
-        return Age;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public void setName(String name) {
@@ -41,7 +35,4 @@ public class User {
         Surname = surname;
     }
 
-    public void setAge(String age) {
-        Age = age;
-    }
 }

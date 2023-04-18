@@ -1,5 +1,6 @@
 package warehouses.Interface;
 
+import java.io.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import javafx.collections.FXCollections;
@@ -14,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.collections.transformation.FilteredList;
 
-import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -22,46 +23,43 @@ import java.util.ResourceBundle;
 public class InterfaceController implements Initializable
 {
     @FXML
-    private TableColumn<User, String> age_column;
-
-    @FXML
     private ChoiceBox<String> choice_box;
 
     @FXML
-    private TableColumn<User, String> id_column;
+    private TableColumn<Manager, String> id_column;
 
     @FXML
-    private TableColumn<User, String> name_column;
+    private TableColumn<Manager, String> name_column;
 
     @FXML
     private TextField search;
 
     @FXML
-    private TableColumn<User, String> surname_column;
+    private TableColumn<Manager, String> surname_column;
 
     @FXML
-    private TableView<User> table;
+    private TableView<Manager> table;
 
     @FXML
     private Label search_invalid_label;
 
-    private final String[] choices = {"Workers","Clients","Rooms","Reports"};
+    private final String[] choices = {"Managers","Contracts","Rooms"};
 
     private void getChoices(ActionEvent event)
     {
         String choice = choice_box.getValue();
-        if (Objects.equals(choice, "Workers"))
+        if (Objects.equals(choice, "Managers"))
         {
-            System.out.println("Workers");
+            System.out.println("Managers");
         }
     }
 
-    ObservableList<User> List = FXCollections.observableArrayList();
+    ObservableList<Manager> List = FXCollections.observableArrayList();
 
     @FXML
     private void add(ActionEvent event)
     {
-        List.add(new User("-","-","-","-"));
+        List.add(new Manager("-","-","-"));
         table.setItems(List);
     }
 
@@ -101,14 +99,14 @@ public class InterfaceController implements Initializable
 
     }
     @FXML
-    private void save(ActionEvent event) throws IOException
+    private void save(ActionEvent event)
     {
         try
         {
             BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save.csv"));
-            for(User users : List)
+            for(Manager users : List)
             {
-                writer.write(users.getID() + ";" + users.getName() + ";" + users.getSurname() + ";" + users.getAge());
+                writer.write(users.getID() + ";" + users.getName() + ";" + users.getSurname());
                 writer.newLine();
             }
             writer.close();
@@ -125,7 +123,7 @@ public class InterfaceController implements Initializable
         }
     }
     @FXML
-    private void upload(ActionEvent event) throws IOException
+    private void upload(ActionEvent event)
     {
         try
         {
@@ -135,7 +133,7 @@ public class InterfaceController implements Initializable
                 temp = reader.readLine();
                 if(temp!=null){
                     String[] temp2 = temp.split(";");
-                    List.add(new User(temp2[0],temp2[1],temp2[2],temp2[3]));
+                    List.add(new Manager(temp2[0],temp2[1],temp2[2]));
                 }
             }
             while(temp!=null);
@@ -157,7 +155,7 @@ public class InterfaceController implements Initializable
     @FXML
     private void search()
     {
-        FilteredList<User> filteredData = new FilteredList<>(List, b -> true);
+        FilteredList<Manager> filteredData = new FilteredList<>(List, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(person ->
                     {
@@ -165,44 +163,43 @@ public class InterfaceController implements Initializable
                         String lowerCaseFilter = newValue.toLowerCase();
                         return person.getName().toLowerCase().contains(lowerCaseFilter) ||
                                 person.getSurname().toLowerCase().contains(lowerCaseFilter) ||
-                                person.getAge().toLowerCase().contains(lowerCaseFilter) ||
                                 person.getID().toLowerCase().contains(lowerCaseFilter);
                     });
         });
-        SortedList<User> sortedData = new SortedList<>(filteredData);
+        SortedList<Manager> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedData);
     }
 
-    public void onEditChanged1(TableColumn.CellEditEvent<User, String> userStringCellEditEvent)
+    public void onEditChanged1(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
-        User user = table.getSelectionModel().getSelectedItem();
-        user.setID(userStringCellEditEvent.getNewValue());
+        Manager manager = table.getSelectionModel().getSelectedItem();
+        manager.setID(userStringCellEditEvent.getNewValue());
     }
-    public void onEditChanged2(TableColumn.CellEditEvent<User, String> userStringCellEditEvent)
+    public void onEditChanged2(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
-        User user = table.getSelectionModel().getSelectedItem();
-        user.setName(userStringCellEditEvent.getNewValue());
+        Manager manager = table.getSelectionModel().getSelectedItem();
+        manager.setName(userStringCellEditEvent.getNewValue());
     }
-    public void onEditChanged3(TableColumn.CellEditEvent<User, String> userStringCellEditEvent)
+    public void onEditChanged3(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
-        User user = table.getSelectionModel().getSelectedItem();
-        user.setSurname(userStringCellEditEvent.getNewValue());
-    }
-    public void onEditChanged4(TableColumn.CellEditEvent<User, String> userStringCellEditEvent)
-    {
-        User user = table.getSelectionModel().getSelectedItem();
-        user.setAge(userStringCellEditEvent.getNewValue());
+        Manager manager = table.getSelectionModel().getSelectedItem();
+        manager.setSurname(userStringCellEditEvent.getNewValue());
     }
 
-    public void toPDF(ActionEvent actionEvent) throws Exception
+    public void toPDF(ActionEvent actionEvent)
     {
         try {
             Document my_pdf_report = new Document();
             PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report.pdf"));
             my_pdf_report.open();
 
-            PdfPTable my_report_table = new PdfPTable(4);
+            Phrase phrase = new Phrase("REPORT", FontFactory.getFont(FontFactory.COURIER_BOLD, 56,Font.BOLD));
+
+
+            PdfPTable my_report_table = new PdfPTable(3);
+
+            my_pdf_report.add(phrase);
 
             PdfPCell table_cell;
             my_report_table.setHeaderRows(1);
@@ -210,19 +207,16 @@ public class InterfaceController implements Initializable
             my_report_table.addCell(new PdfPCell(new Phrase("ID", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
             my_report_table.addCell(new PdfPCell(new Phrase("Name", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
             my_report_table.addCell(new PdfPCell(new Phrase("Surname", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
-            my_report_table.addCell(new PdfPCell(new Phrase("Age", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
 
             if (List.isEmpty()) throw new MyException();
 
-            for(User users : List)
+            for(Manager managers : List)
             {
-                table_cell=new PdfPCell(new Phrase(users.getID()));
+                table_cell=new PdfPCell(new Phrase(managers.getID()));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(users.getName()));
+                table_cell=new PdfPCell(new Phrase(managers.getName()));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(users.getSurname()));
-                my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(users.getAge()));
+                table_cell=new PdfPCell(new Phrase(managers.getSurname()));
                 my_report_table.addCell(table_cell);
             }
             my_pdf_report.add(my_report_table);
@@ -234,6 +228,34 @@ public class InterfaceController implements Initializable
         }
     }
 
+    private void addHeader(PdfWriter writer){
+        PdfPTable header = new PdfPTable(2);
+        try {
+            // set defaults
+            header.setWidths(new int[]{2, 24});
+            header.setTotalWidth(527);
+            header.setLockedWidth(true);
+            header.getDefaultCell().setFixedHeight(40);
+            header.getDefaultCell().setBorder(Rectangle.BOTTOM);
+            header.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
+
+            // add text
+            PdfPCell text = new PdfPCell();
+            text.setPaddingBottom(15);
+            text.setPaddingLeft(10);
+            text.setBorder(Rectangle.BOTTOM);
+            text.setBorderColor(BaseColor.LIGHT_GRAY);
+            text.addElement(new Phrase("iText PDF Header Footer Example", new Font(Font.FontFamily.HELVETICA, 12)));
+            text.addElement(new Phrase("https://memorynotfound.com", new Font(Font.FontFamily.HELVETICA, 8)));
+            header.addCell(text);
+
+            // write content
+            header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
+        } catch(DocumentException de) {
+            throw new ExceptionConverter(de);
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -241,18 +263,16 @@ public class InterfaceController implements Initializable
         choice_box.getItems().addAll(choices);
         choice_box.setOnAction(this::getChoices);
 
-        id_column.setCellValueFactory(new PropertyValueFactory<User, String>("ID"));
-        name_column.setCellValueFactory(new PropertyValueFactory<User, String>("Name"));
-        surname_column.setCellValueFactory(new PropertyValueFactory<User, String>("Surname"));
-        age_column.setCellValueFactory(new PropertyValueFactory<User, String>("Age"));
+        id_column.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        name_column.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        surname_column.setCellValueFactory(new PropertyValueFactory<>("Surname"));
 
 
         table.setItems(List);
         table.setEditable(true);
-        id_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
-        name_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
-        surname_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
-        age_column.setCellFactory(TextFieldTableCell.<User>forTableColumn());
+        id_column.setCellFactory(TextFieldTableCell.forTableColumn());
+        name_column.setCellFactory(TextFieldTableCell.forTableColumn());
+        surname_column.setCellFactory(TextFieldTableCell.forTableColumn());
 
         search();
     }

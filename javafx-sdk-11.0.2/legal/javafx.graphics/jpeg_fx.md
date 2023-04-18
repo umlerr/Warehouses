@@ -14,7 +14,7 @@
 The authors make NO WARRANTY or representation, either express or implied,
 with respect to this software, its quality, accuracy, merchantability, or
 fitness for a particular purpose.  This software is provided "AS IS", and you,
-its user, assume the entire risk as to its quality and accuracy.
+its manager, assume the entire risk as to its quality and accuracy.
 
 This software is copyright (C) 1991-2018, Thomas G. Lane, Guido Vollbeding.
 All Rights Reserved except as specified below.
@@ -29,7 +29,7 @@ must be clearly indicated in accompanying documentation.
 (2) If only executable code is distributed, then the accompanying
 documentation must state that "this software is based in part on the work of
 the Independent JPEG Group".
-(3) Permission for use of this software is granted only if the user accepts
+(3) Permission for use of this software is granted only if the manager accepts
 full responsibility for any undesirable consequences; the authors accept
 NO LIABILITY for damages of any kind.
 
