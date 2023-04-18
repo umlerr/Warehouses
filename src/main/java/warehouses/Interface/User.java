@@ -1,4 +1,4 @@
-package oop.Interface;
+package warehouses.Interface;
 
 public class User {
     private String ID;

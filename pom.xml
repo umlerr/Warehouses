@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>OOP</groupId>
-    <artifactId>OOP</artifactId>
+    <groupId>warehouses</groupId>
+    <artifactId>warehouses</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>OOP</name>
+    <name>Warehouses</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -90,7 +90,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>oop.oop/oop.Interface.Interface</mainClass>
+                            <mainClass>warehouses.Interface.Interface</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="540.0" prefWidth="962.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="oop.Interface.InterfaceController">
+            fx:controller="warehouses.Interface.InterfaceController">
    <Label fx:id="search_invalid_label" layoutX="635.0" layoutY="14.0" prefHeight="18.0" prefWidth="124.0"
           textFill="RED"/>
    <TableView fx:id="table" editable="true" layoutX="547.0" layoutY="105.0" prefHeight="415.0" prefWidth="300.0">

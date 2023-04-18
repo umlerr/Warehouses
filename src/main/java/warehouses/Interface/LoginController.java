@@ -1,4 +1,4 @@
-package oop.Interface;
+package warehouses.Interface;
 
 import java.io.IOException;
 import java.net.URL;
