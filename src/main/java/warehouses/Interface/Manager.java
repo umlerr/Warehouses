@@ -5,34 +5,33 @@ public class Manager {
     private String Name;
     private String Surname;
 
-    public Manager(String id, String name, String surname) {
-        ID = id;
-        Name = name;
-        Surname = surname;
+    public Manager(String ID, String Name, String Surname) {
+        this.ID = ID;
+        this.Name = Name;
+        this.Surname = Surname;
     }
 
     public String getID() {
         return ID;
     }
 
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     public String getName() {
         return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getSurname() {
         return Surname;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setSurname(String Surname) {
+        this.Surname = Surname;
     }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public void setSurname(String surname) {
-        Surname = surname;
-    }
-
 }

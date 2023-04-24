@@ -15,13 +15,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.collections.transformation.FilteredList;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class InterfaceController implements Initializable
 {
+
+    public Label address_label;
+
+    private Warehouse SelectedWarehouse;
+
+    public Label main_label;
+
     @FXML
     private ChoiceBox<String> choice_box;
 
@@ -43,6 +49,24 @@ public class InterfaceController implements Initializable
     @FXML
     private Label search_invalid_label;
 
+    ObservableList<Manager> List = FXCollections.observableArrayList();
+
+
+    public void toWarehouse(Warehouse warehouse)
+    {
+        SelectedWarehouse = warehouse;
+        main_label.setText("Warehouse #" + SelectedWarehouse.getID());
+        address_label.setText(SelectedWarehouse.getAddress());
+    }
+
+    static class MyException extends Exception
+    {
+        public MyException()
+        {
+            super("Choose a row to delete");
+        }
+    }
+
     private final String[] choices = {"Managers","Contracts","Rooms"};
 
     private void getChoices(ActionEvent event)
@@ -52,15 +76,15 @@ public class InterfaceController implements Initializable
         {
             System.out.println("Managers");
         }
+        search();
     }
-
-    ObservableList<Manager> List = FXCollections.observableArrayList();
 
     @FXML
     private void add(ActionEvent event)
     {
         List.add(new Manager("-","-","-"));
         table.setItems(List);
+        search();
     }
 
     private void remove_row() throws MyException
@@ -69,14 +93,6 @@ public class InterfaceController implements Initializable
         int selectedID = table.getSelectionModel().getSelectedIndex();
         if (selectedID == -1) throw new MyException();
         else table.getItems().remove(selectedID);
-    }
-
-    static class MyException extends Exception
-    {
-        public MyException()
-        {
-            super("Choose a row to delete");
-        }
     }
 
     @FXML
@@ -96,8 +112,9 @@ public class InterfaceController implements Initializable
                 IOAlert.close();
             }
         }
-
+        search();
     }
+
     @FXML
     private void save(ActionEvent event)
     {
@@ -121,7 +138,9 @@ public class InterfaceController implements Initializable
                 IOAlert.close();
             }
         }
+        search();
     }
+
     @FXML
     private void upload(ActionEvent event)
     {
@@ -129,6 +148,7 @@ public class InterfaceController implements Initializable
         {
             BufferedReader reader = new BufferedReader(new FileReader("saves/save.csv"));
             String temp;
+            List.clear();
             do{
                 temp = reader.readLine();
                 if(temp!=null){
@@ -150,6 +170,7 @@ public class InterfaceController implements Initializable
                 IOAlert.close();
             }
         }
+        search();
     }
 
     @FXML
@@ -175,16 +196,19 @@ public class InterfaceController implements Initializable
     {
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setID(userStringCellEditEvent.getNewValue());
+        search();
     }
     public void onEditChanged2(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setName(userStringCellEditEvent.getNewValue());
+        search();
     }
     public void onEditChanged3(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setSurname(userStringCellEditEvent.getNewValue());
+        search();
     }
 
     public void toPDF(ActionEvent actionEvent)
@@ -226,36 +250,8 @@ public class InterfaceController implements Initializable
         {
             e.printStackTrace();
         }
+        search();
     }
-
-    private void addHeader(PdfWriter writer){
-        PdfPTable header = new PdfPTable(2);
-        try {
-            // set defaults
-            header.setWidths(new int[]{2, 24});
-            header.setTotalWidth(527);
-            header.setLockedWidth(true);
-            header.getDefaultCell().setFixedHeight(40);
-            header.getDefaultCell().setBorder(Rectangle.BOTTOM);
-            header.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
-
-            // add text
-            PdfPCell text = new PdfPCell();
-            text.setPaddingBottom(15);
-            text.setPaddingLeft(10);
-            text.setBorder(Rectangle.BOTTOM);
-            text.setBorderColor(BaseColor.LIGHT_GRAY);
-            text.addElement(new Phrase("iText PDF Header Footer Example", new Font(Font.FontFamily.HELVETICA, 12)));
-            text.addElement(new Phrase("https://memorynotfound.com", new Font(Font.FontFamily.HELVETICA, 8)));
-            header.addCell(text);
-
-            // write content
-            header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
-        } catch(DocumentException de) {
-            throw new ExceptionConverter(de);
-        }
-    }
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb)

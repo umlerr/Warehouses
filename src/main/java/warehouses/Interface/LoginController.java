@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 public class LoginController implements Initializable {
 
     public Button LoginButton;
-
     @FXML
     private Label invalid_label;
 
@@ -32,22 +31,21 @@ public class LoginController implements Initializable {
     @FXML
     private TextField password_box;
 
+
     @FXML
     private void LoginButtonAction(ActionEvent event) throws IOException
     {
-        System.out.println("You clicked me!");
+        Parent WTableParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("WarehousesList.fxml")));
+        Scene WTableScene = new Scene(WTableParent);
 
-        Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainItems.fxml")));
-        Scene MainScene = new Scene(MainParent);
+        Stage WTableStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        Stage MainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        WTableStage.setTitle("Warehouses");
 
-        MainStage.setTitle("Hotel");
-
-        if (/*isValidCredentials()*/true)
+        if (isValidCredentials())
         {
-            MainStage.setScene(MainScene);
-            MainStage.show();
+            WTableStage.setScene(WTableScene);
+            WTableStage.show();
         }
         else
         {
@@ -62,7 +60,7 @@ public class LoginController implements Initializable {
         Connection Connection = null;
         java.sql.Statement Statement = null;
         try {
-            Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/LoginDB", "root", "1234");
+            Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/LoginDB", "Umler", "Umler1337228");
             Connection.setAutoCommit(false);
             Statement = Connection.createStatement();
 
@@ -90,5 +88,4 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
 }
