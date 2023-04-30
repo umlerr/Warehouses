@@ -8,6 +8,19 @@
     <artifactId>warehouses</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Warehouses</name>
+    <url>https://github.com/umlerr/Warehouses.git</url>
+
+    <developers>
+        <developer>
+            <id>umlerr</id>
+            <name>Umler</name>
+            <email>ugrumov.misha@yandex.ru</email>
+            <timezone>+3</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -87,10 +100,9 @@
                 <version>0.0.8</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>warehouses.Interface.Interface</mainClass>
+                            <mainClass>com.umler.warehouses.main_app.App</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

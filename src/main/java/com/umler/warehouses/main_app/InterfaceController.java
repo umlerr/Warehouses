@@ -1,4 +1,4 @@
-package warehouses.Interface;
+package com.umler.warehouses.main_app;
 
 import java.io.*;
 import com.itextpdf.text.*;

@@ -5,7 +5,8 @@ module oop.Interface {
     requires java.desktop;
     requires java.sql;
     requires itextpdf;
+    requires org.hibernate.orm.core;
 
-    opens warehouses.Interface to javafx.fxml;
-    exports warehouses.Interface;
+    opens com.umler.warehouses.main_app to javafx.fxml;
+    exports com.umler.warehouses.main_app;
 }

@@ -1,4 +1,4 @@
-package warehouses.Interface;
+package com.umler.warehouses.main_app;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

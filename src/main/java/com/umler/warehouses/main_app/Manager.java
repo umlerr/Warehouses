@@ -1,4 +1,4 @@
-package warehouses.Interface;
+package com.umler.warehouses.main_app;
 
 public class Manager {
     private String ID;

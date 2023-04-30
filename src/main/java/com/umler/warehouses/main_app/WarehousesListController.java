@@ -1,11 +1,10 @@
-package warehouses.Interface;
+package com.umler.warehouses.main_app;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+import com.umler.warehouses.helpers.ScenePath;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,10 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import javafx.util.converter.IntegerStringConverter;
 
 
 public class WarehousesListController extends InterfaceController implements Initializable {
@@ -115,17 +111,15 @@ public class WarehousesListController extends InterfaceController implements Ini
     }
 
     @FXML
-    public void ChoiceButtonAction(ActionEvent event) throws IOException {
+    public void showMainScreen(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("MainItems.fxml"));
+        loader.setLocation(getClass().getResource(ScenePath.HOME.getPath()));
         Parent MainParent = loader.load();
 
         Scene MainScene = new Scene(MainParent);
 
         InterfaceController controller = loader.getController();
-
-
         Stage MainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         MainStage.setTitle("Warehouses");

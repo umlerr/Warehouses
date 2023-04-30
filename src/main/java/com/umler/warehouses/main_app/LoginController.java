@@ -1,23 +1,19 @@
-package warehouses.Interface;
+package com.umler.warehouses.main_app;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.util.Objects;
 import java.util.ResourceBundle;
+
+import com.umler.warehouses.main_interface_controllers.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
@@ -31,21 +27,11 @@ public class LoginController implements Initializable {
     @FXML
     private TextField password_box;
 
-
     @FXML
-    private void LoginButtonAction(ActionEvent event) throws IOException
-    {
-        Parent WTableParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("WarehousesList.fxml")));
-        Scene WTableScene = new Scene(WTableParent);
-
-        Stage WTableStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        WTableStage.setTitle("Warehouses");
-
+    void showVisitScreen(ActionEvent event) throws IOException {
         if (isValidCredentials())
         {
-            WTableStage.setScene(WTableScene);
-            WTableStage.show();
+            SceneController.getWarehousesScene(event);
         }
         else
         {
@@ -53,7 +39,9 @@ public class LoginController implements Initializable {
             password_box.clear();
             invalid_label.setText("Sorry, invalid credentials");
         }
+
     }
+
     private boolean isValidCredentials()
     {
         boolean LetIn = false;
@@ -82,6 +70,10 @@ public class LoginController implements Initializable {
         }
         return LetIn;
 
+    }
+
+    private void close() {
+//        exitBtn.setOnAction(SceneController::close);
     }
 
     @Override
