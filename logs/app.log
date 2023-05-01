@@ -4,3 +4,40 @@
 {LoginScene Logger} 2023-05-02 00:28:03.700 [DEBUG]: Closing login window
 {Scene Logger} 2023-05-02 00:28:04.084 [DEBUG]: Closing window
 {Main Logger} 2023-05-02 00:28:04.092 [DEBUG]: End of a program
+{Scene Logger} 2023-05-02 00:28:40.872 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-02 00:28:41.064 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-02 00:28:41.203 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-02 00:28:43.466 [DEBUG]: Wrapping login window
+{Scene Logger} 2023-05-02 00:28:43.871 [DEBUG]: Wrapping window
+{LoginScene Logger} 2023-05-02 00:28:48.646 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-02 00:28:48.646 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-02 00:28:49.187 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-02 00:28:49.187 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-02 00:28:56.494 [DEBUG]: Adding new warehouse
+{WarehousesList Logger} 2023-05-02 00:28:56.495 [INFO ]: New warehouse added
+{WarehousesList Logger} 2023-05-02 00:29:01.218 [DEBUG]: Deleting warehouse
+{WarehousesList Logger} 2023-05-02 00:29:01.226 [INFO ]: Warehouse deleted
+{WarehousesList Logger} 2023-05-02 00:29:07.575 [DEBUG]: Editing cell
+{WarehousesList Logger} 2023-05-02 00:29:11.083 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-02 00:29:11.083 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-02 00:29:11.083 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-02 00:29:11.126 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-02 00:29:11.126 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-02 00:29:54.602 [WARN ]: Uploading from file
+{Warehouse Logger} 2023-05-02 00:29:58.638 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-02 00:29:59.387 [INFO ]: Saving to file
+{Warehouse Logger} 2023-05-02 00:30:02.300 [DEBUG]: Saving to PDF
+{Warehouse Logger} 2023-05-02 00:30:04.863 [INFO ]: Adding manager
+{Warehouse Logger} 2023-05-02 00:30:04.864 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-02 00:30:08.631 [DEBUG]: Editing
+{Warehouse Logger} 2023-05-02 00:30:10.855 [DEBUG]: Editing
+{Warehouse Logger} 2023-05-02 00:30:12.575 [DEBUG]: Editing
+{Warehouse Logger} 2023-05-02 00:30:15.436 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-02 00:30:17.788 [WARN ]: Uploading from file
+{Warehouse Logger} 2023-05-02 00:30:21.206 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-02 00:30:21.207 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-05-02 00:30:30.582 [DEBUG]: Wrapping main window
+{Warehouse Logger} 2023-05-02 00:30:36.780 [WARN ]: Uploading from file
+{Warehouse Logger} 2023-05-02 00:30:40.216 [DEBUG]: Closing main window
+{Scene Logger} 2023-05-02 00:30:42.227 [DEBUG]: Closing window
+{Main Logger} 2023-05-02 00:30:42.231 [DEBUG]: End of a program

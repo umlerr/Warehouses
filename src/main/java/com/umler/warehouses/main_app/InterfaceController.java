@@ -176,7 +176,7 @@ public class InterfaceController implements Initializable
         try
         {
 
-            logger.warn("Uploading from file");
+            logger.debug("Uploading from file");
 
             BufferedReader reader = new BufferedReader(new FileReader("saves/save.csv"));
             String temp;
