@@ -1,0 +1,6 @@
+{Scene Logger} 2023-05-02 00:28:01.223 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-02 00:28:01.606 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-02 00:28:01.781 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-02 00:28:03.700 [DEBUG]: Closing login window
+{Scene Logger} 2023-05-02 00:28:04.084 [DEBUG]: Closing window
+{Main Logger} 2023-05-02 00:28:04.092 [DEBUG]: End of a program
