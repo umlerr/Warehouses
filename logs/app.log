@@ -75,48 +75,24 @@
 {Warehouse Logger} 2023-05-02 00:42:37.723 [INFO ]: Choice box Managers selected
 {Warehouse Logger} 2023-05-02 00:42:40.336 [DEBUG]: Wrapping main window
 {Scene Logger} 2023-05-02 00:42:40.635 [DEBUG]: Wrapping window
-{Warehouse Logger} 2023-05-02 00:42:45.683 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.683 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.683 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.683 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.683 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.684 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.684 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.684 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.684 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.685 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.685 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.685 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.686 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.686 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.686 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.686 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.686 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.686 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.687 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.687 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:45.687 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.911 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.911 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.911 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.912 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.913 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.913 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.913 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.913 [DEBUG]: Searching
-{Warehouse Logger} 2023-05-02 00:42:55.913 [DEBUG]: Searching
 {Warehouse Logger} 2023-05-02 00:43:04.806 [DEBUG]: Closing main window
 {Scene Logger} 2023-05-02 00:43:07.892 [DEBUG]: Closing window
 {Main Logger} 2023-05-02 00:43:07.898 [DEBUG]: End of a program
+{Scene Logger} 2023-05-02 00:52:22.525 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-02 00:52:22.739 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-02 00:52:22.869 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-02 00:52:24.765 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-02 00:52:24.765 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-02 00:52:25.158 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-02 00:52:25.159 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-02 00:52:27.257 [ERROR]: MyContinueException com.umler.warehouses.main_app.WarehousesListController$MyContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-02 00:52:34.890 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-02 00:52:34.890 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-02 00:52:34.890 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-02 00:52:34.925 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-02 00:52:34.925 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-02 00:52:35.902 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-02 00:52:35.902 [WARN ]: MyException com.umler.warehouses.main_app.InterfaceController$MyException: Choose a row to delete
+{Warehouse Logger} 2023-05-02 00:52:41.863 [DEBUG]: Closing main window
+{Scene Logger} 2023-05-02 00:52:43.974 [DEBUG]: Closing window
+{Main Logger} 2023-05-02 00:52:43.980 [DEBUG]: End of a program

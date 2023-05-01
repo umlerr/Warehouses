@@ -148,7 +148,7 @@ public class WarehousesListController extends InterfaceController implements Ini
         catch (MyContinueException myEx)
         {
 
-            logger.warn("MyContinueException " + myEx);
+            logger.error("MyContinueException " + myEx);
 
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, myEx.getMessage(), ButtonType.OK);
             IOAlert.setContentText(myEx.getMessage());
