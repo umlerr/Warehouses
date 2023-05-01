@@ -215,8 +215,6 @@ public class InterfaceController implements Initializable
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(person ->
                     {
-                        logger.debug("Searching");
-
                         if (newValue == null || newValue.isEmpty()) return true;
                         String lowerCaseFilter = newValue.toLowerCase();
                         return person.getName().toLowerCase().contains(lowerCaseFilter) ||
@@ -234,7 +232,7 @@ public class InterfaceController implements Initializable
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setID(userStringCellEditEvent.getNewValue());
 
-        logger.debug("Editing");
+        logger.debug("Editing cell");
 
         search();
     }
@@ -243,7 +241,7 @@ public class InterfaceController implements Initializable
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setName(userStringCellEditEvent.getNewValue());
 
-        logger.debug("Editing");
+        logger.debug("Editing cell");
 
         search();
     }
@@ -252,7 +250,7 @@ public class InterfaceController implements Initializable
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setSurname(userStringCellEditEvent.getNewValue());
 
-        logger.debug("Editing");
+        logger.debug("Editing cell");
 
         search();
     }
