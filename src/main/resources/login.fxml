@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="270.0" prefWidth="480.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.main_app.LoginController">
+<AnchorPane prefHeight="270.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.main_app.LoginController">
 
    <PasswordField fx:id="password_box" layoutX="165.0" layoutY="169.0" />
    <Text layoutX="195.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите пароль">
@@ -22,9 +22,11 @@
    <TextField fx:id="username_box" layoutX="166.0" layoutY="110.0" />
    <Button fx:id="LoginButton" layoutX="216.0" layoutY="223.0" mnemonicParsing="false" onAction="#showVisitScreen" text="Войти" />
    <Label fx:id="invalid_label" layoutX="175.0" layoutY="194.0" prefHeight="17.0" prefWidth="131.0" textAlignment="CENTER" textFill="RED" textOverrun="CENTER_ELLIPSIS" />
-   <Label layoutX="166.0" layoutY="20.0" text="Warehouses">
+   <Label layoutX="166.0" layoutY="26.0" text="Warehouses">
       <font>
          <Font size="27.0" />
       </font>
    </Label>
+   <Button fx:id="exit_btn" layoutX="435.0" layoutY="14.0" mnemonicParsing="false" onAction="#ExitLoginWindow" prefHeight="25.0" prefWidth="31.0" text="×" />
+   <Button fx:id="wrap_btn" layoutX="397.0" layoutY="14.0" mnemonicParsing="false" onAction="#WrapLoginWindow" prefHeight="25.0" prefWidth="31.0" text="🗕" />
 </AnchorPane>

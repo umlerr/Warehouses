@@ -3,6 +3,7 @@ package com.umler.warehouses.main_app;
 import java.io.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import com.umler.warehouses.main_interface_controllers.SceneController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
@@ -14,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.collections.transformation.FilteredList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.util.Objects;
@@ -21,8 +24,9 @@ import java.util.ResourceBundle;
 
 public class InterfaceController implements Initializable
 {
+    public Button exit_btn;
 
-    public Label address_label;
+    public Button wrap_btn;
 
     private Warehouse SelectedWarehouse;
 
@@ -51,12 +55,15 @@ public class InterfaceController implements Initializable
 
     ObservableList<Manager> List = FXCollections.observableArrayList();
 
+    private static final Logger logger = LoggerFactory.getLogger("Warehouse Logger");
+
 
     public void toWarehouse(Warehouse warehouse)
     {
+        logger.info("Warehouse selected");
+
         SelectedWarehouse = warehouse;
         main_label.setText("Warehouse #" + SelectedWarehouse.getID());
-        address_label.setText(SelectedWarehouse.getAddress());
     }
 
     static class MyException extends Exception
@@ -71,9 +78,13 @@ public class InterfaceController implements Initializable
 
     private void getChoices(ActionEvent event)
     {
+
+        logger.info("Choice box action");
+
         String choice = choice_box.getValue();
         if (Objects.equals(choice, "Managers"))
         {
+            logger.info("Choice box Managers selected");
             System.out.println("Managers");
         }
         search();
@@ -82,8 +93,13 @@ public class InterfaceController implements Initializable
     @FXML
     private void add(ActionEvent event)
     {
+        logger.info("Adding manager");
+
         List.add(new Manager("-","-","-"));
         table.setItems(List);
+
+        logger.info("Manager added");
+
         search();
     }
 
@@ -99,10 +115,17 @@ public class InterfaceController implements Initializable
     private void delete(ActionEvent event)
     {
         try {
+
+            logger.info("Manager added");
+
             search_invalid_label.setText("");
             remove_row();
         }
-        catch (MyException myEx){
+        catch (MyException myEx)
+        {
+
+            logger.warn("MyException " + myEx);
+
             search_invalid_label.setText("Choose a row to delete");
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, myEx.getMessage(), ButtonType.OK);
             IOAlert.setContentText(myEx.getMessage());
@@ -120,6 +143,9 @@ public class InterfaceController implements Initializable
     {
         try
         {
+
+            logger.info("Saving to file");
+
             BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save.csv"));
             for(Manager users : List)
             {
@@ -130,6 +156,9 @@ public class InterfaceController implements Initializable
         }
         catch (IOException e)
         {
+
+            logger.warn("IOException " + e);
+
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Error!", ButtonType.OK);
             IOAlert.setContentText("Error");
             IOAlert.showAndWait();
@@ -146,6 +175,9 @@ public class InterfaceController implements Initializable
     {
         try
         {
+
+            logger.warn("Uploading from file");
+
             BufferedReader reader = new BufferedReader(new FileReader("saves/save.csv"));
             String temp;
             List.clear();
@@ -162,6 +194,9 @@ public class InterfaceController implements Initializable
         }
         catch (IOException e)
         {
+
+            logger.warn("IOException" + e);
+
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
             IOAlert.setContentText("Error");
             IOAlert.showAndWait();
@@ -180,6 +215,8 @@ public class InterfaceController implements Initializable
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(person ->
                     {
+                        logger.debug("Searching");
+
                         if (newValue == null || newValue.isEmpty()) return true;
                         String lowerCaseFilter = newValue.toLowerCase();
                         return person.getName().toLowerCase().contains(lowerCaseFilter) ||
@@ -196,24 +233,36 @@ public class InterfaceController implements Initializable
     {
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setID(userStringCellEditEvent.getNewValue());
+
+        logger.debug("Editing");
+
         search();
     }
     public void onEditChanged2(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setName(userStringCellEditEvent.getNewValue());
+
+        logger.debug("Editing");
+
         search();
     }
     public void onEditChanged3(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
         Manager manager = table.getSelectionModel().getSelectedItem();
         manager.setSurname(userStringCellEditEvent.getNewValue());
+
+        logger.debug("Editing");
+
         search();
     }
 
     public void toPDF(ActionEvent actionEvent)
     {
         try {
+
+            logger.debug("Saving to PDF");
+
             Document my_pdf_report = new Document();
             PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report.pdf"));
             my_pdf_report.open();
@@ -248,9 +297,25 @@ public class InterfaceController implements Initializable
         }
         catch (FileNotFoundException | DocumentException | MyException e)
         {
+
+            logger.warn("File not found" + e);
             e.printStackTrace();
         }
         search();
+    }
+
+    public void ExitMainWindow() {
+
+        logger.debug("Closing main window");
+
+        exit_btn.setOnAction(SceneController::close);
+    }
+
+    public void WrapMainWindow() {
+
+        logger.debug("Wrapping main window");
+
+        wrap_btn.setOnAction(SceneController::wrap);
     }
 
     @Override

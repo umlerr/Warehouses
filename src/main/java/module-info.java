@@ -6,6 +6,7 @@ module oop.Interface {
     requires java.sql;
     requires itextpdf;
     requires org.hibernate.orm.core;
+    requires slf4j.api;
 
     opens com.umler.warehouses.main_app to javafx.fxml;
     exports com.umler.warehouses.main_app;

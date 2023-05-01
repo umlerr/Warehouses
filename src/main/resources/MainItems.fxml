@@ -10,25 +10,26 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.main_app.InterfaceController">
-   <Label fx:id="address_label" layoutX="147.0" layoutY="222.0" />
    <Label fx:id="search_invalid_label" layoutX="419.0" layoutY="14.0" prefHeight="18.0" prefWidth="124.0" textFill="RED" />
-   <TableView fx:id="table" editable="true" layoutX="331.0" layoutY="102.0" prefHeight="415.0" prefWidth="300.0">
+   <TableView fx:id="table" editable="true" layoutX="331.0" layoutY="140.0" prefHeight="377.0" prefWidth="300.0">
       <columns>
          <TableColumn fx:id="id_column" onEditCommit="#onEditChanged1" prefWidth="51.0" text="ID" />
          <TableColumn fx:id="name_column" onEditCommit="#onEditChanged2" prefWidth="95.0" text="Name" />
          <TableColumn fx:id="surname_column" onEditCommit="#onEditChanged3" prefWidth="152.0" text="Surname" />
       </columns>
    </TableView>
-   <ChoiceBox fx:id="choice_box" layoutX="732.0" layoutY="38.0" prefWidth="150.0" />
-   <TextField fx:id="search" alignment="CENTER_RIGHT" layoutX="331.0" layoutY="38.0" prefHeight="25.0" prefWidth="300.0" promptText="Search" />
-   <Button layoutX="481.0" layoutY="71.0" mnemonicParsing="false" onAction="#toPDF" text="PDF" />
-   <Button layoutX="331.0" layoutY="71.0" mnemonicParsing="false" onAction="#add" text="+" />
-   <Button layoutX="365.0" layoutY="71.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="25.0" text="-" />
-   <Button layoutX="527.0" layoutY="71.0" mnemonicParsing="false" onAction="#save" text="Save" />
-   <Button layoutX="576.0" layoutY="71.0" mnemonicParsing="false" onAction="#upload" text="Upload" />
+   <ChoiceBox fx:id="choice_box" layoutX="735.0" layoutY="128.0" prefWidth="150.0" />
+   <TextField fx:id="search" alignment="CENTER_RIGHT" layoutX="331.0" layoutY="64.0" prefHeight="25.0" prefWidth="300.0" promptText="Search" />
+   <Button layoutX="481.0" layoutY="97.0" mnemonicParsing="false" onAction="#toPDF" text="PDF" />
+   <Button layoutX="331.0" layoutY="97.0" mnemonicParsing="false" onAction="#add" text="+" />
+   <Button layoutX="365.0" layoutY="97.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="25.0" text="-" />
+   <Button layoutX="527.0" layoutY="97.0" mnemonicParsing="false" onAction="#save" text="Save" />
+   <Button layoutX="576.0" layoutY="97.0" mnemonicParsing="false" onAction="#upload" text="Upload" />
    <Label fx:id="main_label" layoutX="83.0" layoutY="42.0">
       <font>
          <Font size="29.0" />
       </font>
    </Label>
+   <Button fx:id="exit_btn" layoutX="899.0" layoutY="20.0" mnemonicParsing="false" onAction="#ExitMainWindow" prefHeight="25.0" prefWidth="31.0" text="×" />
+   <Button fx:id="wrap_btn" layoutX="861.0" layoutY="20.0" mnemonicParsing="false" onAction="#WrapMainWindow" prefHeight="25.0" prefWidth="31.0" text="🗕" />
 </AnchorPane>

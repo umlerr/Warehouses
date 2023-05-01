@@ -6,15 +6,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import org.slf4j.*;
+
 public class App extends Application {
+
+    private static final Logger logger = LoggerFactory.getLogger("Main Logger");
 
     @Override
     public void start(Stage stage) throws IOException {
         SceneController.getInitialScene(stage);
+        logger.debug("Start of a program");
     }
 
     @Override
     public void stop() throws Exception {
+        logger.debug("End of a program");
         super.stop();
 //        HibernateUtil.shutdown();
     }

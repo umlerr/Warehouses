@@ -22,7 +22,7 @@ class WarehouseTest {
 
     @Test
     void getID() {
-        assertEquals(1,warehouse.getID());
+        assertEquals(2,warehouse.getID());
     }
 
     @Test

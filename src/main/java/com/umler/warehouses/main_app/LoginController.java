@@ -14,10 +14,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LoginController implements Initializable {
 
     public Button LoginButton;
+
+    public Button exit_btn;
+
+    public Button wrap_btn;
+
     @FXML
     private Label invalid_label;
 
@@ -27,6 +34,8 @@ public class LoginController implements Initializable {
     @FXML
     private TextField password_box;
 
+    private static final Logger logger = LoggerFactory.getLogger("LoginScene Logger");
+
     @FXML
     void showVisitScreen(ActionEvent event) throws IOException {
         if (isValidCredentials())
@@ -35,6 +44,9 @@ public class LoginController implements Initializable {
         }
         else
         {
+
+            logger.warn("Invalid credentials");
+
             username_box.clear();
             password_box.clear();
             invalid_label.setText("Sorry, invalid credentials");
@@ -48,6 +60,10 @@ public class LoginController implements Initializable {
         Connection Connection = null;
         java.sql.Statement Statement = null;
         try {
+
+            logger.debug("Checking credentials for valid input");
+            logger.debug("Connecting to DB");
+
             Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/LoginDB", "Umler", "Umler1337228");
             Connection.setAutoCommit(false);
             Statement = Connection.createStatement();
@@ -66,14 +82,21 @@ public class LoginController implements Initializable {
         }
         catch ( Exception e )
         {
+            logger.warn(String.valueOf(e));
             System.exit(0);
         }
         return LetIn;
 
     }
 
-    private void close() {
-//        exitBtn.setOnAction(SceneController::close);
+    public void ExitLoginWindow() {
+        logger.debug("Closing login window");
+        exit_btn.setOnAction(SceneController::close);
+    }
+
+    public void WrapLoginWindow() {
+        logger.debug("Wrapping login window");
+        wrap_btn.setOnAction(SceneController::wrap);
     }
 
     @Override

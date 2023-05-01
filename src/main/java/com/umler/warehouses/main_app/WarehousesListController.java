@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.*;
 
 import com.umler.warehouses.helpers.ScenePath;
+import com.umler.warehouses.main_interface_controllers.SceneController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,6 +21,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import static com.umler.warehouses.main_interface_controllers.SceneController.getMainScene;
 
 
 public class WarehousesListController extends InterfaceController implements Initializable {
@@ -33,29 +38,29 @@ public class WarehousesListController extends InterfaceController implements Ini
     @FXML
     public TableColumn<Warehouse, String> Address_col;
 
+    public Button exit_btn;
+
+    public Button wrap_btn;
+
     @FXML
     private TableView<Warehouse> Table;
 
-    @FXML
-    private Label InvalidLabelContinue; //Select a warehouse to continue
-
-    @FXML
-    private Label InvalidLabelDelete;
-
-
     private final ObservableList<Warehouse> WTable = FXCollections.observableArrayList();
 
-    static class MyExceptionDelete extends Exception
+    private static final Logger logger = LoggerFactory.getLogger("WarehousesList Logger");
+
+
+    static class MyDeleteException extends Exception
     {
-        public MyExceptionDelete()
+        public MyDeleteException()
         {
             super("Choose a row to delete");
         }
     }
 
-    static class MyExceptionContinue extends Exception
+    static class MyContinueException extends Exception
     {
-        public MyExceptionContinue()
+        public MyContinueException()
         {
             super("Select a warehouse to continue");
         }
@@ -64,23 +69,38 @@ public class WarehousesListController extends InterfaceController implements Ini
     @FXML
     private void WTable_Add(ActionEvent event)
     {
+
+        logger.debug("Adding new warehouse");
+
         Integer ID = 999;
         WTable.add(new Warehouse(ID,"-"));
         Table.setItems(WTable);
         WTable_Search();
+
+        logger.info("New warehouse added");
     }
 
     @FXML
     private void WTable_Delete(ActionEvent event) {
         try {
-            InvalidLabelDelete.setText("");
+
+            logger.debug("Deleting warehouse");
+
             Table.setItems(WTable);
             int selectedID = Table.getSelectionModel().getSelectedIndex();
-            if (selectedID == -1) throw new MyExceptionDelete();
-            else Table.getItems().remove(selectedID);
+            if (selectedID == -1) throw new MyDeleteException();
+            else
+            {
+                Table.getItems().remove(selectedID);
+
+                logger.info("Warehouse deleted");
+            }
         }
-        catch (MyExceptionDelete myEx){
-            InvalidLabelDelete.setText("Choose a row to delete");
+        catch (MyDeleteException myEx)
+        {
+
+            logger.warn("MyDeleteException " + myEx);
+
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, myEx.getMessage(), ButtonType.OK);
             IOAlert.setContentText(myEx.getMessage());
             IOAlert.showAndWait();
@@ -99,6 +119,8 @@ public class WarehousesListController extends InterfaceController implements Ini
         Table_Search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(warehouse ->
             {
+                logger.debug("Searching");
+
                 if (newValue == null || newValue.isEmpty()) return true;
                 String lowerCaseFilter = newValue.toLowerCase();
                 return String.valueOf(warehouse.getID()).contains(lowerCaseFilter) ||
@@ -112,31 +134,22 @@ public class WarehousesListController extends InterfaceController implements Ini
 
     @FXML
     public void showMainScreen(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(ScenePath.HOME.getPath()));
-        Parent MainParent = loader.load();
-
-        Scene MainScene = new Scene(MainParent);
-
-        InterfaceController controller = loader.getController();
-        Stage MainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        MainStage.setTitle("Warehouses");
-
         try {
             int selectedID = Table.getSelectionModel().getSelectedIndex();
-            if (selectedID == -1) throw new WarehousesListController.MyExceptionContinue();
+            if (selectedID == -1) throw new WarehousesListController.MyContinueException();
             else
             {
-                controller.toWarehouse(Table.getSelectionModel().getSelectedItem());
-                MainStage.setScene(MainScene);
-                MainStage.show();
+
+                logger.debug("Transition to main screen");
+
+                getMainScene(event,Table.getSelectionModel().getSelectedItem());
             }
         }
-        catch (MyExceptionContinue myEx)
+        catch (MyContinueException myEx)
         {
-            InvalidLabelDelete.setText("Select a warehouse to continue");
+
+            logger.warn("MyContinueException " + myEx);
+
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, myEx.getMessage(), ButtonType.OK);
             IOAlert.setContentText(myEx.getMessage());
             IOAlert.showAndWait();
@@ -150,13 +163,33 @@ public class WarehousesListController extends InterfaceController implements Ini
     {
         Warehouse warehouse = Table.getSelectionModel().getSelectedItem();
         warehouse.setID(Integer.valueOf(userStringCellEditEvent.getNewValue()));
+
+        logger.debug("Editing cell");
+
         WTable_Search();
     }
     public void WTableEdit2(TableColumn.CellEditEvent<Warehouse, String> userStringCellEditEvent)
     {
         Warehouse warehouse = Table.getSelectionModel().getSelectedItem();
         warehouse.setAddress(userStringCellEditEvent.getNewValue());
+
+        logger.debug("Editing cell");
+
         WTable_Search();
+    }
+
+    public void ExitWListWindow() {
+
+        logger.debug("Closing WList window");
+
+        exit_btn.setOnAction(SceneController::close);
+    }
+
+    public void WrapWListWindow() {
+
+        logger.debug("Wrapping WList window");
+
+        wrap_btn.setOnAction(SceneController::wrap);
     }
 
     @Override
