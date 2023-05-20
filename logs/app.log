@@ -1,98 +1,131 @@
-{Scene Logger} 2023-05-02 00:28:01.223 [DEBUG]: InitialScene
-{Scene Logger} 2023-05-02 00:28:01.606 [DEBUG]: Draggable scene made
-{Main Logger} 2023-05-02 00:28:01.781 [DEBUG]: Start of a program
-{LoginScene Logger} 2023-05-02 00:28:03.700 [DEBUG]: Closing login window
-{Scene Logger} 2023-05-02 00:28:04.084 [DEBUG]: Closing window
-{Main Logger} 2023-05-02 00:28:04.092 [DEBUG]: End of a program
-{Scene Logger} 2023-05-02 00:28:40.872 [DEBUG]: InitialScene
-{Scene Logger} 2023-05-02 00:28:41.064 [DEBUG]: Draggable scene made
-{Main Logger} 2023-05-02 00:28:41.203 [DEBUG]: Start of a program
-{LoginScene Logger} 2023-05-02 00:28:43.466 [DEBUG]: Wrapping login window
-{Scene Logger} 2023-05-02 00:28:43.871 [DEBUG]: Wrapping window
-{LoginScene Logger} 2023-05-02 00:28:48.646 [DEBUG]: Checking credentials for valid input
-{LoginScene Logger} 2023-05-02 00:28:48.646 [DEBUG]: Connecting to DB
-{Scene Logger} 2023-05-02 00:28:49.187 [DEBUG]: Transition to warehouses list scene
-{Scene Logger} 2023-05-02 00:28:49.187 [DEBUG]: Changing scene
-{WarehousesList Logger} 2023-05-02 00:28:56.494 [DEBUG]: Adding new warehouse
-{WarehousesList Logger} 2023-05-02 00:28:56.495 [INFO ]: New warehouse added
-{WarehousesList Logger} 2023-05-02 00:29:01.218 [DEBUG]: Deleting warehouse
-{WarehousesList Logger} 2023-05-02 00:29:01.226 [INFO ]: Warehouse deleted
-{WarehousesList Logger} 2023-05-02 00:29:07.575 [DEBUG]: Editing cell
-{WarehousesList Logger} 2023-05-02 00:29:11.083 [DEBUG]: Transition to main screen
-{Scene Logger} 2023-05-02 00:29:11.083 [DEBUG]: Transition to main window scene
-{Scene Logger} 2023-05-02 00:29:11.083 [DEBUG]: Changing scene
-{Scene Logger} 2023-05-02 00:29:11.126 [DEBUG]: Making controller object to show required warehouse
-{Warehouse Logger} 2023-05-02 00:29:11.126 [INFO ]: Warehouse selected
-{Warehouse Logger} 2023-05-02 00:29:54.602 [WARN ]: Uploading from file
-{Warehouse Logger} 2023-05-02 00:29:58.638 [INFO ]: Manager added
-{Warehouse Logger} 2023-05-02 00:29:59.387 [INFO ]: Saving to file
-{Warehouse Logger} 2023-05-02 00:30:02.300 [DEBUG]: Saving to PDF
-{Warehouse Logger} 2023-05-02 00:30:04.863 [INFO ]: Adding manager
-{Warehouse Logger} 2023-05-02 00:30:04.864 [INFO ]: Manager added
-{Warehouse Logger} 2023-05-02 00:30:08.631 [DEBUG]: Editing
-{Warehouse Logger} 2023-05-02 00:30:10.855 [DEBUG]: Editing
-{Warehouse Logger} 2023-05-02 00:30:12.575 [DEBUG]: Editing
-{Warehouse Logger} 2023-05-02 00:30:15.436 [INFO ]: Manager added
-{Warehouse Logger} 2023-05-02 00:30:17.788 [WARN ]: Uploading from file
-{Warehouse Logger} 2023-05-02 00:30:21.206 [INFO ]: Choice box action
-{Warehouse Logger} 2023-05-02 00:30:21.207 [INFO ]: Choice box Managers selected
-{Warehouse Logger} 2023-05-02 00:30:30.582 [DEBUG]: Wrapping main window
-{Warehouse Logger} 2023-05-02 00:30:36.780 [WARN ]: Uploading from file
-{Warehouse Logger} 2023-05-02 00:30:40.216 [DEBUG]: Closing main window
-{Scene Logger} 2023-05-02 00:30:42.227 [DEBUG]: Closing window
-{Main Logger} 2023-05-02 00:30:42.231 [DEBUG]: End of a program
-{Scene Logger} 2023-05-02 00:41:23.734 [DEBUG]: InitialScene
-{Scene Logger} 2023-05-02 00:41:23.915 [DEBUG]: Draggable scene made
-{Main Logger} 2023-05-02 00:41:24.056 [DEBUG]: Start of a program
-{LoginScene Logger} 2023-05-02 00:41:27.978 [DEBUG]: Checking credentials for valid input
-{LoginScene Logger} 2023-05-02 00:41:27.978 [DEBUG]: Connecting to DB
-{LoginScene Logger} 2023-05-02 00:41:28.367 [WARN ]: Invalid credentials
-{LoginScene Logger} 2023-05-02 00:41:35.122 [DEBUG]: Checking credentials for valid input
-{LoginScene Logger} 2023-05-02 00:41:35.123 [DEBUG]: Connecting to DB
-{Scene Logger} 2023-05-02 00:41:35.138 [DEBUG]: Transition to warehouses list scene
-{Scene Logger} 2023-05-02 00:41:35.139 [DEBUG]: Changing scene
-{WarehousesList Logger} 2023-05-02 00:41:36.972 [DEBUG]: Deleting warehouse
-{WarehousesList Logger} 2023-05-02 00:41:36.973 [WARN ]: MyDeleteException com.umler.warehouses.main_app.WarehousesListController$MyDeleteException: Choose a row to delete
-{WarehousesList Logger} 2023-05-02 00:41:48.153 [WARN ]: MyContinueException com.umler.warehouses.main_app.WarehousesListController$MyContinueException: Select a warehouse to continue
-{WarehousesList Logger} 2023-05-02 00:41:54.105 [DEBUG]: Deleting warehouse
-{WarehousesList Logger} 2023-05-02 00:41:54.111 [INFO ]: Warehouse deleted
-{WarehousesList Logger} 2023-05-02 00:41:58.057 [DEBUG]: Adding new warehouse
-{WarehousesList Logger} 2023-05-02 00:41:58.058 [INFO ]: New warehouse added
-{WarehousesList Logger} 2023-05-02 00:42:02.822 [DEBUG]: Editing cell
-{WarehousesList Logger} 2023-05-02 00:42:06.735 [DEBUG]: Transition to main screen
-{Scene Logger} 2023-05-02 00:42:06.735 [DEBUG]: Transition to main window scene
-{Scene Logger} 2023-05-02 00:42:06.735 [DEBUG]: Changing scene
-{Scene Logger} 2023-05-02 00:42:06.768 [DEBUG]: Making controller object to show required warehouse
-{Warehouse Logger} 2023-05-02 00:42:06.768 [INFO ]: Warehouse selected
-{Warehouse Logger} 2023-05-02 00:42:18.695 [INFO ]: Manager added
-{Warehouse Logger} 2023-05-02 00:42:18.695 [WARN ]: MyException com.umler.warehouses.main_app.InterfaceController$MyException: Choose a row to delete
-{Warehouse Logger} 2023-05-02 00:42:23.094 [INFO ]: Adding manager
-{Warehouse Logger} 2023-05-02 00:42:23.094 [INFO ]: Manager added
-{Warehouse Logger} 2023-05-02 00:42:25.799 [DEBUG]: Editing
-{Warehouse Logger} 2023-05-02 00:42:28.949 [DEBUG]: Uploading from file
-{Warehouse Logger} 2023-05-02 00:42:35.232 [DEBUG]: Saving to PDF
-{Warehouse Logger} 2023-05-02 00:42:37.723 [INFO ]: Choice box action
-{Warehouse Logger} 2023-05-02 00:42:37.723 [INFO ]: Choice box Managers selected
-{Warehouse Logger} 2023-05-02 00:42:40.336 [DEBUG]: Wrapping main window
-{Scene Logger} 2023-05-02 00:42:40.635 [DEBUG]: Wrapping window
-{Warehouse Logger} 2023-05-02 00:43:04.806 [DEBUG]: Closing main window
-{Scene Logger} 2023-05-02 00:43:07.892 [DEBUG]: Closing window
-{Main Logger} 2023-05-02 00:43:07.898 [DEBUG]: End of a program
-{Scene Logger} 2023-05-02 00:52:22.525 [DEBUG]: InitialScene
-{Scene Logger} 2023-05-02 00:52:22.739 [DEBUG]: Draggable scene made
-{Main Logger} 2023-05-02 00:52:22.869 [DEBUG]: Start of a program
-{LoginScene Logger} 2023-05-02 00:52:24.765 [DEBUG]: Checking credentials for valid input
-{LoginScene Logger} 2023-05-02 00:52:24.765 [DEBUG]: Connecting to DB
-{Scene Logger} 2023-05-02 00:52:25.158 [DEBUG]: Transition to warehouses list scene
-{Scene Logger} 2023-05-02 00:52:25.159 [DEBUG]: Changing scene
-{WarehousesList Logger} 2023-05-02 00:52:27.257 [ERROR]: MyContinueException com.umler.warehouses.main_app.WarehousesListController$MyContinueException: Select a warehouse to continue
-{WarehousesList Logger} 2023-05-02 00:52:34.890 [DEBUG]: Transition to main screen
-{Scene Logger} 2023-05-02 00:52:34.890 [DEBUG]: Transition to main window scene
-{Scene Logger} 2023-05-02 00:52:34.890 [DEBUG]: Changing scene
-{Scene Logger} 2023-05-02 00:52:34.925 [DEBUG]: Making controller object to show required warehouse
-{Warehouse Logger} 2023-05-02 00:52:34.925 [INFO ]: Warehouse selected
-{Warehouse Logger} 2023-05-02 00:52:35.902 [INFO ]: Manager added
-{Warehouse Logger} 2023-05-02 00:52:35.902 [WARN ]: MyException com.umler.warehouses.main_app.InterfaceController$MyException: Choose a row to delete
-{Warehouse Logger} 2023-05-02 00:52:41.863 [DEBUG]: Closing main window
-{Scene Logger} 2023-05-02 00:52:43.974 [DEBUG]: Closing window
-{Main Logger} 2023-05-02 00:52:43.980 [DEBUG]: End of a program
+{LoginScene Logger} 2023-05-14 16:58:45.563 [WARN ]: Invalid credentials
+{LoginScene Logger} 2023-05-14 16:58:49.826 [WARN ]: Invalid credentials
+{WarehousesList Logger} 2023-05-14 16:59:03.943 [INFO ]: New warehouse added
+{WarehousesList Logger} 2023-05-14 16:59:06.481 [INFO ]: Warehouse deleted
+{Warehouse Logger} 2023-05-14 16:59:09.364 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-14 16:59:16.574 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:17.163 [INFO ]: Adding manager
+{Warehouse Logger} 2023-05-14 16:59:17.164 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:17.882 [INFO ]: Adding manager
+{Warehouse Logger} 2023-05-14 16:59:17.883 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:23.245 [INFO ]: Saving to file
+{Warehouse Logger} 2023-05-14 16:59:26.910 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-14 16:59:26.910 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-05-14 16:59:30.774 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:30.775 [WARN ]: MyException com.umler.warehouses.main_app.InterfaceController$MyException: Choose a row to delete
+{Warehouse Logger} 2023-05-14 16:59:42.092 [INFO ]: Adding manager
+{Warehouse Logger} 2023-05-14 16:59:42.093 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:47.095 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:47.579 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:48.023 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:48.437 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:50.478 [INFO ]: Saving to file
+{Warehouse Logger} 2023-05-14 16:59:53.097 [WARN ]: File not foundcom.umler.warehouses.main_app.InterfaceController$MyException: Choose a row to delete
+{Warehouse Logger} 2023-05-14 16:59:56.758 [INFO ]: Adding manager
+{Warehouse Logger} 2023-05-14 16:59:56.759 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:57.145 [INFO ]: Adding manager
+{Warehouse Logger} 2023-05-14 16:59:57.146 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:57.578 [INFO ]: Adding manager
+{Warehouse Logger} 2023-05-14 16:59:57.579 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 16:59:58.052 [INFO ]: Adding manager
+{Warehouse Logger} 2023-05-14 16:59:58.052 [INFO ]: Manager added
+{Warehouse Logger} 2023-05-14 17:00:05.226 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-14 17:00:08.262 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-14 17:00:08.262 [INFO ]: Choice box Managers selected
+{Scene Logger} 2023-05-14 17:00:41.962 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-14 17:00:42.179 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-14 17:00:42.304 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-14 17:00:43.593 [DEBUG]: Wrapping login window
+{Scene Logger} 2023-05-14 17:00:44.007 [DEBUG]: Wrapping window
+{LoginScene Logger} 2023-05-14 17:00:46.948 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-14 17:00:46.948 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-14 17:00:47.278 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-14 17:00:47.279 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-14 17:00:48.165 [DEBUG]: Deleting warehouse
+{WarehousesList Logger} 2023-05-14 17:00:48.166 [WARN ]: MyDeleteException com.umler.warehouses.main_app.WarehousesListController$MyDeleteException: Choose a row to delete
+{WarehousesList Logger} 2023-05-14 17:00:50.522 [DEBUG]: Adding new warehouse
+{WarehousesList Logger} 2023-05-14 17:00:50.528 [INFO ]: New warehouse added
+{WarehousesList Logger} 2023-05-14 17:00:51.599 [DEBUG]: Wrapping WList window
+{Scene Logger} 2023-05-14 17:00:51.891 [DEBUG]: Wrapping window
+{WarehousesList Logger} 2023-05-14 17:00:55.118 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-14 17:00:55.118 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-14 17:01:01.201 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-14 17:01:01.201 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-14 17:01:01.202 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-14 17:01:01.236 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-14 17:01:01.236 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-14 17:01:02.786 [DEBUG]: Uploading from file
+{Warehouse Logger} 2023-05-14 17:01:03.782 [INFO ]: Saving to file
+{Warehouse Logger} 2023-05-14 17:01:06.169 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-14 17:01:06.169 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-05-14 17:01:07.101 [DEBUG]: Wrapping main window
+{Scene Logger} 2023-05-14 17:01:08.045 [DEBUG]: Wrapping window
+{Warehouse Logger} 2023-05-14 17:01:10.085 [DEBUG]: Closing main window
+{Scene Logger} 2023-05-14 17:01:10.213 [DEBUG]: Closing window
+{Main Logger} 2023-05-14 17:01:10.219 [DEBUG]: End of a program
+{Scene Logger} 2023-05-20 23:40:19.733 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-20 23:40:20.152 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-20 23:40:20.325 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-20 23:40:22.607 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-20 23:40:22.607 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-20 23:40:23.224 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-20 23:40:23.236 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-20 23:40:25.599 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-20 23:40:25.599 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-20 23:40:25.599 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-20 23:40:25.657 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-20 23:40:25.658 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-20 23:40:47.791 [DEBUG]: Closing main window
+{Scene Logger} 2023-05-20 23:40:50.562 [DEBUG]: Closing window
+{Main Logger} 2023-05-20 23:40:50.569 [DEBUG]: End of a program
+{Scene Logger} 2023-05-20 23:46:52.929 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-20 23:46:53.105 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-20 23:46:53.241 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-20 23:46:55.317 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-20 23:46:55.317 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-20 23:46:55.664 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-20 23:46:55.665 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-20 23:46:57.029 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-20 23:46:57.029 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-20 23:46:57.029 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-20 23:46:57.076 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-20 23:46:57.077 [INFO ]: Warehouse selected
+{Scene Logger} 2023-05-20 23:46:57.919 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-20 23:46:57.919 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-20 23:47:00.954 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-20 23:47:00.954 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-20 23:47:00.954 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-20 23:47:00.969 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-20 23:47:00.970 [INFO ]: Warehouse selected
+{Scene Logger} 2023-05-20 23:47:16.663 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-20 23:47:16.664 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-20 23:47:24.639 [DEBUG]: Adding new warehouse
+{WarehousesList Logger} 2023-05-20 23:47:24.641 [INFO ]: New warehouse added
+{WarehousesList Logger} 2023-05-20 23:47:27.101 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-20 23:47:27.101 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-20 23:47:27.101 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-20 23:47:27.116 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-20 23:47:27.117 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-20 23:47:37.826 [DEBUG]: Closing main window
+{Scene Logger} 2023-05-20 23:47:38.941 [DEBUG]: Closing window
+{Main Logger} 2023-05-20 23:47:38.947 [DEBUG]: End of a program
+{Scene Logger} 2023-05-20 23:48:33.815 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-20 23:48:34.005 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-20 23:48:34.135 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-20 23:48:35.492 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-20 23:48:35.492 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-20 23:48:35.835 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-20 23:48:35.836 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-20 23:49:11.336 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-20 23:49:11.336 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-20 23:49:11.336 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-20 23:49:11.386 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-20 23:49:11.386 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-20 23:49:27.857 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-20 23:49:27.857 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-05-20 23:49:30.697 [INFO ]: Choice box action
+{Scene Logger} 2023-05-20 23:49:51.282 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-20 23:49:51.283 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-20 23:49:54.600 [DEBUG]: Closing WList window
+{Scene Logger} 2023-05-20 23:49:55.399 [DEBUG]: Closing window
+{Main Logger} 2023-05-20 23:49:55.403 [DEBUG]: End of a program

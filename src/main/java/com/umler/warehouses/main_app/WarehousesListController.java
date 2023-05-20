@@ -196,7 +196,6 @@ public class WarehousesListController extends InterfaceController implements Ini
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         WTable.add(new Warehouse(1,"ул. Профессора Попова, дом 5 литера Ф, Санкт-Петербург, Россия, 197022"));
-        WTable.add(new Warehouse(3,"ул. Говна"));
         Table.setItems(WTable);
 
         ID_col.setCellValueFactory(new PropertyValueFactory<>("ID"));

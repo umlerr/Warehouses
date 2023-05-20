@@ -28,6 +28,8 @@ public class InterfaceController implements Initializable
 
     public Button wrap_btn;
 
+    public Button back_btn1;
+
     private Warehouse SelectedWarehouse;
 
     public Label main_label;
@@ -64,6 +66,10 @@ public class InterfaceController implements Initializable
 
         SelectedWarehouse = warehouse;
         main_label.setText("Warehouse #" + SelectedWarehouse.getID());
+    }
+
+    public void BackToWarehouses(ActionEvent event) throws IOException {
+        SceneController.getWarehousesScene(event);
     }
 
     static class MyException extends Exception
