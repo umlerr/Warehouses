@@ -1,9 +1,11 @@
-package com.umler.warehouses.main_app;
+package com.umler.warehouses.Controllers;
 
 import java.io.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import com.umler.warehouses.main_interface_controllers.SceneController;
+import com.umler.warehouses.Helpers.CurrentUser;
+import com.umler.warehouses.Model.Manager;
+import com.umler.warehouses.Model.Warehouse;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
@@ -29,6 +31,8 @@ public class InterfaceController implements Initializable
     public Button wrap_btn;
 
     public Button back_btn1;
+    @FXML
+    public Hyperlink current_user;
 
     private Warehouse SelectedWarehouse;
 
@@ -65,11 +69,15 @@ public class InterfaceController implements Initializable
         logger.info("Warehouse selected");
 
         SelectedWarehouse = warehouse;
-        main_label.setText("Warehouse #" + SelectedWarehouse.getID());
+        main_label.setText("Warehouse #" + SelectedWarehouse.getId_warehouse());
     }
 
     public void BackToWarehouses(ActionEvent event) throws IOException {
         SceneController.getWarehousesScene(event);
+    }
+
+    public void toLogin(ActionEvent event) throws IOException {
+        SceneController.getLoginScene(event);
     }
 
     static class MyException extends Exception
@@ -93,7 +101,6 @@ public class InterfaceController implements Initializable
             logger.info("Choice box Managers selected");
             System.out.println("Managers");
         }
-        search();
     }
 
     @FXML
@@ -101,12 +108,10 @@ public class InterfaceController implements Initializable
     {
         logger.info("Adding manager");
 
-        List.add(new Manager("-","-","-"));
+        List.add(new Manager());
         table.setItems(List);
 
         logger.info("Manager added");
-
-        search();
     }
 
     private void remove_row() throws MyException
@@ -141,7 +146,6 @@ public class InterfaceController implements Initializable
                 IOAlert.close();
             }
         }
-        search();
     }
 
     @FXML
@@ -155,7 +159,7 @@ public class InterfaceController implements Initializable
             BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save.csv"));
             for(Manager users : List)
             {
-                writer.write(users.getID() + ";" + users.getName() + ";" + users.getSurname());
+                writer.write(users.getId_manager() + ";" + users.getName() + ";" + users.getSurname());
                 writer.newLine();
             }
             writer.close();
@@ -173,7 +177,6 @@ public class InterfaceController implements Initializable
                 IOAlert.close();
             }
         }
-        search();
     }
 
     @FXML
@@ -191,7 +194,7 @@ public class InterfaceController implements Initializable
                 temp = reader.readLine();
                 if(temp!=null){
                     String[] temp2 = temp.split(";");
-                    List.add(new Manager(temp2[0],temp2[1],temp2[2]));
+                    List.add(new Manager());
                 }
             }
             while(temp!=null);
@@ -211,36 +214,16 @@ public class InterfaceController implements Initializable
                 IOAlert.close();
             }
         }
-        search();
     }
 
-    @FXML
-    private void search()
-    {
-        FilteredList<Manager> filteredData = new FilteredList<>(List, b -> true);
-        search.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(person ->
-                    {
-                        if (newValue == null || newValue.isEmpty()) return true;
-                        String lowerCaseFilter = newValue.toLowerCase();
-                        return person.getName().toLowerCase().contains(lowerCaseFilter) ||
-                                person.getSurname().toLowerCase().contains(lowerCaseFilter) ||
-                                person.getID().toLowerCase().contains(lowerCaseFilter);
-                    });
-        });
-        SortedList<Manager> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(table.comparatorProperty());
-        table.setItems(sortedData);
-    }
 
-    public void onEditChanged1(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
+    public void onEditChanged1(TableColumn.CellEditEvent<Manager, Integer> userStringCellEditEvent)
     {
         Manager manager = table.getSelectionModel().getSelectedItem();
-        manager.setID(userStringCellEditEvent.getNewValue());
+        manager.setId_manager(userStringCellEditEvent.getNewValue());
 
         logger.debug("Editing cell");
 
-        search();
     }
     public void onEditChanged2(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
@@ -248,8 +231,6 @@ public class InterfaceController implements Initializable
         manager.setName(userStringCellEditEvent.getNewValue());
 
         logger.debug("Editing cell");
-
-        search();
     }
     public void onEditChanged3(TableColumn.CellEditEvent<Manager, String> userStringCellEditEvent)
     {
@@ -257,8 +238,6 @@ public class InterfaceController implements Initializable
         manager.setSurname(userStringCellEditEvent.getNewValue());
 
         logger.debug("Editing cell");
-
-        search();
     }
 
     public void toPDF(ActionEvent actionEvent)
@@ -289,7 +268,7 @@ public class InterfaceController implements Initializable
 
             for(Manager managers : List)
             {
-                table_cell=new PdfPCell(new Phrase(managers.getID()));
+                table_cell=new PdfPCell(new Phrase(managers.getId_manager()));
                 my_report_table.addCell(table_cell);
                 table_cell=new PdfPCell(new Phrase(managers.getName()));
                 my_report_table.addCell(table_cell);
@@ -305,7 +284,6 @@ public class InterfaceController implements Initializable
             logger.warn("File not found" + e);
             e.printStackTrace();
         }
-        search();
     }
 
     public void ExitMainWindow() {
@@ -322,9 +300,15 @@ public class InterfaceController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    @FXML
+    public void changeUser(ActionEvent event) throws IOException {
+        SceneController.getLoginScene(event);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        current_user.setText(CurrentUser.getCurrentUser().getName() + " / Change");
         choice_box.getItems().addAll(choices);
         choice_box.setOnAction(this::getChoices);
 
@@ -338,8 +322,6 @@ public class InterfaceController implements Initializable
         id_column.setCellFactory(TextFieldTableCell.forTableColumn());
         name_column.setCellFactory(TextFieldTableCell.forTableColumn());
         surname_column.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        search();
     }
 
 

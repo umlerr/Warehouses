@@ -1,4 +1,4 @@
-package com.umler.warehouses.main_app;
+package com.umler.warehouses.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -6,8 +6,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
-import com.umler.warehouses.main_interface_controllers.SceneController;
+import com.umler.warehouses.Helpers.CurrentUser;
+import com.umler.warehouses.Model.User;
+import com.umler.warehouses.Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,11 +37,13 @@ public class LoginController implements Initializable {
     @FXML
     private TextField password_box;
 
+    UserService userService = new UserService();
+
     private static final Logger logger = LoggerFactory.getLogger("LoginScene Logger");
 
     @FXML
-    void showVisitScreen(ActionEvent event) throws IOException {
-        if (isValidCredentials())
+    void showVisitScreen(ActionEvent event) throws IOException, InterruptedException {
+        if (validateLogin())
         {
             SceneController.getWarehousesScene(event);
         }
@@ -49,44 +54,18 @@ public class LoginController implements Initializable {
 
             username_box.clear();
             password_box.clear();
-            invalid_label.setText("Sorry, invalid credentials");
+            invalid_label.setText("     Invalid credentials");
         }
 
     }
 
-    private boolean isValidCredentials()
-    {
-        boolean LetIn = false;
-        Connection Connection = null;
-        java.sql.Statement Statement = null;
-        try {
-
-            logger.debug("Checking credentials for valid input");
-            logger.debug("Connecting to DB");
-
-            Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/LoginDB", "Umler", "Umler1337228");
-            Connection.setAutoCommit(false);
-            Statement = Connection.createStatement();
-
-            ResultSet Result = Statement.executeQuery( "SELECT * FROM Users WHERE UserName= " + "'" + username_box.getText() + "'"
-                    + " AND Password= " + "'" + password_box.getText() + "'");
-
-            while ( Result.next() ) {
-                if (Result.getString("UserName") != null && Result.getString("Password") != null) {
-                    LetIn = true;
-                }
-            }
-            Result.close();
-            Statement.close();
-            Connection.close();
+    private boolean validateLogin() {
+        User user = userService.getConnectedUser(username_box.getText(), password_box.getText());
+        if (user == null) {
+            return false;
         }
-        catch ( Exception e )
-        {
-            logger.warn(String.valueOf(e));
-            System.exit(0);
-        }
-        return LetIn;
-
+        CurrentUser.setCurrentUser(user);
+        return true;
     }
 
     public void ExitLoginWindow() {

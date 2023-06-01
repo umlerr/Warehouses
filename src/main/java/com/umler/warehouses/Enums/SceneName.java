@@ -1,4 +1,4 @@
-package com.umler.warehouses.helpers;
+package com.umler.warehouses.Enums;
 
 /**
  * Code created by Andrius on 2020-09-28

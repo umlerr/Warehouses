@@ -12,7 +12,7 @@
 {Warehouse Logger} 2023-05-14 16:59:26.910 [INFO ]: Choice box action
 {Warehouse Logger} 2023-05-14 16:59:26.910 [INFO ]: Choice box Managers selected
 {Warehouse Logger} 2023-05-14 16:59:30.774 [INFO ]: Manager added
-{Warehouse Logger} 2023-05-14 16:59:30.775 [WARN ]: MyException com.umler.warehouses.main_app.InterfaceController$MyException: Choose a row to delete
+{Warehouse Logger} 2023-05-14 16:59:30.775 [WARN ]: MyException com.umler.warehouses.Controllers.InterfaceController$MyException: Choose a row to delete
 {Warehouse Logger} 2023-05-14 16:59:42.092 [INFO ]: Adding manager
 {Warehouse Logger} 2023-05-14 16:59:42.093 [INFO ]: Manager added
 {Warehouse Logger} 2023-05-14 16:59:47.095 [INFO ]: Manager added
@@ -42,7 +42,7 @@
 {Scene Logger} 2023-05-14 17:00:47.278 [DEBUG]: Transition to warehouses list scene
 {Scene Logger} 2023-05-14 17:00:47.279 [DEBUG]: Changing scene
 {WarehousesList Logger} 2023-05-14 17:00:48.165 [DEBUG]: Deleting warehouse
-{WarehousesList Logger} 2023-05-14 17:00:48.166 [WARN ]: MyDeleteException com.umler.warehouses.main_app.WarehousesListController$MyDeleteException: Choose a row to delete
+{WarehousesList Logger} 2023-05-14 17:00:48.166 [WARN ]: MyDeleteException com.umler.warehouses.Controllers.WarehousesListController$MyDeleteException: Choose a row to delete
 {WarehousesList Logger} 2023-05-14 17:00:50.522 [DEBUG]: Adding new warehouse
 {WarehousesList Logger} 2023-05-14 17:00:50.528 [INFO ]: New warehouse added
 {WarehousesList Logger} 2023-05-14 17:00:51.599 [DEBUG]: Wrapping WList window
@@ -129,3 +129,394 @@
 {WarehousesList Logger} 2023-05-20 23:49:54.600 [DEBUG]: Closing WList window
 {Scene Logger} 2023-05-20 23:49:55.399 [DEBUG]: Closing window
 {Main Logger} 2023-05-20 23:49:55.403 [DEBUG]: End of a program
+{Scene Logger} 2023-05-21 22:48:30.958 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-21 22:48:31.324 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-21 22:48:31.480 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-21 22:48:34.825 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-21 22:48:34.825 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-21 22:48:35.303 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-21 22:48:35.312 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-21 22:48:43.421 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-21 22:48:43.421 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-21 22:48:43.421 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-21 22:48:43.488 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-21 22:48:43.488 [INFO ]: Warehouse selected
+{Scene Logger} 2023-05-21 22:49:05.448 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-21 22:49:05.448 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-21 22:49:07.578 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$MyContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-21 22:49:09.367 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-21 22:49:09.367 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-21 22:49:09.367 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-21 22:49:09.386 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-21 22:49:09.386 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-21 22:49:11.648 [DEBUG]: Closing main window
+{Scene Logger} 2023-05-21 22:49:12.065 [DEBUG]: Closing window
+{Main Logger} 2023-05-21 22:49:12.071 [DEBUG]: End of a program
+{Scene Logger} 2023-05-21 23:49:23.618 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-21 23:49:23.832 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-21 23:49:23.973 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-21 23:49:25.194 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-21 23:49:25.194 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-21 23:49:25.533 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-21 23:49:25.534 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-21 23:49:26.780 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-21 23:49:26.796 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-21 23:49:26.796 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-21 23:49:26.843 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-21 23:49:26.843 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-21 23:49:27.973 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-21 23:49:27.974 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-05-21 23:49:37.072 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-21 23:49:55.194 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-21 23:49:55.195 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-05-21 23:50:01.924 [DEBUG]: Closing main window
+{Scene Logger} 2023-05-21 23:50:03.741 [DEBUG]: Closing window
+{Main Logger} 2023-05-21 23:50:03.746 [DEBUG]: End of a program
+{Scene Logger} 2023-05-22 00:02:23.466 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-22 00:02:23.632 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-22 00:02:23.770 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-22 00:02:28.956 [DEBUG]: Closing login window
+{Scene Logger} 2023-05-22 00:02:29.951 [DEBUG]: Closing window
+{Main Logger} 2023-05-22 00:02:29.958 [DEBUG]: End of a program
+{Scene Logger} 2023-05-22 00:49:36.957 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-22 00:49:37.139 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-22 00:49:37.270 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-22 00:49:38.838 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-22 00:49:38.838 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-22 00:49:39.172 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-22 00:49:39.173 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-22 00:49:44.409 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-22 00:49:44.409 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-22 00:49:44.409 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-22 00:49:44.455 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-22 00:49:44.455 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-22 00:49:48.405 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-22 00:49:48.405 [INFO ]: Choice box Managers selected
+{Scene Logger} 2023-05-22 00:50:09.798 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-22 00:50:09.798 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-22 00:50:12.533 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-22 00:50:12.533 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-22 00:50:12.533 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-22 00:50:12.551 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-22 00:50:12.551 [INFO ]: Warehouse selected
+{Scene Logger} 2023-05-22 00:50:17.721 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-22 00:50:17.721 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-22 00:50:18.626 [DEBUG]: Adding new warehouse
+{WarehousesList Logger} 2023-05-22 00:50:18.626 [INFO ]: New warehouse added
+{WarehousesList Logger} 2023-05-22 00:50:20.199 [DEBUG]: Transition to main screen
+{Scene Logger} 2023-05-22 00:50:20.199 [DEBUG]: Transition to main window scene
+{Scene Logger} 2023-05-22 00:50:20.200 [DEBUG]: Changing scene
+{Scene Logger} 2023-05-22 00:50:20.220 [DEBUG]: Making controller object to show required warehouse
+{Warehouse Logger} 2023-05-22 00:50:20.221 [INFO ]: Warehouse selected
+{Warehouse Logger} 2023-05-22 00:50:22.175 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-22 00:50:22.175 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-05-22 00:50:22.936 [INFO ]: Choice box action
+{Warehouse Logger} 2023-05-22 00:50:45.224 [DEBUG]: Closing main window
+{Scene Logger} 2023-05-22 00:50:45.895 [DEBUG]: Closing window
+{Main Logger} 2023-05-22 00:50:45.900 [DEBUG]: End of a program
+{Scene Logger} 2023-05-24 01:54:27.496 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-24 01:54:27.874 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-24 01:54:28.045 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-24 01:54:30.444 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-24 01:54:30.444 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-24 01:54:31.038 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-24 01:54:31.059 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-24 01:54:36.364 [DEBUG]: Closing WList window
+{Scene Logger} 2023-05-24 01:54:36.806 [DEBUG]: Closing window
+{Main Logger} 2023-05-24 01:54:36.813 [DEBUG]: End of a program
+{Scene Logger} 2023-05-26 19:05:22.602 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-26 19:05:22.858 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-26 19:05:23.014 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-26 19:05:25.295 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-26 19:05:25.296 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-26 19:05:25.830 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-26 19:05:25.831 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-26 19:05:52.192 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-26 19:05:52.521 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-26 19:05:52.687 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-26 19:05:52.854 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-26 19:05:53.254 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-26 19:05:53.455 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-26 19:05:53.621 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-26 19:05:53.782 [DEBUG]: Searching
+{WarehousesList Logger} 2023-05-26 19:05:58.105 [DEBUG]: Closing WList window
+{Scene Logger} 2023-05-26 19:05:59.127 [DEBUG]: Closing window
+{Main Logger} 2023-05-26 19:05:59.133 [DEBUG]: End of a program
+{Scene Logger} 2023-05-26 19:06:38.826 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-26 19:06:38.998 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-26 19:06:39.126 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-26 19:06:40.981 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-26 19:06:40.981 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-26 19:06:41.326 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-26 19:06:41.327 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-26 19:06:54.927 [DEBUG]: Closing WList window
+{Scene Logger} 2023-05-26 19:06:55.054 [DEBUG]: Closing window
+{Main Logger} 2023-05-26 19:06:55.059 [DEBUG]: End of a program
+{Scene Logger} 2023-05-26 19:08:57.549 [DEBUG]: InitialScene
+{Scene Logger} 2023-05-26 19:08:57.722 [DEBUG]: Draggable scene made
+{Main Logger} 2023-05-26 19:08:57.856 [DEBUG]: Start of a program
+{LoginScene Logger} 2023-05-26 19:08:59.896 [DEBUG]: Checking credentials for valid input
+{LoginScene Logger} 2023-05-26 19:08:59.896 [DEBUG]: Connecting to DB
+{Scene Logger} 2023-05-26 19:09:00.240 [DEBUG]: Transition to warehouses list scene
+{Scene Logger} 2023-05-26 19:09:00.241 [DEBUG]: Changing scene
+{WarehousesList Logger} 2023-05-26 19:09:10.678 [DEBUG]: Closing WList window
+{Scene Logger} 2023-05-26 19:09:13.403 [DEBUG]: Closing window
+{Main Logger} 2023-05-26 19:09:13.410 [DEBUG]: End of a program
+{org.jboss.logging} 2023-05-26 20:16:56.975 [DEBUG]: Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+{org.hibernate.integrator.internal.IntegratorServiceImpl} 2023-05-26 20:16:56.982 [DEBUG]: Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+{org.hibernate.integrator.internal.IntegratorServiceImpl} 2023-05-26 20:16:56.983 [DEBUG]: Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+{org.hibernate.integrator.internal.IntegratorServiceImpl} 2023-05-26 20:16:56.985 [DEBUG]: Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+{org.hibernate.Version} 2023-05-26 20:16:57.020 [INFO ]: HHH000412: Hibernate Core {[WORKING]}
+{org.hibernate.cfg.Environment} 2023-05-26 20:16:57.022 [INFO ]: HHH000206: hibernate.properties not found
+{org.hibernate.integrator.internal.IntegratorServiceImpl} 2023-05-26 20:16:57.123 [DEBUG]: Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+{org.hibernate.integrator.internal.IntegratorServiceImpl} 2023-05-26 20:16:57.123 [DEBUG]: Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+{org.hibernate.integrator.internal.IntegratorServiceImpl} 2023-05-26 20:16:57.123 [DEBUG]: Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+{org.hibernate.service.spi.ServiceBinding} 2023-05-26 20:16:57.127 [DEBUG]: Overriding existing service binding [org.hibernate.secure.spi.JaccService]
+{org.hibernate.cfg.Configuration} 2023-05-26 20:16:57.127 [DEBUG]: Building session factory using provided StandardServiceRegistry
+{org.hibernate.cache.internal.RegionFactoryInitiator} 2023-05-26 20:16:57.136 [DEBUG]: Cannot default RegionFactory based on registered strategies as `[]` RegionFactory strategies were registered
+{org.hibernate.cache.internal.RegionFactoryInitiator} 2023-05-26 20:16:57.137 [DEBUG]: Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
+{org.hibernate.annotations.common.Version} 2023-05-26 20:16:57.148 [INFO ]: HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.350 [DEBUG]: Adding type registration boolean -> org.hibernate.type.BooleanType@324c64cd
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.351 [DEBUG]: Adding type registration boolean -> org.hibernate.type.BooleanType@324c64cd
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.351 [DEBUG]: Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@324c64cd
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.351 [DEBUG]: Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@aec50a1
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.351 [DEBUG]: Adding type registration true_false -> org.hibernate.type.TrueFalseType@7a0e1b5e
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.351 [DEBUG]: Adding type registration yes_no -> org.hibernate.type.YesNoType@7646731d
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.352 [DEBUG]: Adding type registration byte -> org.hibernate.type.ByteType@5d8445d7
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.352 [DEBUG]: Adding type registration byte -> org.hibernate.type.ByteType@5d8445d7
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.352 [DEBUG]: Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@5d8445d7
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.353 [DEBUG]: Adding type registration character -> org.hibernate.type.CharacterType@29ad44e3
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.353 [DEBUG]: Adding type registration char -> org.hibernate.type.CharacterType@29ad44e3
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.353 [DEBUG]: Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@29ad44e3
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.353 [DEBUG]: Adding type registration short -> org.hibernate.type.ShortType@14bb2297
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.353 [DEBUG]: Adding type registration short -> org.hibernate.type.ShortType@14bb2297
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.354 [DEBUG]: Adding type registration java.lang.Short -> org.hibernate.type.ShortType@14bb2297
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.354 [DEBUG]: Adding type registration integer -> org.hibernate.type.IntegerType@5bd1ceca
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.354 [DEBUG]: Adding type registration int -> org.hibernate.type.IntegerType@5bd1ceca
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.354 [DEBUG]: Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@5bd1ceca
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.364 [DEBUG]: Adding type registration long -> org.hibernate.type.LongType@2db2cd5
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.365 [DEBUG]: Adding type registration long -> org.hibernate.type.LongType@2db2cd5
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.365 [DEBUG]: Adding type registration java.lang.Long -> org.hibernate.type.LongType@2db2cd5
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.365 [DEBUG]: Adding type registration float -> org.hibernate.type.FloatType@48e64352
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.365 [DEBUG]: Adding type registration float -> org.hibernate.type.FloatType@48e64352
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.365 [DEBUG]: Adding type registration java.lang.Float -> org.hibernate.type.FloatType@48e64352
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.366 [DEBUG]: Adding type registration double -> org.hibernate.type.DoubleType@f8908f6
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.366 [DEBUG]: Adding type registration double -> org.hibernate.type.DoubleType@f8908f6
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.366 [DEBUG]: Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@f8908f6
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.366 [DEBUG]: Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@70e0accd
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.366 [DEBUG]: Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@70e0accd
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.367 [DEBUG]: Adding type registration big_integer -> org.hibernate.type.BigIntegerType@600b0b7
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.367 [DEBUG]: Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@600b0b7
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.367 [DEBUG]: Adding type registration string -> org.hibernate.type.StringType@5ed190be
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.367 [DEBUG]: Adding type registration java.lang.String -> org.hibernate.type.StringType@5ed190be
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.368 [DEBUG]: Adding type registration nstring -> org.hibernate.type.StringNVarcharType@41382722
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.368 [DEBUG]: Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@210386e0
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.368 [DEBUG]: Adding type registration url -> org.hibernate.type.UrlType@d816dde
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.368 [DEBUG]: Adding type registration java.net.URL -> org.hibernate.type.UrlType@d816dde
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.369 [DEBUG]: Adding type registration Duration -> org.hibernate.type.DurationType@213e3629
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.369 [DEBUG]: Adding type registration java.time.Duration -> org.hibernate.type.DurationType@213e3629
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.374 [DEBUG]: Adding type registration Instant -> org.hibernate.type.InstantType@1d572e62
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.375 [DEBUG]: Adding type registration java.time.Instant -> org.hibernate.type.InstantType@1d572e62
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.376 [DEBUG]: Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@69c43e48
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.376 [DEBUG]: Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@69c43e48
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.377 [DEBUG]: Adding type registration LocalDate -> org.hibernate.type.LocalDateType@3e2fc448
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.377 [DEBUG]: Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@3e2fc448
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.378 [DEBUG]: Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@7048f722
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.378 [DEBUG]: Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@7048f722
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.379 [DEBUG]: Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@3c291aad
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.379 [DEBUG]: Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@3c291aad
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.380 [DEBUG]: Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@28c0b664
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.380 [DEBUG]: Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@28c0b664
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.381 [DEBUG]: Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@40e4ea87
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.381 [DEBUG]: Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@40e4ea87
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.382 [DEBUG]: Adding type registration date -> org.hibernate.type.DateType@160c3ec1
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.382 [DEBUG]: Adding type registration java.sql.Date -> org.hibernate.type.DateType@160c3ec1
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.382 [DEBUG]: Adding type registration time -> org.hibernate.type.TimeType@28a2a3e7
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.383 [DEBUG]: Adding type registration java.sql.Time -> org.hibernate.type.TimeType@28a2a3e7
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.383 [DEBUG]: Adding type registration timestamp -> org.hibernate.type.TimestampType@3c321bdb
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.383 [DEBUG]: Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@3c321bdb
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.383 [DEBUG]: Adding type registration java.util.Date -> org.hibernate.type.TimestampType@3c321bdb
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.385 [DEBUG]: Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@610db97e
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.385 [DEBUG]: Adding type registration calendar -> org.hibernate.type.CalendarType@74d7184a
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.386 [DEBUG]: Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@74d7184a
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.386 [DEBUG]: Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@74d7184a
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.386 [DEBUG]: Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@3aaf4f07
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.387 [DEBUG]: Adding type registration locale -> org.hibernate.type.LocaleType@42deb43a
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.387 [DEBUG]: Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@42deb43a
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.387 [DEBUG]: Adding type registration currency -> org.hibernate.type.CurrencyType@79f227a9
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.388 [DEBUG]: Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@79f227a9
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.388 [DEBUG]: Adding type registration timezone -> org.hibernate.type.TimeZoneType@619bd14c
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.388 [DEBUG]: Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@619bd14c
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.389 [DEBUG]: Adding type registration class -> org.hibernate.type.ClassType@15deb1dc
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.389 [DEBUG]: Adding type registration java.lang.Class -> org.hibernate.type.ClassType@15deb1dc
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.389 [DEBUG]: Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@33d05366
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.389 [DEBUG]: Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@33d05366
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.389 [DEBUG]: Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@32c0915e
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.390 [DEBUG]: Adding type registration binary -> org.hibernate.type.BinaryType@7bfc3126
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.390 [DEBUG]: Adding type registration byte[] -> org.hibernate.type.BinaryType@7bfc3126
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.390 [DEBUG]: Adding type registration [B -> org.hibernate.type.BinaryType@7bfc3126
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.390 [DEBUG]: Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@54a3ab8f
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.391 [DEBUG]: Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@54a3ab8f
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.391 [DEBUG]: Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@54a3ab8f
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.391 [DEBUG]: Adding type registration row_version -> org.hibernate.type.RowVersionType@3ef41c66
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.391 [DEBUG]: Adding type registration image -> org.hibernate.type.ImageType@5f577419
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.392 [DEBUG]: Adding type registration characters -> org.hibernate.type.CharArrayType@11ee02f8
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.392 [DEBUG]: Adding type registration char[] -> org.hibernate.type.CharArrayType@11ee02f8
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.392 [DEBUG]: Adding type registration [C -> org.hibernate.type.CharArrayType@11ee02f8
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.392 [DEBUG]: Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@77b325b3
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.392 [DEBUG]: Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@77b325b3
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.392 [DEBUG]: Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@77b325b3
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.393 [DEBUG]: Adding type registration text -> org.hibernate.type.TextType@271f18d3
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.393 [DEBUG]: Adding type registration ntext -> org.hibernate.type.NTextType@eadb475
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.394 [DEBUG]: Adding type registration blob -> org.hibernate.type.BlobType@467f77a5
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.394 [DEBUG]: Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@467f77a5
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.394 [DEBUG]: Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@308a6984
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.394 [DEBUG]: Adding type registration clob -> org.hibernate.type.ClobType@1c05a54d
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.394 [DEBUG]: Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@1c05a54d
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.395 [DEBUG]: Adding type registration nclob -> org.hibernate.type.NClobType@e27ba81
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.395 [DEBUG]: Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@e27ba81
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.395 [DEBUG]: Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@62577d6
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.395 [DEBUG]: Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@5a12c728
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.396 [DEBUG]: Adding type registration serializable -> org.hibernate.type.SerializableType@d71adc2
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.397 [DEBUG]: Adding type registration object -> org.hibernate.type.ObjectType@3b718392
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.397 [DEBUG]: Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@3b718392
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.398 [DEBUG]: Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@7ee55e70
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.398 [DEBUG]: Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@3fcdcf
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.398 [DEBUG]: Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@7668d560
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.398 [DEBUG]: Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@46292372
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.398 [DEBUG]: Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@126be319
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.398 [DEBUG]: Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@6c44052e
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.398 [DEBUG]: Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@5c371e13
+{org.hibernate.type.BasicTypeRegistry} 2023-05-26 20:16:57.398 [DEBUG]: Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@530a8454
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.411 [DEBUG]: Registering IdentifierGenerator strategy [uuid2] -> [org.hibernate.id.UUIDGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.411 [DEBUG]: Registering IdentifierGenerator strategy [guid] -> [org.hibernate.id.GUIDGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.412 [DEBUG]: Registering IdentifierGenerator strategy [uuid] -> [org.hibernate.id.UUIDHexGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.412 [DEBUG]: Registering IdentifierGenerator strategy [uuid.hex] -> [org.hibernate.id.UUIDHexGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.412 [DEBUG]: Registering IdentifierGenerator strategy [assigned] -> [org.hibernate.id.Assigned]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.412 [DEBUG]: Registering IdentifierGenerator strategy [identity] -> [org.hibernate.id.IdentityGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.413 [DEBUG]: Registering IdentifierGenerator strategy [select] -> [org.hibernate.id.SelectGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.413 [DEBUG]: Registering IdentifierGenerator strategy [sequence] -> [org.hibernate.id.enhanced.SequenceStyleGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.414 [DEBUG]: Registering IdentifierGenerator strategy [seqhilo] -> [org.hibernate.id.SequenceHiLoGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.414 [DEBUG]: Registering IdentifierGenerator strategy [increment] -> [org.hibernate.id.IncrementGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.414 [DEBUG]: Registering IdentifierGenerator strategy [foreign] -> [org.hibernate.id.ForeignGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.414 [DEBUG]: Registering IdentifierGenerator strategy [sequence-identity] -> [org.hibernate.id.SequenceIdentityGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.414 [DEBUG]: Registering IdentifierGenerator strategy [enhanced-sequence] -> [org.hibernate.id.enhanced.SequenceStyleGenerator]
+{org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory} 2023-05-26 20:16:57.415 [DEBUG]: Registering IdentifierGenerator strategy [enhanced-table] -> [org.hibernate.id.enhanced.TableGenerator]
+{org.hibernate.orm.connections.pooling} 2023-05-26 20:16:57.418 [WARN ]: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+{org.hibernate.orm.connections.pooling} 2023-05-26 20:16:57.423 [INFO ]: HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/Warehouses]
+{org.hibernate.orm.connections.pooling} 2023-05-26 20:16:57.423 [INFO ]: HHH10001001: Connection properties: {password=Umler1337228, user=Umler}
+{org.hibernate.orm.connections.pooling} 2023-05-26 20:16:57.423 [INFO ]: HHH10001003: Autocommit mode: false
+{org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl} 2023-05-26 20:16:57.424 [DEBUG]: Initializing Connection pool with 1 Connections
+{org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl} 2023-05-26 20:16:57.424 [INFO ]: HHH000115: Hibernate connection pool size: 20 (min=1)
+{org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator} 2023-05-26 20:16:57.612 [DEBUG]: Database ->
+       name : MySQL
+    version : 8.0.32
+      major : 8
+      minor : 0
+{org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator} 2023-05-26 20:16:57.613 [DEBUG]: Driver ->
+       name : MySQL Connector/J
+    version : mysql-connector-j-8.0.32 (Revision: fa4912a849140828e48162a2c396c8df0091bed7)
+      major : 8
+      minor : 0
+{org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator} 2023-05-26 20:16:57.613 [DEBUG]: JDBC version : 4.2
+{org.hibernate.dialect.Dialect} 2023-05-26 20:16:57.619 [INFO ]: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+{org.hibernate.engine.jdbc.env.spi.IdentifierHelperBuilder} 2023-05-26 20:16:57.656 [DEBUG]: JDBC driver metadata reported database stores quoted identifiers in more than one case
+{org.hibernate.engine.jdbc.env.spi.IdentifierHelperBuilder} 2023-05-26 20:16:57.657 [DEBUG]: IdentifierCaseStrategy for both quoted and unquoted identifiers was set to the same strategy [LOWER]; that will likely lead to problems in schema update and validation if using quoted identifiers
+{org.hibernate.boot.model.relational.Namespace} 2023-05-26 20:16:57.665 [DEBUG]: Created database namespace [logicalName=Name{catalog=null, schema=null}, physicalName=Name{catalog=null, schema=null}]
+{org.hibernate.type.spi.TypeConfiguration$Scope} 2023-05-26 20:16:57.667 [DEBUG]: Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@3ed03652] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@4aedaf61]
+{org.hibernate.cfg.AnnotationBinder} 2023-05-26 20:16:57.692 [DEBUG]: Binding entity from annotated class: com.umler.warehouses.Model.Warehouse
+{org.hibernate.cfg.Ejb3Column} 2023-05-26 20:16:57.702 [DEBUG]: Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
+{org.hibernate.cfg.annotations.EntityBinder} 2023-05-26 20:16:57.703 [DEBUG]: Import with entity name Warehouse
+{org.hibernate.cfg.annotations.EntityBinder} 2023-05-26 20:16:57.705 [DEBUG]: Bind entity com.umler.warehouses.Model.Warehouse on table Warehouses
+{org.hibernate.cfg.Ejb3Column} 2023-05-26 20:16:57.714 [DEBUG]: Binding column: Ejb3Column{table=org.hibernate.mapping.Table(Warehouses), mappingColumn=id_warehouse, insertable=true, updatable=true, unique=false}
+{org.hibernate.cfg.annotations.PropertyBinder} 2023-05-26 20:16:57.716 [DEBUG]: MetadataSourceProcessor property ID with lazy=false
+{org.hibernate.cfg.AbstractPropertyHolder} 2023-05-26 20:16:57.718 [DEBUG]: Attempting to locate auto-apply AttributeConverter for property [com.umler.warehouses.Model.Warehouse:ID]
+{org.hibernate.cfg.annotations.SimpleValueBinder} 2023-05-26 20:16:57.719 [DEBUG]: building SimpleValue for ID
+{org.hibernate.cfg.annotations.PropertyBinder} 2023-05-26 20:16:57.720 [DEBUG]: Building property ID
+{org.hibernate.cfg.BinderHelper} 2023-05-26 20:16:57.721 [DEBUG]: #makeIdGenerator(org.hibernate.mapping.SimpleValue([org.hibernate.mapping.Column(id_warehouse)]), ID, identity, , ...)
+{org.hibernate.cfg.Ejb3Column} 2023-05-26 20:16:57.721 [DEBUG]: Binding column: Ejb3Column{table=org.hibernate.mapping.Table(Warehouses), mappingColumn=address, insertable=true, updatable=true, unique=false}
+{org.hibernate.cfg.annotations.PropertyBinder} 2023-05-26 20:16:57.721 [DEBUG]: MetadataSourceProcessor property Address with lazy=false
+{org.hibernate.cfg.AbstractPropertyHolder} 2023-05-26 20:16:57.721 [DEBUG]: Attempting to locate auto-apply AttributeConverter for property [com.umler.warehouses.Model.Warehouse:Address]
+{org.hibernate.cfg.annotations.SimpleValueBinder} 2023-05-26 20:16:57.721 [DEBUG]: building SimpleValue for Address
+{org.hibernate.cfg.annotations.PropertyBinder} 2023-05-26 20:16:57.721 [DEBUG]: Building property Address
+{org.hibernate.cfg.annotations.SimpleValueBinder} 2023-05-26 20:16:57.722 [DEBUG]: Starting fillSimpleValue for ID
+{org.hibernate.cfg.annotations.SimpleValueBinder} 2023-05-26 20:16:57.722 [DEBUG]: Starting fillSimpleValue for Address
+{org.hibernate.mapping.PrimaryKey} 2023-05-26 20:16:57.723 [DEBUG]: Forcing column [id_warehouse] to be non-null as it is part of the primary key for table [warehouses]
+{org.hibernate.internal.SessionFactoryImpl} 2023-05-26 20:16:57.742 [DEBUG]: Building session factory
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.742 [DEBUG]: SessionFactory name : null
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.742 [DEBUG]: Automatic flush during beforeCompletion(): enabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Automatic session close at end of transaction: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Statistics: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Deleted entity synthetic identifier rollback: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Default entity-mode: pojo
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Allow initialization of lazy state outside session : disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Using BatchFetchStyle : LEGACY
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Default batch fetch size: -1
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Maximum outer join fetch depth: 2
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Default null ordering: NONE
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Order SQL updates by primary key: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Order SQL inserts for batching: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: multi-tenancy strategy : NONE
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: JTA Track by Thread: enabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Query language substitutions: {}
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Named query checking : enabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.743 [DEBUG]: Second-level cache: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Second-level query cache: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Second-level query cache factory: null
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Second-level cache region prefix: null
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Optimize second-level cache for minimal puts: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Structured second-level cache entries: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Second-level cache direct-reference entries: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Automatic eviction of collection cache: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: JDBC batch size: 15
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: JDBC batch updates for versioned data: enabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Scrollable result sets: enabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Wrap result sets: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: JDBC3 getGeneratedKeys(): enabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: JDBC result set fetch size: null
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Connection release mode: AFTER_TRANSACTION
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.744 [DEBUG]: Generate SQL with comments: disabled
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.745 [DEBUG]: JPA compliance - query : 
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.745 [DEBUG]: JPA compliance - closed-handling : 
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.745 [DEBUG]: JPA compliance - lists : 
+{org.hibernate.cfg.Settings} 2023-05-26 20:16:57.745 [DEBUG]: JPA compliance - transactions : 
+{org.hibernate.internal.SessionFactoryImpl} 2023-05-26 20:16:57.770 [DEBUG]: Session factory constructed with filter configurations : {}
+{org.hibernate.internal.SessionFactoryImpl} 2023-05-26 20:16:57.770 [DEBUG]: Instantiating session factory with properties: {sun.desktop=windows, awt.toolkit=sun.awt.windows.WToolkit, java.specification.version=11, sun.cpu.isalist=amd64, sun.jnu.encoding=Cp1251, hibernate.dialect=org.hibernate.dialect.MySQLDialect, java.class.path=C:\Users\MSI\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\MSI\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\MSI\.m2\repository\org\jboss\logging\jboss-logging\3.3.2.Final\jboss-logging-3.3.2.Final.jar;C:\Users\MSI\.m2\repository\org\javassist\javassist\3.23.2-GA\javassist-3.23.2-GA.jar;C:\Users\MSI\.m2\repository\net\bytebuddy\byte-buddy\1.9.11\byte-buddy-1.9.11.jar;C:\Users\MSI\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\MSI\.m2\repository\org\jboss\spec\javax\transaction\jboss-transaction-api_1.2_spec\1.1.1.Final\jboss-transaction-api_1.2_spec-1.1.1.Final.jar;C:\Users\MSI\.m2\repository\org\jboss\jandex\2.0.5.Final\jandex-2.0.5.Final.jar;C:\Users\MSI\.m2\repository\com\fasterxml\classmate\1.3.4\classmate-1.3.4.jar;C:\Users\MSI\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\MSI\.m2\repository\org\dom4j\dom4j\2.1.3\dom4j-2.1.3.jar;C:\Users\MSI\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.0.4.Final\hibernate-commons-annotations-5.0.4.Final.jar;C:\Users\MSI\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\MSI\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.1\jaxb-runtime-2.3.1.jar;C:\Users\MSI\.m2\repository\org\glassfish\jaxb\txw2\2.3.1\txw2-2.3.1.jar;C:\Users\MSI\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.7\istack-commons-runtime-3.0.7.jar;C:\Users\MSI\.m2\repository\org\jvnet\staxex\stax-ex\1.8\stax-ex-1.8.jar;C:\Users\MSI\.m2\repository\com\sun\xml\fastinfoset\FastInfoset\1.2.15\FastInfoset-1.2.15.jar;C:\Users\MSI\.m2\repository\org\hibernate\hibernate-entitymanager\5.3.20.Final\hibernate-entitymanager-5.3.20.Final.jar;C:\Users\MSI\.m2\repository\org\bouncycastle\bcprov-jdk15on\1.52\bcprov-jdk15on-1.52.jar;C:\Users\MSI\.m2\repository\com\mysql\mysql-connector-j\8.0.32\mysql-connector-j-8.0.32.jar;C:\Users\MSI\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-controls\17.0.2\javafx-controls-17.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-graphics\17.0.2\javafx-graphics-17.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-base\17.0.2\javafx-base-17.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-fxml\17.0.2\javafx-fxml-17.0.2.jar, java.vm.vendor=Oracle Corporation, sun.arch.data.model=64, user.variant=, java.vendor.url=https://openjdk.java.net/, user.timezone=Europe/Moscow, os.name=Windows 10, java.vm.specification.version=11, sun.java.launcher=SUN_STANDARD, user.country=RU, sun.boot.library.path=C:\Program Files\Java\jdk-11\bin, sun.java.command=oop.Interface/com.umler.warehouses.AppClasses.AppWarehouse, jdk.debug=release, sun.cpu.endian=little, user.home=C:\Users\MSI, user.language=ru, java.specification.vendor=Oracle Corporation, jdk.module.path=C:\Users\MSI\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-controls\17.0.2\javafx-controls-17.0.2-win.jar;C:\Users\MSI\.m2\repository\org\apache\logging\log4j\log4j-slf4j-impl\2.20.0\log4j-slf4j-impl-2.20.0.jar;C:\Users\MSI\.m2\repository\org\hibernate\hibernate-core\5.3.20.Final\hibernate-core-5.3.20.Final.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-fxml\17.0.2\javafx-fxml-17.0.2-win.jar;C:\Users\MSI\.m2\repository\com\itextpdf\itextpdf\5.5.6\itextpdf-5.5.6.jar;C:\Users\MSI\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;D:\Учёба\Warehouses\target\classes;C:\Users\MSI\.m2\repository\org\openjfx\javafx-base\17.0.2\javafx-base-17.0.2-win.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-graphics\17.0.2\javafx-graphics-17.0.2-win.jar, java.version.date=2023-01-17, java.home=C:\Program Files\Java\jdk-11, file.separator=\, java.vm.compressedOopsMode=Zero based, line.separator=
+, java.specification.name=Java Platform API Specification, java.vm.specification.vendor=Oracle Corporation, java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment, jdk.module.main.class=com.umler.warehouses.AppClasses.AppWarehouse, jdk.module.main=oop.Interface, hibernate.hbm2ddl.auto=update, user.script=, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.runtime.version=11.0.18+9-LTS-195, user.name=MSI, path.separator=;, hibernate.connection.username=****, os.version=10.0, java.runtime.name=Java(TM) SE Runtime Environment, hibernate.connection.url=jdbc:mysql://localhost:3306/Warehouses, file.encoding=UTF-8, java.vm.name=Java HotSpot(TM) 64-Bit Server VM, hibernate.show_sql=false, java.vendor.version=18.9, hibernate.current_session_context_class=thread, hibernate.connection.driver_class=com.mysql.jdbc.Driver, java.vendor.url.bug=https://bugreport.java.com/bugreport/, java.io.tmpdir=C:\Users\MSI\AppData\Local\Temp\, java.version=11.0.18, user.dir=D:\Учёба\Warehouses, os.arch=amd64, java.vm.specification.name=Java Virtual Machine Specification, java.awt.printerjob=sun.awt.windows.WPrinterJob, hibernate.connection.password=****, sun.os.patch.level=, hibernate.boot.CfgXmlAccessService.key=org.hibernate.boot.cfgxml.spi.LoadedConfig@18578491, java.library.path=C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;F:\QuickTime\QTSystem\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Users\MSI\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.8\Scripts;C:\Program Files (x86)\Wolfram Research\WolframScript\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Filestar;C:\ProgramData\Filestar\aliases;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\AppData\Roaming\npm;D:\Programs\texlive\2022\bin\win32;., java.vendor=Oracle Corporation, java.vm.info=mixed mode, java.vm.version=11.0.18+9-LTS-195, hibernate.bytecode.use_reflection_optimizer=false, sun.io.unicode.encoding=UnicodeLittle, java.class.version=55.0}
+{org.hibernate.secure.spi.JaccIntegrator} 2023-05-26 20:16:57.783 [DEBUG]: Skipping JACC integration as it was not enabled
+{org.hibernate.internal.SessionFactoryImpl} 2023-05-26 20:16:57.784 [DEBUG]: Instantiated session factory
+{org.hibernate.type.spi.TypeConfiguration$Scope} 2023-05-26 20:16:57.784 [DEBUG]: Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@3ed03652] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@5c723f2d]
+{org.hibernate.boot.internal.ClassLoaderAccessImpl} 2023-05-26 20:16:57.806 [DEBUG]: Not known whether passed class name [com.umler.warehouses.Model.Warehouse] is safe
+{org.hibernate.boot.internal.ClassLoaderAccessImpl} 2023-05-26 20:16:57.807 [DEBUG]: No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : com.umler.warehouses.Model.Warehouse
+{org.hibernate.internal.SessionFactoryImpl} 2023-05-26 20:16:57.808 [DEBUG]: HHH000031: Closing
+{org.hibernate.internal.SessionFactoryRegistry} 2023-05-26 20:16:57.809 [DEBUG]: Initializing SessionFactoryRegistry : org.hibernate.internal.SessionFactoryRegistry@57f847af
+{org.hibernate.type.spi.TypeConfiguration$Scope} 2023-05-26 20:16:57.810 [DEBUG]: Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@6c6017b9] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@5c723f2d]
+{org.hibernate.service.internal.AbstractServiceRegistryImpl} 2023-05-26 20:16:57.811 [DEBUG]: Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+{org.hibernate.orm.connections.pooling} 2023-05-26 20:16:57.811 [INFO ]: HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/Warehouses]
+{org.hibernate.boot.registry.internal.BootstrapServiceRegistryImpl} 2023-05-26 20:16:57.812 [DEBUG]: Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
+{WarehousesList Logger} 2023-05-26 22:23:52.063 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.WarehousesListController$myDeleteException: Choose a row to delete
+{WarehousesList Logger} 2023-05-26 22:24:14.806 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-26 23:40:17.164 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-26 23:40:36.057 [ERROR]: Access denied for user 'MSI'@'localhost' (using password: NO)
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-26 23:40:38.381 [ERROR]: Access denied for user 'MSI'@'localhost' (using password: NO)
+{WarehousesList Logger} 2023-05-27 00:06:44.923 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-27 00:24:44.856 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-27 00:25:55.285 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-27 00:29:34.323 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-27 00:56:30.147 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-27 00:58:32.059 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-27 03:07:34.744 [ERROR]: Column 'Warehouse_id_warehouse' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-27 03:08:59.123 [ERROR]: Column 'Warehouse_id_warehouse' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-27 04:32:16.973 [ERROR]: Cannot delete or update a parent row: a foreign key constraint fails (`warehouses`.`manager`, CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id_warehouse`))
+{org.hibernate.internal.ExceptionMapperStandardImpl} 2023-05-27 04:32:16.976 [ERROR]: HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-27 04:34:24.351 [ERROR]: Cannot delete or update a parent row: a foreign key constraint fails (`warehouses`.`manager`, CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id_warehouse`))
+{org.hibernate.internal.ExceptionMapperStandardImpl} 2023-05-27 04:34:24.354 [ERROR]: HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-27 04:36:29.264 [ERROR]: Cannot delete or update a parent row: a foreign key constraint fails (`warehouses`.`manager`, CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id_warehouse`))
+{org.hibernate.internal.ExceptionMapperStandardImpl} 2023-05-27 04:36:29.267 [ERROR]: HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-27 04:41:16.538 [ERROR]: Cannot delete or update a parent row: a foreign key constraint fails (`warehouses`.`manager`, CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id_warehouse`))
+{org.hibernate.internal.ExceptionMapperStandardImpl} 2023-05-27 04:41:16.541 [ERROR]: HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+{WarehousesList Logger} 2023-05-27 13:13:39.729 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{WarehousesList Logger} 2023-05-27 13:18:45.886 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-27 14:16:28.316 [ERROR]: Column 'contract_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 16:57:56.816 [ERROR]: Table 'warehouses.shelf' doesn't exist

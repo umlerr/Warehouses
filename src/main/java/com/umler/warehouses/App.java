@@ -1,6 +1,7 @@
-package com.umler.warehouses.main_app;
+package com.umler.warehouses;
 
-import com.umler.warehouses.main_interface_controllers.SceneController;
+import com.umler.warehouses.Controllers.SceneController;
+import com.umler.warehouses.Helpers.HibernateUtil;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -22,7 +23,7 @@ public class App extends Application {
     public void stop() throws Exception {
         logger.debug("End of a program");
         super.stop();
-//        HibernateUtil.shutdown();
+        HibernateUtil.shutdown();
     }
 
     public static void main(String[] args) {

@@ -1,15 +1,12 @@
-package com.umler.warehouses.main_interface_controllers;
+package com.umler.warehouses.Controllers;
 
-import com.umler.warehouses.helpers.ScenePath;
-import com.umler.warehouses.main_app.InterfaceController;
-import com.umler.warehouses.main_app.Warehouse;
+import com.umler.warehouses.Enums.ScenePath;
+import com.umler.warehouses.Model.Warehouse;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.slf4j.Logger;
@@ -51,7 +48,14 @@ public class SceneController {
 
         logger.debug("Transition to warehouses list scene");
 
-        changeScreen(event, ScenePath.WAREHOUSES.getPath(),new Warehouse(-1,""));
+        changeScreen(event, ScenePath.WAREHOUSES.getPath(),null);
+    }
+
+    public static void getLoginScene(ActionEvent event) throws IOException {
+
+        logger.debug("Transition to warehouses list scene");
+
+        changeScreen(event, ScenePath.LOGIN.getPath(),null);
     }
 
     public static void getMainScene(ActionEvent event, Warehouse warehouse) throws IOException {

@@ -1,4 +1,4 @@
-package com.umler.warehouses.helpers;
+package com.umler.warehouses.Enums;
 
 /**
  * Code created by Umler on 2023-04-30
@@ -7,6 +7,8 @@ public enum ScenePath {
 
     HOME("/MainItems.fxml"),
     WAREHOUSES("/WarehousesList.fxml"),
+    ADDWAREHOUSES("/addWarehouse.fxml"),
+    LOGININFO("/loginInfo.fxml"),
     LOGIN("/login.fxml");
 
     private final String path;
