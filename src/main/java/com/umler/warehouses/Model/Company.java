@@ -3,7 +3,8 @@ package com.umler.warehouses.Model;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Company")
@@ -18,42 +19,33 @@ public class Company {
     private String Address;
     @Column(name = "phone")
     private String PhoneNumber;
-    @Column(name = "msrn")
-    private String MSRN; // ОГРН
     @Column(name = "tin")
     private String TIN; // ИНН
 
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "contract_id")
-    private Contract contract;
+    @OneToMany(mappedBy = "company", cascade=CascadeType.ALL, orphanRemoval=true)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    private List<Product> productList = new ArrayList<>();
 
     @OneToMany(mappedBy = "company", cascade=CascadeType.ALL, orphanRemoval=true)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    private Set<Product> productList;
+    private List<Contract> contractList = new ArrayList<>();
 
-    public Set<Product> getProductList() {
-        return productList;
+
+    public void addContract(Contract contract) {
+        contractList.add(contract);
+        contract.setCompany(this);
+    }
+    public void removeClient(Contract contract) {
+        contractList.remove(contract);
+        contract.setCompany(null);
     }
 
-    public void setProductList(Set<Product> productList) {
-        this.productList = productList;
-    }
-
-
-    public Contract getContract() {
-        return contract;
-    }
-
-    public void setContract(Contract contract) {
-        this.contract = contract;
-    }
-
-    public int getId_company() {
+    public Integer getId_company() {
         return id_company;
     }
 
-    public void setId_company(int id_company) {
+    public void setId_company(Integer id_company) {
         this.id_company = id_company;
     }
 
@@ -81,19 +73,32 @@ public class Company {
         PhoneNumber = phoneNumber;
     }
 
-    public String getMSRN() {
-        return MSRN;
-    }
-
-    public void setMSRN(String MSRN) {
-        this.MSRN = MSRN;
-    }
-
     public String getTIN() {
         return TIN;
     }
 
     public void setTIN(String TIN) {
         this.TIN = TIN;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public List<Contract> getContractList() {
+        return contractList;
+    }
+
+    public void setContractList(List<Contract> contractList) {
+        this.contractList = contractList;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s", this.Name);
     }
 }

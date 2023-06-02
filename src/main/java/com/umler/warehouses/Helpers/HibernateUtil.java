@@ -28,8 +28,6 @@ public class HibernateUtil {
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
-                configuration.addAnnotatedClass(Warehouse.class);
-                configuration.addAnnotatedClass(Manager.class);
                 configuration.addAnnotatedClass(Contract.class);
                 configuration.addAnnotatedClass(Company.class);
                 configuration.addAnnotatedClass(Room.class);

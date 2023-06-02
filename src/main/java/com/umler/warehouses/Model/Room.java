@@ -27,18 +27,6 @@ public class Room {
         this.shelfList = shelfList;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "warehouse_id")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    private Warehouse warehouse;
-
-    public Warehouse getWarehouse() {
-        return warehouse;
-    }
-
-    public void setWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
-    }
 
     public Integer getId_room() {
         return id_room;

@@ -5,9 +5,9 @@ package com.umler.warehouses.Enums;
  */
 public enum ScenePath {
 
-    HOME("/MainItems.fxml"),
-    WAREHOUSES("/WarehousesList.fxml"),
-    ADDWAREHOUSES("/addWarehouse.fxml"),
+    COMPANIES("/Companies.fxml"),
+    CONTRACTS("/Contracts.fxml"),
+    ADDCONTRACTCOMPANY("/addContractCompany.fxml"),
     LOGININFO("/loginInfo.fxml"),
     LOGIN("/login.fxml");
 

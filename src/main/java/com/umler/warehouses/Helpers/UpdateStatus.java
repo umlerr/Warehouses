@@ -5,13 +5,13 @@ public final class UpdateStatus {
     private UpdateStatus() {
     }
 
-    private static boolean isWarehouseAdded;
+    private static boolean isContractCompanyAdded;
 
-    public static boolean isIsWarehouseAdded() {
-        return isWarehouseAdded;
+    public static boolean isIsContractCompanyAdded(){
+        return isContractCompanyAdded;
     }
 
-    public static void setIsWarehouseAdded(boolean isWarehouseAdded) {
-        UpdateStatus.isWarehouseAdded = isWarehouseAdded;
+    public static void setIsContractCompanyAdded(boolean isContractCompanyAdded) {
+        UpdateStatus.isContractCompanyAdded = isContractCompanyAdded;
     }
 }

@@ -1,7 +1,6 @@
 package com.umler.warehouses.Controllers;
 
 import com.umler.warehouses.Enums.ScenePath;
-import com.umler.warehouses.Model.Warehouse;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -44,28 +43,29 @@ public class SceneController {
         stage.show();
     }
 
-    public static void getWarehousesScene(ActionEvent event) throws IOException {
+    public static void getCompaniesScene(ActionEvent event) throws IOException {
 
         logger.debug("Transition to warehouses list scene");
 
-        changeScreen(event, ScenePath.WAREHOUSES.getPath(),null);
+        changeScreen(event, ScenePath.COMPANIES.getPath());
+    }
+
+    public static void getContractsScene(ActionEvent event) throws IOException {
+
+        logger.debug("Transition to warehouses list scene");
+
+        changeScreen(event, ScenePath.CONTRACTS.getPath());
     }
 
     public static void getLoginScene(ActionEvent event) throws IOException {
 
         logger.debug("Transition to warehouses list scene");
 
-        changeScreen(event, ScenePath.LOGIN.getPath(),null);
+        changeScreen(event, ScenePath.LOGIN.getPath());
     }
 
-    public static void getMainScene(ActionEvent event, Warehouse warehouse) throws IOException {
 
-        logger.debug("Transition to main window scene");
-
-        changeScreen(event, ScenePath.HOME.getPath(), warehouse);
-    }
-
-    private static void changeScreen(ActionEvent event, String path, Warehouse warehouse) throws IOException
+    private static void changeScreen(ActionEvent event, String path) throws IOException
     {
 
         logger.debug("Changing scene");
@@ -79,15 +79,6 @@ public class SceneController {
         controlDrag(window);
         window.setScene(visitScene);
         window.show();
-
-        if (path.equals(ScenePath.HOME.getPath()))
-        {
-
-            logger.debug("Making controller object to show required warehouse");
-
-            InterfaceController controller = loader.getController();
-            controller.toWarehouse(warehouse);
-        }
     }
 
     public static void controlDrag(Stage stage) {

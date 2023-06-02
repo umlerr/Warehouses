@@ -16,8 +16,8 @@ public class NewWindowController {
     static double x;
     static double y;
 
-    public static void getNewWarehouseWindow() throws IOException {
-        getPopUpWindow(ScenePath.ADDWAREHOUSES.getPath());
+    public static void getNewContractCompanyWindow() throws IOException {
+        getPopUpWindow(ScenePath.ADDCONTRACTCOMPANY.getPath());
     }
 
     public static void getPopUpWindow(String path) throws IOException {

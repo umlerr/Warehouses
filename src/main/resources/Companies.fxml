@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.Controllers.CompaniesController">
+   <TableView fx:id="table" editable="true" layoutX="20.0" layoutY="112.0" prefHeight="413.0" prefWidth="921.0">
+      <columns>
+         <TableColumn fx:id="name_column" onEditCommit="#editName" prefWidth="192.0" text="Name" />
+         <TableColumn fx:id="address_column" onEditCommit="#editAddress" prefWidth="269.0" text="Address" />
+         <TableColumn fx:id="phone_column" onEditCommit="#editPhone" prefWidth="213.0" text="Phone" />
+         <TableColumn fx:id="tin_column" onEditCommit="#editTIN" prefWidth="246.0" text="TIN" />
+      </columns>
+   </TableView>
+   <ChoiceBox fx:id="choice_box" layoutX="806.0" layoutY="73.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#getChoices" prefHeight="25.0" prefWidth="135.0" />
+   <TextField fx:id="search" alignment="CENTER" layoutX="331.0" layoutY="73.0" prefHeight="25.0" prefWidth="300.0" promptText="Search" />
+   <Button layoutX="644.0" layoutY="73.0" mnemonicParsing="false" onAction="#toPDF" prefHeight="25.0" prefWidth="41.0" text="PDF" />
+   <Button layoutX="238.0" layoutY="73.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="81.0" text="Delete" />
+   <Button layoutX="693.0" layoutY="73.0" mnemonicParsing="false" onAction="#save" text="Save" />
+   <Button fx:id="exit_btn" layoutX="910.0" layoutY="30.0" mnemonicParsing="false" onAction="#ExitMainWindow" prefHeight="25.0" prefWidth="31.0" text="×" />
+   <Button fx:id="wrap_btn" layoutX="871.0" layoutY="30.0" mnemonicParsing="false" onAction="#WrapMainWindow" prefHeight="25.0" prefWidth="31.0" text="🗕" />
+   <Hyperlink fx:id="current_user" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="69.0" onAction="#changeUser" prefHeight="33.0" prefWidth="169.0" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+      <font>
+         <Font size="16.0" />
+      </font></Hyperlink>
+   <Label fx:id="search_invalid_label1" layoutX="396.0" layoutY="20.0" prefHeight="45.0" prefWidth="169.0" text="COMPANIES">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </Label>
+</AnchorPane>

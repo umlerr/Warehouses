@@ -12,7 +12,7 @@
 {Warehouse Logger} 2023-05-14 16:59:26.910 [INFO ]: Choice box action
 {Warehouse Logger} 2023-05-14 16:59:26.910 [INFO ]: Choice box Managers selected
 {Warehouse Logger} 2023-05-14 16:59:30.774 [INFO ]: Manager added
-{Warehouse Logger} 2023-05-14 16:59:30.775 [WARN ]: MyException com.umler.warehouses.Controllers.InterfaceController$MyException: Choose a row to delete
+{Warehouse Logger} 2023-05-14 16:59:30.775 [WARN ]: MyException com.umler.warehouses.Controllers.ContractsController$MyException: Choose a row to delete
 {Warehouse Logger} 2023-05-14 16:59:42.092 [INFO ]: Adding manager
 {Warehouse Logger} 2023-05-14 16:59:42.093 [INFO ]: Manager added
 {Warehouse Logger} 2023-05-14 16:59:47.095 [INFO ]: Manager added
@@ -520,3 +520,17 @@
 {WarehousesList Logger} 2023-05-27 13:18:45.886 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
 {org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-05-27 14:16:28.316 [ERROR]: Column 'contract_id' cannot be null
 {org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 16:57:56.816 [ERROR]: Table 'warehouses.shelf' doesn't exist
+{WarehousesList Logger} 2023-06-01 20:24:52.650 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 21:14:42.670 [ERROR]: Column 'warehouse_id' cannot be null
+{org.hibernate.internal.ExceptionMapperStandardImpl} 2023-06-01 21:14:42.672 [ERROR]: HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 21:16:46.904 [ERROR]: Column 'warehouse_id' cannot be null
+{org.hibernate.internal.ExceptionMapperStandardImpl} 2023-06-01 21:16:46.905 [ERROR]: HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+{WarehousesList Logger} 2023-06-01 21:21:29.147 [ERROR]: MyContinueException com.umler.warehouses.Controllers.WarehousesListController$myContinueException: Select a warehouse to continue
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 21:43:20.986 [ERROR]: Column 'company_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 21:44:49.439 [ERROR]: Column 'company_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 21:45:40.368 [ERROR]: Column 'company_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 21:46:36.822 [ERROR]: Column 'company_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 22:28:27.039 [ERROR]: Field 'contract_id' doesn't have a default value
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 22:29:05.804 [ERROR]: Field 'contract_id' doesn't have a default value
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 22:39:39.273 [ERROR]: Column 'company_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-02 05:12:47.518 [ERROR]: Column 'company_id' cannot be null

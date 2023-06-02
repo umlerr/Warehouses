@@ -5,44 +5,6 @@
 
 <hibernate-mapping>
 
-    <class name="com.umler.warehouses.Model.Warehouse" table="Warehouse">
-        <id name="id_warehouse" type="java.lang.Integer" column="id_warehouse" >
-            <generator class="increment" />
-        </id>
-
-        <property name="address" >
-            <column name="address" />
-        </property>
-
-        <set name="managerList" inverse="true" cascade="all-delete-orphan">
-            <key column="warehouse_id" />
-            <one-to-many class="com.umler.warehouses.Model.Manager" />
-        </set>
-
-        <set name="roomList" inverse="true" cascade="all-delete-orphan">
-            <key column="warehouse_id" />
-            <one-to-many class="com.umler.warehouses.Model.Room" />
-        </set>
-
-        <set name="contractList" inverse="true" cascade="all-delete-orphan">
-            <key column="warehouse_id" />
-            <one-to-many class="com.umler.warehouses.Model.Contract" />
-        </set>
-    </class>
-
-    <class name="com.umler.warehouses.Model.Manager" table="Manager">
-        <id name="id_manager" type="java.lang.Integer" column="id_manager" >
-            <generator class="increment" />
-        </id>
-        <property name="name">
-            <column name="name" />
-        </property>
-        <property name="surname">
-            <column name="surname"/>
-        </property>
-        <many-to-one name="warehouse" class="com.umler.warehouses.Model.Warehouse" column="warehouse_id" />
-    </class>
-
     <class name="com.umler.warehouses.Model.Room" table="Room">
         <id name="id_room" type="java.lang.Integer" column="id_room" >
             <generator class="identity" />
@@ -56,7 +18,6 @@
             <one-to-many class="com.umler.warehouses.Model.Shelf" />
         </set>
 
-        <many-to-one name="warehouse" class="com.umler.warehouses.Model.Warehouse" column="warehouse_id" />
     </class>
 
     <class name="com.umler.warehouses.Model.Shelf" table="Shelf">
@@ -102,12 +63,15 @@
             <column name="StartDate" />
         </property>
 
+        <property name="number" >
+            <column name="number" />
+        </property>
+
         <property name="EndDate" >
             <column name="EndDate" />
         </property>
 
-        <one-to-one name="company" class="com.umler.warehouses.Model.Company" cascade="all-delete-orphan"/>
-        <many-to-one name="warehouse" class="com.umler.warehouses.Model.Warehouse" column="warehouse_id" />
+
     </class>
 
     <class name="com.umler.warehouses.Model.Company" table="company">
@@ -123,9 +87,6 @@
         <property name="PhoneNumber">
             <column name="phone"/>
         </property>
-        <property name="MSRN">
-            <column name="msrn"/>
-        </property>
         <property name="TIN">
             <column name="tin"/>
         </property>
@@ -135,7 +96,11 @@
             <one-to-many class="com.umler.warehouses.Model.Product" />
         </set>
 
-        <one-to-one name="contract" class="com.umler.warehouses.Model.Contract"/>
+        <set name="contractList" inverse="true" cascade="all-delete-orphan">
+            <key column="company_id" />
+            <one-to-many class="com.umler.warehouses.Model.Contract" />
+        </set>
+
     </class>
 
 </hibernate-mapping>

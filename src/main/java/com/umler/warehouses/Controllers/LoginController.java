@@ -42,10 +42,10 @@ public class LoginController implements Initializable {
     private static final Logger logger = LoggerFactory.getLogger("LoginScene Logger");
 
     @FXML
-    void showVisitScreen(ActionEvent event) throws IOException, InterruptedException {
+    void showVisitScreen(ActionEvent event) throws IOException {
         if (validateLogin())
         {
-            SceneController.getWarehousesScene(event);
+            SceneController.getContractsScene(event);
         }
         else
         {
@@ -54,7 +54,7 @@ public class LoginController implements Initializable {
 
             username_box.clear();
             password_box.clear();
-            invalid_label.setText("     Invalid credentials");
+            invalid_label.setText("Invalid credentials");
         }
 
     }
