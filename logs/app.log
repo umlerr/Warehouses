@@ -534,3 +534,6 @@
 {org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 22:29:05.804 [ERROR]: Field 'contract_id' doesn't have a default value
 {org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-01 22:39:39.273 [ERROR]: Column 'company_id' cannot be null
 {org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-02 05:12:47.518 [ERROR]: Column 'company_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-02 14:29:10.175 [ERROR]: Data truncation: Data too long for column 'tin' at row 1
+{org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl} 2023-06-02 17:12:51.833 [ERROR]: Connection leak detected: there are 1 unclosed connections upon shutting down pool jdbc:mysql://localhost:3306/Warehouses
+{org.hibernate.orm.connections.pooling} 2023-06-02 17:12:51.841 [ERROR]: Connection leak detected: there are 1 unclosed connections!

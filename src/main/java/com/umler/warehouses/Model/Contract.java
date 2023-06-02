@@ -14,16 +14,15 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_contract;
 
-    @Column(name = "StartDate")
-    private LocalDate StartDate;
-    @Column(name = "EndDate")
-    private LocalDate EndDate;
+    @Column(name = "startdate")
+    private LocalDate startdate;
+    @Column(name = "enddate")
+    private LocalDate enddate;
     @Column(name = "number")
     private Integer number;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "company_id")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private Company company;
 
 
@@ -35,20 +34,20 @@ public class Contract {
         this.id_contract = id_contract;
     }
 
-    public LocalDate getStartDate() {
-        return StartDate;
+    public LocalDate getStartdate() {
+        return startdate;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        StartDate = startDate;
+    public void setStartdate(LocalDate startdate) {
+        this.startdate = startdate;
     }
 
-    public LocalDate getEndDate() {
-        return EndDate;
+    public LocalDate getEnddate() {
+        return enddate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        EndDate = endDate;
+    public void setEnddate(LocalDate enddate) {
+        this.enddate = enddate;
     }
 
     public Integer getNumber() {

@@ -129,8 +129,8 @@ public class AddContractCompanyController implements Initializable {
 
     private Contract createContractFromInput() {
         Contract contract = new Contract();
-        contract.setStartDate(startdate_field.getValue());
-        contract.setEndDate(enddate_field.getValue());
+        contract.setStartdate(startdate_field.getValue());
+        contract.setEnddate(enddate_field.getValue());
         contract.setNumber(Integer.valueOf(number_field.getText()));
         return contract;
     }
@@ -143,7 +143,7 @@ public class AddContractCompanyController implements Initializable {
                 building_field.getText() +
                 ", " + index_field.getText());
         company.setPhoneNumber(phone_field.getText());
-        company.setTIN(tin_field.getText());
+        company.setTin(tin_field.getText());
         return company;
     }
 
@@ -182,7 +182,7 @@ public class AddContractCompanyController implements Initializable {
             phone_field.setText(company.getPhoneNumber());
             tin_field.setEditable(false);
             tin_field.setStyle("-fx-opacity: 0.7; -fx-background-color: #eee");
-            tin_field.setText(company.getTIN());
+            tin_field.setText(company.getTin());
         }
         else
         {

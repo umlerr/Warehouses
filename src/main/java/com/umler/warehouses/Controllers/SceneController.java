@@ -50,10 +50,23 @@ public class SceneController {
         changeScreen(event, ScenePath.COMPANIES.getPath());
     }
 
-    public static void getContractsScene(ActionEvent event) throws IOException {
+    public static void getProductsScene(ActionEvent event) throws IOException {
 
         logger.debug("Transition to warehouses list scene");
 
+        changeScreen(event, ScenePath.PRODUCTS.getPath());
+    }
+
+    public static void getRoomsShelvesScene(ActionEvent event) throws IOException {
+
+        logger.debug("Transition to warehouses list scene");
+
+        changeScreen(event, ScenePath.ROOMSSHELVES.getPath());
+    }
+
+    public static void getContractsScene(ActionEvent event) throws IOException {
+
+        logger.debug("Transition to warehouses list scene");
         changeScreen(event, ScenePath.CONTRACTS.getPath());
     }
 
@@ -67,7 +80,6 @@ public class SceneController {
 
     private static void changeScreen(ActionEvent event, String path) throws IOException
     {
-
         logger.debug("Changing scene");
 
         FXMLLoader loader = new FXMLLoader();

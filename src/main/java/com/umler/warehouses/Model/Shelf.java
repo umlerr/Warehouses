@@ -13,14 +13,12 @@ public class Shelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_shelf;
     @Column(name = "number")
-    private Integer Number;
+    private Integer number;
     @Column(name = "capacity")
-    private Integer Capacity;
+    private Integer capacity;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "room_id")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private Room room;
 
     @OneToMany(mappedBy = "shelf", cascade=CascadeType.ALL, orphanRemoval=true)
@@ -52,18 +50,23 @@ public class Shelf {
     }
 
     public Integer getNumber() {
-        return Number;
+        return number;
     }
 
     public void setNumber(Integer number) {
-        Number = number;
+        this.number = number;
     }
 
     public Integer getCapacity() {
-        return Capacity;
+        return capacity;
     }
 
     public void setCapacity(Integer capacity) {
-        Capacity = capacity;
+        this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s", this.number);
     }
 }

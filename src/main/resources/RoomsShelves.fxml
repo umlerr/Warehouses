@@ -10,13 +10,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.Controllers.ContractsController">
-   <TableView fx:id="table" editable="true" layoutX="20.0" layoutY="112.0" prefHeight="413.0" prefWidth="921.0">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.Controllers.RoomsShelvesController">
+   <TableView fx:id="table_shelves" editable="true" layoutX="551.0" layoutY="113.0" prefHeight="413.0" prefWidth="320.0">
       <columns>
-         <TableColumn fx:id="startdate_column" onEditCommit="#editStartDate" prefWidth="183.0" text="StartDate" />
-         <TableColumn fx:id="enddate_column" onEditCommit="#editEndDate" prefWidth="178.0" text="EndDate" />
-         <TableColumn fx:id="number_column" onEditCommit="#editNumber" prefWidth="196.0" text="Number" />
-         <TableColumn fx:id="company_column" minWidth="9.0" onEditCommit="#editCompany" prefWidth="363.0" text="Company" />
+         <TableColumn fx:id="number_column" onEditCommit="#editNumber" prefWidth="98.0" text="Number" />
+         <TableColumn fx:id="capacity_column" onEditCommit="#editCapacity" prefWidth="123.0" text="Capacity" />
+         <TableColumn fx:id="room_column" onEditCommit="#editRoom" prefWidth="98.0" text="Room" />
       </columns>
    </TableView>
    <ChoiceBox fx:id="choice_box" layoutX="807.0" layoutY="73.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#getChoices" prefHeight="25.0" prefWidth="135.0" />
@@ -30,10 +29,16 @@
       <font>
          <Font size="16.0" />
       </font></Hyperlink>
-   <Label fx:id="search_invalid_label1" layoutX="395.0" layoutY="20.0" prefHeight="45.0" prefWidth="171.0" text="CONTRACTS">
+   <Label fx:id="search_invalid_label1" layoutX="360.0" layoutY="20.0" prefHeight="45.0" prefWidth="241.0" text="ROOMS/SHELVES">
       <font>
          <Font size="30.0" />
       </font>
    </Label>
    <Button layoutX="231.0" layoutY="73.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="41.0" text="Add" />
+   <TableView fx:id="table_rooms" editable="true" layoutX="92.0" layoutY="113.0" prefHeight="413.0" prefWidth="320.0">
+      <columns>
+         <TableColumn fx:id="number_column1" onEditCommit="#editNumber" prefWidth="160.0" text="Number" />
+         <TableColumn fx:id="capacity_column1" onEditCommit="#editCapacity" prefWidth="159.0" text="Capacity" />
+      </columns>
+   </TableView>
 </AnchorPane>

@@ -8,10 +8,14 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.umler.warehouses.Converters.CustomIntegerStringConverter;
 import com.umler.warehouses.Helpers.CurrentUser;
 import com.umler.warehouses.Helpers.LocalDateCellFactory;
+import com.umler.warehouses.Helpers.UpdateStatus;
 import com.umler.warehouses.Model.Company;
-import com.umler.warehouses.Model.Contract;
+import com.umler.warehouses.Model.Product;
+import com.umler.warehouses.Model.Product;
+import com.umler.warehouses.Model.Shelf;
 import com.umler.warehouses.Services.CompanyService;
-import com.umler.warehouses.Services.ContractService;
+import com.umler.warehouses.Services.ProductService;
+import com.umler.warehouses.Services.ShelfService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -28,7 +32,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.umler.warehouses.Helpers.UpdateStatus;
 
 import java.awt.*;
 import java.io.*;
@@ -37,42 +40,40 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class ContractsController implements Initializable
+public class ProductsController implements Initializable
 {
+    @FXML
     public Button exit_btn;
-
+    @FXML
     public Button wrap_btn;
     @FXML
     public Hyperlink current_user;
-
+    @FXML
     public Label search_invalid_label1;
-
+    @FXML
+    public TableColumn<Product, String> name_column;
+    @FXML
+    public TableColumn<Product, String> type_column;
+    @FXML
+    public TableColumn<Product, Integer> quantity_column;
+    @FXML
+    public TableColumn<Product, Shelf> shelf_column;
+    @FXML
+    private TableColumn<Product, Company> company_column;
     @FXML
     private ChoiceBox<String> choice_box;
-
     @FXML
-    private TableColumn<Contract, LocalDate> startdate_column;
-
-    @FXML
-    private TableColumn<Contract, LocalDate> enddate_column;
-
-    @FXML
-    private TableColumn<Contract, Integer> number_column;
-
-    @FXML
-    private TableColumn<Contract, Company> company_column;
-
-    @FXML
-    private TableView<Contract> table;
-
+    private TableView<Product> table;
     @FXML
     private TextField search;
 
-    ObservableList<Contract> ContractList = FXCollections.observableArrayList();
+    ObservableList<Product> ProductList = FXCollections.observableArrayList();
 
-    ContractService contractService = new ContractService();
+    ProductService productService = new ProductService();
 
     CompanyService companyService = new CompanyService();
+
+    ShelfService shelfService = new ShelfService();
 
     private static final Logger logger = LoggerFactory.getLogger("Warehouse Logger");
 
@@ -80,10 +81,10 @@ public class ContractsController implements Initializable
     private void add(ActionEvent event) throws IOException {
         logger.debug("adding a room");
 
-        NewWindowController.getNewContractCompanyWindow();
-        if(UpdateStatus.isIsContractCompanyAdded()) {
+        NewWindowController.getNewProductWindow();
+        if(UpdateStatus.isIsProductAdded()) {
             refreshScreen(event);
-            UpdateStatus.setIsContractCompanyAdded(false);
+            UpdateStatus.setIsProductAdded(false);
         }
         logger.info("room added");
     }
@@ -105,7 +106,7 @@ public class ContractsController implements Initializable
         }
     }
 
-    private final String[] choices = {"Contracts","Companies", "Products", "Shelves"};
+    private final String[] choices = {"Products","Contracts","Companies", "Shelves"};
 
     @FXML
     private void getChoices(ActionEvent event) throws IOException {
@@ -117,10 +118,10 @@ public class ContractsController implements Initializable
             logger.info("Choice box Managers selected");
             SceneController.getCompaniesScene(event);
         }
-        if (Objects.equals(choice, "Products"))
+        if (Objects.equals(choice, "Contracts"))
         {
             logger.info("Choice box Managers selected");
-            SceneController.getProductsScene(event);
+            SceneController.getContractsScene(event);
         }
         if (Objects.equals(choice, "Shelves"))
         {
@@ -129,32 +130,32 @@ public class ContractsController implements Initializable
         }
     }
 
-    public void setContractList() {
-        ContractList.clear();
-        ContractList.addAll(contractService.getContracts());
+    public void setProductList() {
+        ProductList.clear();
+        ProductList.addAll(productService.getProducts());
     }
 
-    private ObservableList<Contract> getSortedList() {
-        SortedList<Contract> sortedList = new SortedList<>(getFilteredList());
+    private ObservableList<Product> getSortedList() {
+        SortedList<Product> sortedList = new SortedList<>(getFilteredList());
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         return sortedList;
     }
 
-    private FilteredList<Contract> getFilteredList() {
-        FilteredList<Contract> filteredList = new FilteredList<>(ContractList, b -> true);
+    private FilteredList<Product> getFilteredList() {
+        FilteredList<Product> filteredList = new FilteredList<>(ProductList, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(contract -> {
+                filteredList.setPredicate(product -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if (date_converter(contract.getStartdate().toString()).toLowerCase().contains(lowerCaseFilter)) {
+                    if (product.getName().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (date_converter(contract.getEnddate().toString()).toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (product.getType().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (String.valueOf(contract.getNumber()).toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (String.valueOf(product.getQuantity()).toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else return contract.getCompany().getName().toLowerCase().contains(lowerCaseFilter);
+                    } else return product.getCompany().getName().toLowerCase().contains(lowerCaseFilter);
                 }));
         return filteredList;
     }
@@ -169,9 +170,9 @@ public class ContractsController implements Initializable
     {
         try {
 
-            logger.debug("deleting a contract");
+            logger.debug("deleting a product");
             deleteRows(event);
-            logger.info("contract deleted");
+            logger.info("product deleted");
         }
 
         catch (myDeleteException | IOException myEx){
@@ -192,9 +193,9 @@ public class ContractsController implements Initializable
         int selectedID = table.getSelectionModel().getSelectedIndex();
         if (selectedID == -1) throw new myDeleteException();
         else {
-            ObservableList<Contract> selectedRows = table.getSelectionModel().getSelectedItems();
-            for (Contract contract : selectedRows) {
-                contractService.deleteContract(contract);
+            ObservableList<Product> selectedRows = table.getSelectionModel().getSelectedItems();
+            for (Product product : selectedRows) {
+                productService.deleteProduct(product);
             }
             refreshScreen(event);
         }
@@ -206,11 +207,11 @@ public class ContractsController implements Initializable
         try
         {
 //            logger.debug("saving to file");
-            BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save_contract.csv"));
-            for(Contract companies : ContractList)
+            BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save_product.csv"));
+            for(Product companies : ProductList)
             {
-                writer.write(companies.getStartdate() + ";" + companies.getEnddate() + ";"
-                        + companies.getNumber() + ";" + companies.getCompany().getName());
+                writer.write(companies.getName() + ";" + companies.getType() + ";"
+                        + companies.getQuantity() + ";" + companies.getCompany().getName());
                 writer.newLine();
             }
             writer.close();
@@ -231,42 +232,53 @@ public class ContractsController implements Initializable
     }
 
     @FXML
-    public void editStartDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent)
+    public void editName(TableColumn.CellEditEvent<Product, String> editEvent)
     {
-        Contract selectedContract = table.getSelectionModel().getSelectedItem();
-        selectedContract.setStartdate(editEvent.getNewValue());
-        contractService.updateContract(selectedContract);
+        Product selectedProduct = table.getSelectionModel().getSelectedItem();
+        selectedProduct.setName(editEvent.getNewValue());
+        productService.updateProduct(selectedProduct);
 
         logger.debug("Editing cell");
     }
 
     @FXML
-    public void editEndDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent)
+    public void editType(TableColumn.CellEditEvent<Product, String> editEvent)
     {
-        Contract selectedContract = table.getSelectionModel().getSelectedItem();
-        selectedContract.setEnddate(editEvent.getNewValue());
-        contractService.updateContract(selectedContract);
+        Product selectedProduct = table.getSelectionModel().getSelectedItem();
+        selectedProduct.setType(editEvent.getNewValue());
+        productService.updateProduct(selectedProduct);
 
         logger.debug("Editing cell");
     }
 
     @FXML
-    public void editNumber(TableColumn.CellEditEvent<Contract, Integer> editEvent)
+    public void editQuantity(TableColumn.CellEditEvent<Product, Integer> editEvent)
     {
-        Contract selectedContract = table.getSelectionModel().getSelectedItem();
-        selectedContract.setNumber(editEvent.getNewValue());
-        contractService.updateContract(selectedContract);
+        Product selectedProduct = table.getSelectionModel().getSelectedItem();
+        selectedProduct.setQuantity(editEvent.getNewValue());
+        productService.updateProduct(selectedProduct);
 
         logger.debug("Editing cell");
     }
 
     @FXML
-    public void editCompany(TableColumn.CellEditEvent<Contract, Company> editEvent)
+    public void editShelf(TableColumn.CellEditEvent<Product, Shelf> editEvent)
     {
-        Contract selectedContract = table.getSelectionModel().getSelectedItem();
+        Product selectedProduct = table.getSelectionModel().getSelectedItem();
+        Shelf shelf = editEvent.getNewValue();
+        selectedProduct.setShelf(shelf);
+        productService.updateProduct(selectedProduct);
+
+        logger.debug("Editing cell");
+    }
+
+    @FXML
+    public void editCompany(TableColumn.CellEditEvent<Product, Company> editEvent)
+    {
+        Product selectedProduct = table.getSelectionModel().getSelectedItem();
         Company company = editEvent.getNewValue();
-        selectedContract.setCompany(company);
-        contractService.updateContract(selectedContract);
+        selectedProduct.setCompany(company);
+        productService.updateProduct(selectedProduct);
 
         logger.debug("Editing cell");
     }
@@ -277,31 +289,34 @@ public class ContractsController implements Initializable
         try {
 //            logger.debug("Saving to PDF");
             Document my_pdf_report = new Document();
-            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report_contracts.pdf"));
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report_products.pdf"));
             my_pdf_report.open();
 
-            PdfPTable my_report_table = new PdfPTable(4);
+            PdfPTable my_report_table = new PdfPTable(5);
 
             PdfPCell table_cell;
             my_report_table.setHeaderRows(1);
 
-            my_report_table.addCell(new PdfPCell(new Phrase("StartDate", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
-            my_report_table.addCell(new PdfPCell(new Phrase("EndDate", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
-            my_report_table.addCell(new PdfPCell(new Phrase("Number", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table.addCell(new PdfPCell(new Phrase("Name", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table.addCell(new PdfPCell(new Phrase("Type", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table.addCell(new PdfPCell(new Phrase("Quantity", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table.addCell(new PdfPCell(new Phrase("Shelf", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
             my_report_table.addCell(new PdfPCell(new Phrase("Company", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
 
 
-            if (ContractList.isEmpty()) throw new MyPDFException();
+            if (ProductList.isEmpty()) throw new MyPDFException();
 
-            for(Contract contracts : ContractList)
+            for(Product products : ProductList)
             {
-                table_cell=new PdfPCell(new Phrase(String.valueOf(contracts.getStartdate())));
+                table_cell=new PdfPCell(new Phrase(products.getName()));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(String.valueOf(contracts.getEnddate())));
+                table_cell=new PdfPCell(new Phrase(products.getType()));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(contracts.getNumber()));
+                table_cell=new PdfPCell(new Phrase(products.getQuantity()));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(contracts.getCompany().getName()));
+                table_cell=new PdfPCell(new Phrase(products.getShelf().getNumber()));
+                my_report_table.addCell(table_cell);
+                table_cell=new PdfPCell(new Phrase(products.getCompany().getName()));
                 my_report_table.addCell(table_cell);
             }
             my_pdf_report.add(my_report_table);
@@ -331,7 +346,7 @@ public class ContractsController implements Initializable
     }
 
     void refreshScreen(ActionEvent event) throws IOException {
-        SceneController.getContractsScene(event);
+        SceneController.getProductsScene(event);
     }
 
     @FXML
@@ -346,23 +361,26 @@ public class ContractsController implements Initializable
         current_user.setText("User: " + CurrentUser.getCurrentUser().getName() + " / Change");
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        choice_box.setValue("Contracts");
+        choice_box.setValue("Products");
         choice_box.getItems().addAll(choices);
 
-        setContractList();
+        setProductList();
 
-        startdate_column.setCellValueFactory(new PropertyValueFactory<>("startdate"));
-        enddate_column.setCellValueFactory(new PropertyValueFactory<>("enddate"));
-        number_column.setCellValueFactory(new PropertyValueFactory<>("number"));
+        name_column.setCellValueFactory(new PropertyValueFactory<>("name"));
+        type_column.setCellValueFactory(new PropertyValueFactory<>("type"));
+        quantity_column.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        shelf_column.setCellValueFactory(new PropertyValueFactory<>("shelf"));
         company_column.setCellValueFactory(new PropertyValueFactory<>("company"));
 
         ObservableList<Company> companiesObservableList = FXCollections.observableArrayList(companyService.getCompanies());
+        ObservableList<Shelf> shelfsObservableList = FXCollections.observableArrayList(shelfService.getShelfs());
 
         table.setEditable(true);
 
-        startdate_column.setCellFactory(new LocalDateCellFactory());
-        enddate_column.setCellFactory(new LocalDateCellFactory());
-        number_column.setCellFactory(TextFieldTableCell.forTableColumn(new CustomIntegerStringConverter()));
+        name_column.setCellFactory(TextFieldTableCell.forTableColumn());
+        type_column.setCellFactory(TextFieldTableCell.forTableColumn());
+        quantity_column.setCellFactory(TextFieldTableCell.forTableColumn(new CustomIntegerStringConverter()));
+        shelf_column.setCellFactory(ChoiceBoxTableCell.forTableColumn(shelfsObservableList));
         company_column.setCellFactory(ChoiceBoxTableCell.forTableColumn(companiesObservableList));
 
         table.setItems(getSortedList());

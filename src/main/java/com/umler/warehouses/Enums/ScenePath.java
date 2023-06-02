@@ -7,7 +7,11 @@ public enum ScenePath {
 
     COMPANIES("/Companies.fxml"),
     CONTRACTS("/Contracts.fxml"),
+    PRODUCTS("/Products.fxml"),
+    ROOMSSHELVES("/RoomsShelves.fxml"),
+    ADDSHELF("/addShelf.fxml"),
     ADDCONTRACTCOMPANY("/addContractCompany.fxml"),
+    ADDPRODUCT("/addProduct.fxml"),
     LOGININFO("/loginInfo.fxml"),
     LOGIN("/login.fxml");
 

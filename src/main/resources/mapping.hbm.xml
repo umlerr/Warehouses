@@ -9,11 +9,14 @@
         <id name="id_room" type="java.lang.Integer" column="id_room" >
             <generator class="identity" />
         </id>
-        <property name="Number">
+        <property name="number">
             <column name="number" />
         </property>
+        <property name="capacity">
+            <column name="capacity" />
+        </property>
 
-        <set name="shelfList" inverse="true" cascade="all-delete-orphan">
+        <set name="shelvesList" inverse="true" cascade="all-delete-orphan">
             <key column="room_id" />
             <one-to-many class="com.umler.warehouses.Model.Shelf" />
         </set>
@@ -24,10 +27,10 @@
         <id name="id_shelf" type="java.lang.Integer" column="id_shelf" >
             <generator class="identity" />
         </id>
-        <property name="Number">
+        <property name="number">
             <column name="number" />
         </property>
-        <property name="Capacity">
+        <property name="capacity">
             <column name="capacity" />
         </property>
 
@@ -43,10 +46,13 @@
         <id name="id_product" type="java.lang.Integer" column="id_product" >
             <generator class="identity" />
         </id>
-        <property name="Name">
+        <property name="name">
             <column name="name" />
         </property>
-        <property name="Type">
+        <property name="quantity">
+            <column name="quantity" />
+        </property>
+        <property name="type">
             <column name="type" />
         </property>
 
@@ -59,16 +65,16 @@
             <generator class="identity" />
         </id>
 
-        <property name="StartDate" >
-            <column name="StartDate" />
+        <property name="startdate" >
+            <column name="startdate" />
         </property>
 
         <property name="number" >
             <column name="number" />
         </property>
 
-        <property name="EndDate" >
-            <column name="EndDate" />
+        <property name="enddate" >
+            <column name="enddate" />
         </property>
 
 
@@ -78,16 +84,16 @@
         <id name="id_company" type="java.lang.Integer" column="id_company" >
             <generator class="identity" />
         </id>
-        <property name="Name">
+        <property name="name">
             <column name="name" />
         </property>
-        <property name="Address">
+        <property name="address">
             <column name="address"/>
         </property>
-        <property name="PhoneNumber">
+        <property name="phoneNumber">
             <column name="phone"/>
         </property>
-        <property name="TIN">
+        <property name="tin">
             <column name="tin"/>
         </property>
 

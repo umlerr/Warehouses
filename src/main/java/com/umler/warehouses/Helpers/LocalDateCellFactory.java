@@ -43,7 +43,7 @@ public class LocalDateCellFactory implements Callback<TableColumn<Contract, Loca
             public void commitEdit(LocalDate newValue) {
                 super.commitEdit(newValue);
                 Contract contract = getTableView().getColumns().get(0).getTableView().getItems().get(getIndex());
-                contract.setStartDate(Date.valueOf(newValue).toLocalDate());
+                contract.setStartdate(Date.valueOf(newValue).toLocalDate());
                 contractService.updateContract(contract);
             }
 

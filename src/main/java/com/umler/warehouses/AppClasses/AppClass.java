@@ -15,16 +15,17 @@ public class AppClass {
         Transaction transaction = session.beginTransaction();
 
         Contract contract = new Contract();
-        contract.setStartDate(LocalDate.of(11,12,1));
-        contract.setEndDate(LocalDate.of(1111,12,1));
+        contract.setStartdate(LocalDate.of(2015,12,1));
+        contract.setEnddate(LocalDate.of(2025,12,1));
+        contract.setNumber(231);
 
 
         Company company = new Company();
 
-        company.setAddress("Professora popova 2");
-        company.setName("Morevolnuetsa.da");
-        company.setPhoneNumber("1234567891");
-        company.setTIN("123456789123");
+        company.setAddress("St.Petersburg, " + "st.Popova, " + "5, " + "194000");
+        company.setName("LETI");
+        company.setPhoneNumber("9959895421");
+        company.setTin("1234567891");
 
 
         Room room = new Room();

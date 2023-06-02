@@ -12,19 +12,28 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_product;
     @Column(name = "name")
-    private String Name;
+    private String name;
     @Column(name = "type")
-    private String Type;
+    private String type;
+    @Column(name = "quantity")
+    private Integer quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "shelf_id")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private Shelf shelf;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "company_id")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private Company company;
+
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 
     public Company getCompany() {
         return company;
@@ -43,19 +52,19 @@ public class Product {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        this.type = type;
     }
 
     public Shelf getShelf() {
@@ -64,5 +73,10 @@ public class Product {
 
     public void setShelf(Shelf shelf) {
         this.shelf = shelf;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s", this.type);
     }
 }

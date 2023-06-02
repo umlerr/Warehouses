@@ -85,7 +85,7 @@ public class CompaniesController implements Initializable
         }
     }
 
-    private final String[] choices = {"Companies","Contracts"};
+    private final String[] choices = {"Companies","Contracts","Products","Shelves"};
 
 
     @FXML
@@ -98,6 +98,16 @@ public class CompaniesController implements Initializable
         {
             logger.info("Choice box Contracts selected");
             SceneController.getContractsScene(event);
+        }
+        if (Objects.equals(choice, "Products"))
+        {
+            logger.info("Choice box Managers selected");
+            SceneController.getProductsScene(event);
+        }
+        if (Objects.equals(choice, "Shelves"))
+        {
+            logger.info("Choice box Managers selected");
+            SceneController.getRoomsShelvesScene(event);
         }
     }
 
@@ -126,7 +136,7 @@ public class CompaniesController implements Initializable
                         return true;
                     } else if (company.getPhoneNumber().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else return company.getTIN().toLowerCase().contains(lowerCaseFilter);
+                    } else return company.getTin().toLowerCase().contains(lowerCaseFilter);
                 }));
         return filteredList;
     }
@@ -179,7 +189,7 @@ public class CompaniesController implements Initializable
             {
                 writer.write(companies.getName() + ";" + companies.getAddress() + ";"
                         + companies.getPhoneNumber() + ";"
-                        + companies.getTIN());
+                        + companies.getTin());
                 writer.newLine();
             }
             writer.close();
@@ -233,7 +243,7 @@ public class CompaniesController implements Initializable
     public void editTIN(TableColumn.CellEditEvent<Company, String> editEvent)
     {
         Company selectedCompany = table.getSelectionModel().getSelectedItem();
-        selectedCompany.setTIN(editEvent.getNewValue());
+        selectedCompany.setTin(editEvent.getNewValue());
         companyService.updateCompany(selectedCompany);
 
         logger.debug("Editing cell");
@@ -268,7 +278,7 @@ public class CompaniesController implements Initializable
                 my_report_table.addCell(table_cell);
                 table_cell=new PdfPCell(new Phrase(companies.getPhoneNumber()));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(companies.getTIN()));
+                table_cell=new PdfPCell(new Phrase(companies.getTin()));
                 my_report_table.addCell(table_cell);
             }
             my_pdf_report.add(my_report_table);
@@ -318,10 +328,10 @@ public class CompaniesController implements Initializable
 
         setCompanyList();
 
-        name_column.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        address_column.setCellValueFactory(new PropertyValueFactory<>("Address"));
-        phone_column.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
-        tin_column.setCellValueFactory(new PropertyValueFactory<>("TIN"));
+        name_column.setCellValueFactory(new PropertyValueFactory<>("name"));
+        address_column.setCellValueFactory(new PropertyValueFactory<>("address"));
+        phone_column.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        tin_column.setCellValueFactory(new PropertyValueFactory<>("tin"));
 
         table.setEditable(true);
 

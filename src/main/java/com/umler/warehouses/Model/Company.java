@@ -14,13 +14,13 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_company;
     @Column(name = "name")
-    private String Name;
+    private String name;
     @Column(name = "address")
-    private String Address;
+    private String address;
     @Column(name = "phone")
-    private String PhoneNumber;
+    private String phoneNumber;
     @Column(name = "tin")
-    private String TIN; // ИНН
+    private String tin; // ИНН
 
 
     @OneToMany(mappedBy = "company", cascade=CascadeType.ALL, orphanRemoval=true)
@@ -31,6 +31,15 @@ public class Company {
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Contract> contractList = new ArrayList<>();
 
+
+    public void addProduct(Product product) {
+        productList.add(product);
+        product.setCompany(this);
+    }
+    public void removeProduct(Contract product) {
+        productList.remove(product);
+        product.setCompany(null);
+    }
 
     public void addContract(Contract contract) {
         contractList.add(contract);
@@ -50,35 +59,35 @@ public class Company {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getTIN() {
-        return TIN;
+    public String getTin() {
+        return tin;
     }
 
-    public void setTIN(String TIN) {
-        this.TIN = TIN;
+    public void setTin(String tin) {
+        this.tin = tin;
     }
 
     public List<Product> getProductList() {
@@ -99,6 +108,6 @@ public class Company {
 
     @Override
     public String toString() {
-        return String.format("%s", this.Name);
+        return String.format("%s", this.name);
     }
 }
