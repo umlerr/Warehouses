@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="239.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.AddControllers.AddRoomController">
+   <children>
+      <Button layoutX="39.0" layoutY="175.0" mnemonicParsing="false" onAction="#saveNewRoomToDb" prefHeight="26.0" prefWidth="55.0" text="Save" />
+      <Button layoutX="147.0" layoutY="175.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="26.0" prefWidth="55.0" text="Close" />
+      <Label layoutX="66.0" layoutY="29.0" text="Add room">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="number_field" layoutX="57.0" layoutY="79.0" prefHeight="25.0" prefWidth="126.0" promptText="Enter room number " />
+      <TextField fx:id="capacity_field" layoutX="57.0" layoutY="123.0" prefHeight="25.0" prefWidth="126.0" promptText="Enter room capacity" />
+   </children>
+</AnchorPane>

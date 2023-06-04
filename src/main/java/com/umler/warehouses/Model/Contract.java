@@ -4,6 +4,8 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Contract")
@@ -25,6 +27,27 @@ public class Contract {
     @JoinColumn(name = "company_id")
     private Company company;
 
+    @OneToMany(mappedBy = "contract", cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    private List<Product> productList = new ArrayList<>();
+
+
+    public void addProduct(Product product) {
+        productList.add(product);
+        product.setContract(this);
+    }
+    public void removeProduct(Product product) {
+        productList.remove(product);
+        product.setContract(null);
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
 
     public Integer getId_contract() {
         return id_contract;
@@ -64,5 +87,10 @@ public class Contract {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s", this.number);
     }
 }

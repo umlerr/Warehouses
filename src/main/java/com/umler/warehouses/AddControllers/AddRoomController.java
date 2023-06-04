@@ -2,10 +2,12 @@ package com.umler.warehouses.AddControllers;
 
 import com.umler.warehouses.Controllers.SceneController;
 import com.umler.warehouses.Helpers.UpdateStatus;
-import com.umler.warehouses.Model.Shelf;
+import com.umler.warehouses.Model.Company;
 import com.umler.warehouses.Model.Room;
-import com.umler.warehouses.Services.ShelfService;
+import com.umler.warehouses.Model.Shelf;
+import com.umler.warehouses.Services.CompanyService;
 import com.umler.warehouses.Services.RoomService;
+import com.umler.warehouses.Services.ShelfService;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,33 +21,27 @@ import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class AddShelfController implements Initializable {
+public class AddRoomController {
 
     @FXML
     public TextField number_field;
     @FXML
     public TextField capacity_field;
-    @FXML
-    public ChoiceBox<Room> room_choicebox;
 
     RoomService roomService = new RoomService();
 
-    ShelfService shelfService = new ShelfService();
-
-
     @FXML
-    private void saveNewShelfToDb(ActionEvent event){
+    private void saveNewRoomToDb(ActionEvent event){
         if (validateInputs()) {
-            Shelf shelf = createShelfFromInput();
+            Room room = createRoomFromInput();
 
-            boolean isSaved = new ShelfService().createShelf(shelf);
+            boolean isSaved = new RoomService().createRoom(room);
             if (isSaved) {
-                UpdateStatus.setIsShelfAdded(true);
+                UpdateStatus.setIsRoomAdded(true);
                 delayWindowClose(event);
             }
         }
@@ -54,9 +50,8 @@ public class AddShelfController implements Initializable {
     private boolean validateInputs() {
         Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Input Error", ButtonType.OK);
         if (number_field.getText().equals("")
-                || capacity_field.getText().equals("")
-                || room_choicebox.getValue() == null) {
-            IOAlert.setContentText("You must fill out the shelf to continue");
+                || capacity_field.getText().equals("")) {
+            IOAlert.setContentText("You must fill out the room to continue");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -65,7 +60,7 @@ public class AddShelfController implements Initializable {
             return false;
         }
         if (!isNumberExist(Integer.valueOf(number_field.getText()))){
-            IOAlert.setContentText("Incorrect input for SHELF NUMBER - SHELF with this number already exists");
+            IOAlert.setContentText("Incorrect input for ROOM NUMBER - A ROOM with this number already exists");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -74,7 +69,7 @@ public class AddShelfController implements Initializable {
             return false;
         }
         if (isNumeric(number_field.getText())){
-            IOAlert.setContentText("Incorrect input for shelf number - you must put a positive number");
+            IOAlert.setContentText("Incorrect input for room number - you must put a positive number");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -82,9 +77,8 @@ public class AddShelfController implements Initializable {
             }
             return false;
         }
-        if(!isRoomFree(room_choicebox.getValue().getNumber()))
-        {
-            IOAlert.setContentText("Not enough space in room to add new shelf!");
+        if (isNumeric(capacity_field.getText())){
+            IOAlert.setContentText("Incorrect input for capacity - you must put a positive number");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -95,26 +89,19 @@ public class AddShelfController implements Initializable {
         return true;
     }
 
-    private Shelf createShelfFromInput() {
-        Shelf shelf = new Shelf();
-        shelf.setNumber(Integer.valueOf(number_field.getText().toLowerCase()));
-        shelf.setCapacity(Integer.valueOf(capacity_field.getText().toLowerCase()));
-        shelf.setRoom(room_choicebox.getValue());
-        return shelf;
-    }
-
     private boolean isNumberExist(Integer number){
-        for (Shelf shelf : shelfService.getShelves()){
-            if (Objects.equals(shelf.getNumber(), number))
+        for (Room rooms : roomService.getRooms()){
+            if (Objects.equals(rooms.getNumber(), number))
                 return false;
         }
         return true;
     }
 
-    private boolean isRoomFree(Integer number){
-        Room room = roomService.getRoom(number);
-        List<Shelf> shelves = room.getShelvesList();
-        return shelves.size() + 1 <= room.getCapacity();
+    private Room createRoomFromInput() {
+        Room room = new Room();
+        room.setNumber(Integer.valueOf(number_field.getText()));
+        room.setCapacity(Integer.valueOf(capacity_field.getText()));
+        return room;
     }
 
     public boolean isNumeric(String str) {
@@ -136,10 +123,4 @@ public class AddShelfController implements Initializable {
         SceneController.close(event);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
-        ObservableList<Room> roomObservableList = FXCollections.observableArrayList(roomService.getRooms());
-        room_choicebox.getItems().addAll(roomObservableList);
-    }
 }

@@ -1,7 +1,9 @@
 package com.umler.warehouses.AddControllers;
 
+import com.umler.warehouses.Helpers.DatePickerCellFactory;
 import com.umler.warehouses.Model.Company;
 import com.umler.warehouses.Model.Contract;
+import com.umler.warehouses.Services.ContractService;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,8 +16,9 @@ import com.umler.warehouses.Controllers.SceneController;
 import com.umler.warehouses.Helpers.UpdateStatus;
 import com.umler.warehouses.Services.CompanyService;
 
-import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -29,7 +32,7 @@ public class AddContractCompanyController implements Initializable {
     @FXML
     public TextField tin_field;
     @FXML
-    public DatePicker enddate_field;
+    public DatePicker enddatepicker;
     @FXML
     public DatePicker startdate_field;
     @FXML
@@ -50,21 +53,42 @@ public class AddContractCompanyController implements Initializable {
     @FXML
     private void saveNewContractCompanyToDb(ActionEvent event){
         if (validateInputs()) {
+            int flag = 0;
             Contract contract = createContractFromInput();
             Company company = createCompanyFromInput();
 
-            company.addContract(contract);
-            contract.setCompany(company);
-
-            boolean isSaved = new CompanyService().createCompany(company);
-            if (isSaved) {
-                UpdateStatus.setIsContractCompanyAdded(true);
-                delayWindowClose(event);
+            List<Company> companies = companyService.getCompanies();
+            for (Company company1 : companies)
+            {
+                if (company1.getTin().equals(company.getTin()) &&
+                        company1.getName().equals(company.getName())
+                        && company1.getPhoneNumber().equals(company.getPhoneNumber())
+                        && company1.getAddress().equals(company.getAddress()))
+                {
+                    flag = 1;
+                    company1.addContract(contract);
+                    boolean isSaved = new ContractService().createContract(contract);
+                    new CompanyService().updateCompany(company1);
+                    if (isSaved) {
+                        UpdateStatus.setIsContractCompanyAdded(true);
+                        delayWindowClose(event);
+                    }
+                }
+            }
+            if (flag == 0)
+            {
+                company.addContract(contract);
+                boolean isSaved = new CompanyService().createCompany(company);
+                if (isSaved) {
+                    UpdateStatus.setIsContractCompanyAdded(true);
+                    delayWindowClose(event);
+                }
             }
         }
     }
 
     private boolean validateInputs() {
+        DatePickerCellFactory enddate_field = new DatePickerCellFactory(enddatepicker);
         Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Input Error", ButtonType.OK);
         if (name_field.getText().equals("")
                 || phone_field.getText().equals("")
@@ -128,6 +152,7 @@ public class AddContractCompanyController implements Initializable {
     }
 
     private Contract createContractFromInput() {
+        DatePickerCellFactory enddate_field = new DatePickerCellFactory(enddatepicker);
         Contract contract = new Contract();
         contract.setStartdate(startdate_field.getValue());
         contract.setEnddate(enddate_field.getValue());
@@ -138,7 +163,7 @@ public class AddContractCompanyController implements Initializable {
     private Company createCompanyFromInput() {
         Company company = new Company();
         company.setName(name_field.getText());
-        company.setAddress(capitalize(city_field.getText().toLowerCase()) + ", st." +
+        company.setAddress(capitalizeAfterDot(capitalize(city_field.getText().toLowerCase())) + ", st." +
                 capitalize(street_field.getText().toLowerCase()) + ", " +
                 building_field.getText() +
                 ", " + index_field.getText());
@@ -154,6 +179,24 @@ public class AddContractCompanyController implements Initializable {
         }
 
         return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+    public static String capitalizeAfterDot(String str) {
+        StringBuilder result = new StringBuilder();
+        boolean capitalizeNext = false;
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (capitalizeNext && Character.isLetter(c)) {
+                result.append(Character.toUpperCase(c));
+                capitalizeNext = false;
+            } else {
+                result.append(c);
+            }
+            if (c == '.') {
+                capitalizeNext = true;
+            }
+        }
+        return result.toString();
     }
 
     @FXML
@@ -241,6 +284,13 @@ public class AddContractCompanyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        startdate_field.setEditable(false);
+        startdate_field.setShowWeekNumbers(false);
+        startdate_field.setStyle("-fx-opacity: 0.9;");
+        startdate_field.setValue(LocalDate.now());
+
+        DatePickerCellFactory enddate_field = new DatePickerCellFactory(enddatepicker);
+
         ObservableList<Company> roomObservableList = FXCollections.observableArrayList(companyService.getCompanies());
         roomObservableList.add(null);
         company_choicebox.getItems().addAll(roomObservableList);

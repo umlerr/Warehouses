@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="Company")
@@ -23,23 +24,10 @@ public class Company {
     private String tin; // ИНН
 
 
-    @OneToMany(mappedBy = "company", cascade=CascadeType.ALL, orphanRemoval=true)
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    private List<Product> productList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "company", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "company", cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Contract> contractList = new ArrayList<>();
 
-
-    public void addProduct(Product product) {
-        productList.add(product);
-        product.setCompany(this);
-    }
-    public void removeProduct(Contract product) {
-        productList.remove(product);
-        product.setCompany(null);
-    }
 
     public void addContract(Contract contract) {
         contractList.add(contract);
@@ -90,14 +78,6 @@ public class Company {
         this.tin = tin;
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
-
     public List<Contract> getContractList() {
         return contractList;
     }
@@ -109,5 +89,22 @@ public class Company {
     @Override
     public String toString() {
         return String.format("%s", this.name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Company company = (Company) o;
+        return
+                Objects.equals(name, company.name) &&
+                Objects.equals(address, company.address) &&
+                Objects.equals(phoneNumber, company.phoneNumber)&&
+                Objects.equals(tin, company.tin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, address, phoneNumber,tin);
     }
 }

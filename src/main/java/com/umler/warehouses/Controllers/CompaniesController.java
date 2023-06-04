@@ -11,6 +11,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.umler.warehouses.Helpers.CurrentUser;
 import com.umler.warehouses.Model.*;
 import com.umler.warehouses.Services.CompanyService;
+import com.umler.warehouses.Services.WarehouseService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -33,13 +34,20 @@ import java.util.ResourceBundle;
 
 public class CompaniesController implements Initializable
 {
+    @FXML
     public Button exit_btn;
 
+    @FXML
     public Button wrap_btn;
+
     @FXML
     public Hyperlink current_user;
 
+    @FXML
     public Label search_invalid_label1;
+
+    @FXML
+    public Button refresh_btn;
 
     @FXML
     private ChoiceBox<String> choice_box;
@@ -61,6 +69,11 @@ public class CompaniesController implements Initializable
 
     @FXML
     private TextField search;
+
+    @FXML
+    public Label fullness_label;
+
+    WarehouseService warehouseService = new WarehouseService();
 
     ObservableList<Company> CompanyList = FXCollections.observableArrayList();
 
@@ -85,7 +98,7 @@ public class CompaniesController implements Initializable
         }
     }
 
-    private final String[] choices = {"Companies","Contracts","Products","Shelves"};
+    private final String[] choices = {"Companies","Contracts","Products","Rooms/Shelves"};
 
 
     @FXML
@@ -104,7 +117,7 @@ public class CompaniesController implements Initializable
             logger.info("Choice box Managers selected");
             SceneController.getProductsScene(event);
         }
-        if (Objects.equals(choice, "Shelves"))
+        if (Objects.equals(choice, "Rooms/Shelves"))
         {
             logger.info("Choice box Managers selected");
             SceneController.getRoomsShelvesScene(event);
@@ -254,10 +267,10 @@ public class CompaniesController implements Initializable
         try {
 //            log.debug("Saving to PDF");
             Document my_pdf_report = new Document();
-            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report.pdf"));
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report_companies.pdf"));
             my_pdf_report.open();
 
-            PdfPTable my_report_table = new PdfPTable(5);
+            PdfPTable my_report_table = new PdfPTable(4);
 
             PdfPCell table_cell;
             my_report_table.setHeaderRows(1);
@@ -307,6 +320,7 @@ public class CompaniesController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    @FXML
     void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getCompaniesScene(event);
     }
@@ -319,6 +333,9 @@ public class CompaniesController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        warehouseService.getFullnessOfWarehouse();
+        fullness_label.setText("Fullness: " + warehouseService.getFullnessOfWarehouse() + "%");
+
         current_user.setVisited(true);
         current_user.setText("User: " + CurrentUser.getCurrentUser().getName() + " / Change");
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);

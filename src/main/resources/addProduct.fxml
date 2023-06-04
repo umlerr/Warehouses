@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="363.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.AddControllers.AddProductController">
-   <children>
-      <ChoiceBox fx:id="shelf_choicebox" layoutX="152.0" layoutY="201.0" prefHeight="25.0" prefWidth="187.0" />
-      <Button layoutX="89.0" layoutY="307.0" mnemonicParsing="false" onAction="#saveNewProductToDb" prefHeight="26.0" prefWidth="126.0" text="Save" />
-      <Button layoutX="276.0" layoutY="307.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="26.0" prefWidth="126.0" text="Close" />
-      <Label layoutX="121.0" layoutY="30.0" text="Fill out the product form">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.AddControllers.AddProductController">
+    <children>
+        <ChoiceBox fx:id="shelf_choicebox" layoutX="152.0" layoutY="222.0" prefHeight="25.0" prefWidth="187.0" />
+        <Button layoutX="89.0" layoutY="333.0" mnemonicParsing="false" onAction="#saveNewProductToDb" prefHeight="26.0" prefWidth="126.0" text="Save" />
+        <Button layoutX="276.0" layoutY="333.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="26.0" prefWidth="126.0" text="Close" />
+        <Label layoutX="121.0" layoutY="30.0" text="Fill out the product form">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <TextField fx:id="name_field" layoutX="152.0" layoutY="87.0" prefHeight="25.0" prefWidth="187.0" promptText="Enter product name " />
+        <TextField fx:id="type_field" layoutX="152.0" layoutY="126.0" prefHeight="25.0" prefWidth="187.0" promptText="Enter product type" />
+        <TextField fx:id="quantity_field" layoutX="152.0" layoutY="164.0" prefHeight="25.0" prefWidth="187.0" promptText="Enter product quantity" />
+        <ChoiceBox fx:id="contract_choicebox" layoutX="152.0" layoutY="277.0" prefHeight="25.0" prefWidth="187.0" />
+        <ComboBox fx:id="name_comboBox" layoutX="339.0" layoutY="87.0" onAction="#getChoicesName" prefHeight="25.0" prefWidth="32.0" />
+        <ComboBox fx:id="type_comboBox" layoutX="339.0" layoutY="126.0" onAction="#getChoicesType" prefHeight="25.0" prefWidth="35.0" />
+      <Label layoutX="228.0" layoutY="197.0" text="Shelf">
          <font>
-            <Font size="24.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="name_field" layoutX="152.0" layoutY="87.0" prefHeight="25.0" prefWidth="187.0" promptText="Enter product name " />
-      <TextField fx:id="type_field" layoutX="152.0" layoutY="126.0" prefHeight="25.0" prefWidth="187.0" promptText="Enter product type" />
-      <TextField fx:id="quantity_field" layoutX="152.0" layoutY="164.0" prefHeight="25.0" prefWidth="187.0" promptText="Enter product quantity" />
-      <ChoiceBox fx:id="company_choicebox" layoutX="152.0" layoutY="239.0" prefHeight="25.0" prefWidth="187.0" />
-      <ChoiceBox fx:id="product_choicebox" layoutX="339.0" onAction="#getChoices" layoutY="126.0" prefHeight="25.0" prefWidth="0.0" />
+      <Label layoutX="215.0" layoutY="252.0" text="Contract">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
 
-   </children>
+    </children>
 </AnchorPane>

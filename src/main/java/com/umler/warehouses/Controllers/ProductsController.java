@@ -7,15 +7,14 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.umler.warehouses.Converters.CustomIntegerStringConverter;
 import com.umler.warehouses.Helpers.CurrentUser;
-import com.umler.warehouses.Helpers.LocalDateCellFactory;
 import com.umler.warehouses.Helpers.UpdateStatus;
-import com.umler.warehouses.Model.Company;
-import com.umler.warehouses.Model.Product;
+import com.umler.warehouses.Model.Contract;
 import com.umler.warehouses.Model.Product;
 import com.umler.warehouses.Model.Shelf;
-import com.umler.warehouses.Services.CompanyService;
+import com.umler.warehouses.Services.ContractService;
 import com.umler.warehouses.Services.ProductService;
 import com.umler.warehouses.Services.ShelfService;
+import com.umler.warehouses.Services.WarehouseService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -36,7 +35,7 @@ import org.slf4j.LoggerFactory;
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
-import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -44,6 +43,7 @@ public class ProductsController implements Initializable
 {
     @FXML
     public Button exit_btn;
+
     @FXML
     public Button wrap_btn;
     @FXML
@@ -59,7 +59,9 @@ public class ProductsController implements Initializable
     @FXML
     public TableColumn<Product, Shelf> shelf_column;
     @FXML
-    private TableColumn<Product, Company> company_column;
+    public Button refresh_btn;
+    @FXML
+    private TableColumn<Product, Contract> contract_column;
     @FXML
     private ChoiceBox<String> choice_box;
     @FXML
@@ -67,11 +69,16 @@ public class ProductsController implements Initializable
     @FXML
     private TextField search;
 
+    @FXML
+    public Label fullness_label;
+
+    WarehouseService warehouseService = new WarehouseService();
+
     ObservableList<Product> ProductList = FXCollections.observableArrayList();
 
     ProductService productService = new ProductService();
 
-    CompanyService companyService = new CompanyService();
+    ContractService contractService = new ContractService();
 
     ShelfService shelfService = new ShelfService();
 
@@ -80,7 +87,6 @@ public class ProductsController implements Initializable
     @FXML
     private void add(ActionEvent event) throws IOException {
         logger.debug("adding a room");
-
         NewWindowController.getNewProductWindow();
         if(UpdateStatus.isIsProductAdded()) {
             refreshScreen(event);
@@ -106,7 +112,7 @@ public class ProductsController implements Initializable
         }
     }
 
-    private final String[] choices = {"Products","Contracts","Companies", "Shelves"};
+    private final String[] choices = {"Products","Companies", "Contracts", "Rooms/Shelves"};
 
     @FXML
     private void getChoices(ActionEvent event) throws IOException {
@@ -123,7 +129,7 @@ public class ProductsController implements Initializable
             logger.info("Choice box Managers selected");
             SceneController.getContractsScene(event);
         }
-        if (Objects.equals(choice, "Shelves"))
+        if (Objects.equals(choice, "Rooms/Shelves"))
         {
             logger.info("Choice box Managers selected");
             SceneController.getRoomsShelvesScene(event);
@@ -155,14 +161,9 @@ public class ProductsController implements Initializable
                         return true;
                     } else if (String.valueOf(product.getQuantity()).toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else return product.getCompany().getName().toLowerCase().contains(lowerCaseFilter);
+                    } else return String.valueOf(product.getContract().getNumber()).toLowerCase().contains(lowerCaseFilter);
                 }));
         return filteredList;
-    }
-
-    private String date_converter(String temp){
-        String[] temp2 = temp.split("-");
-        return temp2[2] + '.' + temp2[1] + '.' + temp2[0];
     }
 
     @FXML
@@ -211,7 +212,7 @@ public class ProductsController implements Initializable
             for(Product companies : ProductList)
             {
                 writer.write(companies.getName() + ";" + companies.getType() + ";"
-                        + companies.getQuantity() + ";" + companies.getCompany().getName());
+                        + companies.getQuantity() + ";" + companies.getContract().getNumber());
                 writer.newLine();
             }
             writer.close();
@@ -255,9 +256,30 @@ public class ProductsController implements Initializable
     public void editQuantity(TableColumn.CellEditEvent<Product, Integer> editEvent)
     {
         Product selectedProduct = table.getSelectionModel().getSelectedItem();
-        selectedProduct.setQuantity(editEvent.getNewValue());
-        productService.updateProduct(selectedProduct);
+        Shelf shelf = selectedProduct.getShelf();
 
+        List<Product> products = shelf.getProductList();
+        Integer fullness = 0;
+        for (Product product : products) {
+            fullness += product.getQuantity();
+        }
+        if (fullness - selectedProduct.getQuantity() + editEvent.getNewValue() <= shelf.getCapacity())
+        {
+            selectedProduct.setQuantity(editEvent.getNewValue());
+            productService.updateProduct(selectedProduct);
+        }
+        else
+        {
+            logger.error("MyAddException");
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "MyAddException", ButtonType.OK);
+            IOAlert.setContentText("MyAddException");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+            table.refresh();
+        }
         logger.debug("Editing cell");
     }
 
@@ -266,18 +288,39 @@ public class ProductsController implements Initializable
     {
         Product selectedProduct = table.getSelectionModel().getSelectedItem();
         Shelf shelf = editEvent.getNewValue();
-        selectedProduct.setShelf(shelf);
-        productService.updateProduct(selectedProduct);
+
+        List<Product> products = shelf.getProductList();
+        Integer fullness = 0;
+        for (Product product : products) {
+            fullness += product.getQuantity();
+        }
+        if (shelf.getCapacity() - fullness - selectedProduct.getQuantity() >= 0)
+        {
+            selectedProduct.setShelf(shelf);
+            productService.updateProduct(selectedProduct);
+        }
+        else
+        {
+            logger.error("MyAddException");
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "MyAddException", ButtonType.OK);
+            IOAlert.setContentText("No space in this shelf try another one / Or click on refresh");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+            table.refresh();
+        }
 
         logger.debug("Editing cell");
     }
 
     @FXML
-    public void editCompany(TableColumn.CellEditEvent<Product, Company> editEvent)
+    public void editContract(TableColumn.CellEditEvent<Product, Contract> editEvent)
     {
         Product selectedProduct = table.getSelectionModel().getSelectedItem();
-        Company company = editEvent.getNewValue();
-        selectedProduct.setCompany(company);
+        Contract contract = editEvent.getNewValue();
+        selectedProduct.setContract(contract);
         productService.updateProduct(selectedProduct);
 
         logger.debug("Editing cell");
@@ -301,22 +344,22 @@ public class ProductsController implements Initializable
             my_report_table.addCell(new PdfPCell(new Phrase("Type", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
             my_report_table.addCell(new PdfPCell(new Phrase("Quantity", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
             my_report_table.addCell(new PdfPCell(new Phrase("Shelf", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
-            my_report_table.addCell(new PdfPCell(new Phrase("Company", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table.addCell(new PdfPCell(new Phrase("Contract", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
 
 
             if (ProductList.isEmpty()) throw new MyPDFException();
 
             for(Product products : ProductList)
             {
-                table_cell=new PdfPCell(new Phrase(products.getName()));
+                table_cell=new PdfPCell(new Phrase(String.valueOf(products.getName())));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(products.getType()));
+                table_cell=new PdfPCell(new Phrase(String.valueOf(products.getType())));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(products.getQuantity()));
+                table_cell=new PdfPCell(new Phrase(String.valueOf(products.getQuantity())));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(products.getShelf().getNumber()));
+                table_cell=new PdfPCell(new Phrase(String.valueOf(products.getShelf().getNumber())));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(products.getCompany().getName()));
+                table_cell=new PdfPCell(new Phrase(String.valueOf(products.getContract().getNumber())));
                 my_report_table.addCell(table_cell);
             }
             my_pdf_report.add(my_report_table);
@@ -345,6 +388,7 @@ public class ProductsController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    @FXML
     void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getProductsScene(event);
     }
@@ -357,6 +401,9 @@ public class ProductsController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        warehouseService.getFullnessOfWarehouse();
+        fullness_label.setText("Fullness: " + warehouseService.getFullnessOfWarehouse() + "%");
+
         current_user.setVisited(true);
         current_user.setText("User: " + CurrentUser.getCurrentUser().getName() + " / Change");
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -370,10 +417,10 @@ public class ProductsController implements Initializable
         type_column.setCellValueFactory(new PropertyValueFactory<>("type"));
         quantity_column.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         shelf_column.setCellValueFactory(new PropertyValueFactory<>("shelf"));
-        company_column.setCellValueFactory(new PropertyValueFactory<>("company"));
+        contract_column.setCellValueFactory(new PropertyValueFactory<>("contract"));
 
-        ObservableList<Company> companiesObservableList = FXCollections.observableArrayList(companyService.getCompanies());
-        ObservableList<Shelf> shelfsObservableList = FXCollections.observableArrayList(shelfService.getShelfs());
+        ObservableList<Contract> contractsObservableList = FXCollections.observableArrayList(contractService.getContracts());
+        ObservableList<Shelf> shelfsObservableList = FXCollections.observableArrayList(shelfService.getShelves());
 
         table.setEditable(true);
 
@@ -381,7 +428,7 @@ public class ProductsController implements Initializable
         type_column.setCellFactory(TextFieldTableCell.forTableColumn());
         quantity_column.setCellFactory(TextFieldTableCell.forTableColumn(new CustomIntegerStringConverter()));
         shelf_column.setCellFactory(ChoiceBoxTableCell.forTableColumn(shelfsObservableList));
-        company_column.setCellFactory(ChoiceBoxTableCell.forTableColumn(companiesObservableList));
+        contract_column.setCellFactory(ChoiceBoxTableCell.forTableColumn(contractsObservableList));
 
         table.setItems(getSortedList());
     }

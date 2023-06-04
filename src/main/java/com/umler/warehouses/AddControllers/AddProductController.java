@@ -1,11 +1,14 @@
 package com.umler.warehouses.AddControllers;
 
 import com.umler.warehouses.Controllers.SceneController;
+import com.umler.warehouses.Helpers.DistinctObservableList;
 import com.umler.warehouses.Helpers.UpdateStatus;
-import com.umler.warehouses.Model.Company;
+import com.umler.warehouses.Helpers.ComboBoxUtil;
+import com.umler.warehouses.Model.Contract;
 import com.umler.warehouses.Model.Product;
+import com.umler.warehouses.Model.Room;
 import com.umler.warehouses.Model.Shelf;
-import com.umler.warehouses.Services.CompanyService;
+import com.umler.warehouses.Services.ContractService;
 import com.umler.warehouses.Services.ProductService;
 import com.umler.warehouses.Services.ShelfService;
 import javafx.animation.PauseTransition;
@@ -17,7 +20,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Duration;
 
+
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -25,7 +30,7 @@ import java.util.ResourceBundle;
 public class AddProductController implements Initializable {
 
     @FXML
-    public ChoiceBox<Company> company_choicebox;
+    public ChoiceBox<Contract> contract_choicebox;
     @FXML
     public ChoiceBox<Shelf> shelf_choicebox;
     @FXML
@@ -35,9 +40,11 @@ public class AddProductController implements Initializable {
     @FXML
     public TextField name_field;
     @FXML
-    public ChoiceBox<Product> product_choicebox;
+    public ComboBox<Product> type_comboBox;
+    @FXML
+    public ComboBox<Product> name_comboBox;
 
-    CompanyService companyService = new CompanyService();
+    ContractService contractService = new ContractService();
     ProductService productService = new ProductService();
     ShelfService shelfService = new ShelfService();
 
@@ -55,8 +62,24 @@ public class AddProductController implements Initializable {
     }
 
     @FXML
-    private void getChoices() {
-        Product product = product_choicebox.getValue();
+    private void getChoicesName() {
+        Product product = name_comboBox.getValue();
+        if (!Objects.equals(product, null))
+        {
+            name_field.setEditable(false);
+            name_field.setStyle("-fx-opacity: 0.7; -fx-background-color: #eee");
+            name_field.setText(product.getName());
+        }
+        else
+        {
+            name_field.setEditable(true);
+            name_field.setStyle(null);
+        }
+    }
+
+    @FXML
+    private void getChoicesType() {
+        Product product = type_comboBox.getValue();
         if (!Objects.equals(product, null))
         {
             type_field.setEditable(false);
@@ -75,8 +98,7 @@ public class AddProductController implements Initializable {
         if (name_field.getText().equals("")
                 || type_field.getText().equals("")
                 || quantity_field.getText().equals("")
-                || shelf_choicebox.getValue() == null
-                || company_choicebox.getValue() == null) {
+                || shelf_choicebox.getValue() == null) {
             IOAlert.setContentText("You must fill out the product to continue");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
@@ -86,8 +108,27 @@ public class AddProductController implements Initializable {
             return false;
         }
 
+        if (contract_choicebox.getValue() == null){
+            IOAlert.setContentText("You must add contract first to add products");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+            return false;
+        }
         if (isNumeric(quantity_field.getText())){
             IOAlert.setContentText("Incorrect input for product number - you must put a positive number");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+            return false;
+        }
+        if(!isShelfFree(shelf_choicebox.getValue().getNumber(), Integer.parseInt(quantity_field.getText())))
+        {
+            IOAlert.setContentText("Not enough space on the shelf to add new product!");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -104,7 +145,7 @@ public class AddProductController implements Initializable {
         product.setType(capitalize(type_field.getText().toLowerCase()));
         product.setQuantity(Integer.valueOf(quantity_field.getText()));
         product.setShelf(shelf_choicebox.getValue());
-        product.setCompany(company_choicebox.getValue());
+        product.setContract(contract_choicebox.getValue());
         return product;
     }
 
@@ -115,6 +156,15 @@ public class AddProductController implements Initializable {
         }
 
         return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+    private boolean isShelfFree(Integer number, Integer quantity){
+        Shelf shelf = shelfService.getShelf(number);
+        List<Product> products = shelf.getProductList();
+        Integer fullness = 0;
+        for (Product product : products) {
+            fullness += product.getQuantity();
+        }
+        return fullness + quantity <= shelf.getCapacity();
     }
     public static boolean isNumeric(String str) {
         try {
@@ -138,11 +188,23 @@ public class AddProductController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        ObservableList<Company> companyObservableList = FXCollections.observableArrayList(companyService.getCompanies());
-        ObservableList<Shelf> shelfObservableList = FXCollections.observableArrayList(shelfService.getShelfs());
+        ObservableList<Contract> contractObservableList = FXCollections.observableArrayList(contractService.getContracts());
+        ObservableList<Shelf> shelfObservableList = FXCollections.observableArrayList(shelfService.getShelves());
+
         ObservableList<Product> productObservableList = FXCollections.observableArrayList(productService.getProducts());
-        product_choicebox.getItems().addAll(productObservableList);
-        company_choicebox.getItems().addAll(companyObservableList);
+
+        DistinctObservableList<Product> distinctListNames = new DistinctObservableList<>(productObservableList);
+        distinctListNames.distinct(Product::getName);
+        DistinctObservableList<Product> distinctListTypes = new DistinctObservableList<>(productObservableList);
+        distinctListTypes.distinct(Product::getType);
+
+        name_comboBox.getItems().addAll(distinctListNames.getFilteredList());
+        type_comboBox.getItems().addAll(distinctListTypes.getFilteredList());
+
+        ComboBoxUtil.configureNameComboBox(name_comboBox);
+        ComboBoxUtil.configureTypeComboBox(type_comboBox);
+
+        contract_choicebox.getItems().addAll(contractObservableList);
         shelf_choicebox.getItems().addAll(shelfObservableList);
     }
 }

@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.Controllers.ContractsController">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.Controllers.ContractsController">
+   <Button fx:id="refresh_btn" layoutX="20.0" layoutY="30.0" mnemonicParsing="false" onAction="#refreshScreen" text="Refresh" />
    <TableView fx:id="table" editable="true" layoutX="20.0" layoutY="112.0" prefHeight="413.0" prefWidth="921.0">
       <columns>
-         <TableColumn fx:id="startdate_column" onEditCommit="#editStartDate" prefWidth="183.0" text="StartDate" />
-         <TableColumn fx:id="enddate_column" onEditCommit="#editEndDate" prefWidth="178.0" text="EndDate" />
+         <TableColumn fx:id="startdate_column" onEditCommit="#editStartDate" prefWidth="180.0" text="StartDate" />
+         <TableColumn fx:id="enddate_column" onEditCommit="#editEndDate" prefWidth="181.0" text="EndDate" />
          <TableColumn fx:id="number_column" onEditCommit="#editNumber" prefWidth="196.0" text="Number" />
          <TableColumn fx:id="company_column" minWidth="9.0" onEditCommit="#editCompany" prefWidth="363.0" text="Company" />
       </columns>
@@ -26,7 +21,7 @@
    <Button layoutX="690.0" layoutY="73.0" mnemonicParsing="false" onAction="#save" text="Save" />
    <Button fx:id="exit_btn" layoutX="910.0" layoutY="30.0" mnemonicParsing="false" onAction="#ExitMainWindow" prefHeight="25.0" prefWidth="31.0" text="×" />
    <Button fx:id="wrap_btn" layoutX="871.0" layoutY="30.0" mnemonicParsing="false" onAction="#WrapMainWindow" prefHeight="25.0" prefWidth="31.0" text="🗕" />
-   <Hyperlink fx:id="current_user" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="69.0" onAction="#changeUser" prefHeight="33.0" prefWidth="191.0" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+   <Hyperlink fx:id="current_user" layoutX="20.0" layoutY="69.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#changeUser" prefHeight="33.0" prefWidth="171.0" textOverrun="CENTER_ELLIPSIS">
       <font>
          <Font size="16.0" />
       </font></Hyperlink>
@@ -36,4 +31,9 @@
       </font>
    </Label>
    <Button layoutX="231.0" layoutY="73.0" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="41.0" text="Add" />
+   <Label fx:id="fullness_label" layoutX="88.0" layoutY="32.0" prefHeight="21.0" prefWidth="91.0">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
 </AnchorPane>

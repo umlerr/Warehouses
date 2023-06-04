@@ -5,6 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.umler.warehouses.Controllers.CompaniesController">
+   <Button fx:id="refresh_btn" layoutX="20.0" layoutY="30.0" mnemonicParsing="false" onAction="#refreshScreen" text="Refresh" />
    <TableView fx:id="table" editable="true" layoutX="20.0" layoutY="112.0" prefHeight="413.0" prefWidth="921.0">
       <columns>
          <TableColumn fx:id="name_column" onEditCommit="#editName" prefWidth="192.0" text="Name" />
@@ -20,13 +21,18 @@
    <Button layoutX="693.0" layoutY="73.0" mnemonicParsing="false" onAction="#save" text="Save" />
    <Button fx:id="exit_btn" layoutX="910.0" layoutY="30.0" mnemonicParsing="false" onAction="#ExitMainWindow" prefHeight="25.0" prefWidth="31.0" text="×" />
    <Button fx:id="wrap_btn" layoutX="871.0" layoutY="30.0" mnemonicParsing="false" onAction="#WrapMainWindow" prefHeight="25.0" prefWidth="31.0" text="🗕" />
-   <Hyperlink fx:id="current_user" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="69.0" onAction="#changeUser" prefHeight="33.0" prefWidth="169.0" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+   <Hyperlink fx:id="current_user" layoutX="20.0" layoutY="69.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#changeUser" prefHeight="33.0" prefWidth="169.0" textOverrun="CENTER_ELLIPSIS">
       <font>
          <Font size="16.0" />
       </font></Hyperlink>
    <Label fx:id="search_invalid_label1" layoutX="396.0" layoutY="20.0" prefHeight="45.0" prefWidth="169.0" text="COMPANIES">
       <font>
          <Font size="30.0" />
+      </font>
+   </Label>
+   <Label fx:id="fullness_label" layoutX="88.0" layoutY="32.0" prefHeight="21.0" prefWidth="91.0">
+      <font>
+         <Font size="14.0" />
       </font>
    </Label>
 </AnchorPane>

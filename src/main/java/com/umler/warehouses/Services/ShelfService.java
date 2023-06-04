@@ -1,6 +1,7 @@
 package com.umler.warehouses.Services;
 
 import com.umler.warehouses.Helpers.HibernateUtil;
+import com.umler.warehouses.Model.Room;
 import com.umler.warehouses.Model.Shelf;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -8,6 +9,7 @@ import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ShelfService {
     public Boolean createShelf(Shelf shelf) {
@@ -54,16 +56,16 @@ public class ShelfService {
         }
     }
 
-    public Shelf getShelf(Long id) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.find(Shelf.class, id);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+    public Shelf getShelf(Integer number) {
+        List<Shelf> shelves = getShelves();
+        for (Shelf shelf : shelves){
+            if (Objects.equals(shelf.getNumber(), number))
+                return shelf;
         }
+        return null;
     }
 
-    public List<Shelf> getShelfs() {
+    public List<Shelf> getShelves() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Shelf ", Shelf.class).list();
         } catch (Exception ex) {

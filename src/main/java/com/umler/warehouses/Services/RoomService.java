@@ -8,6 +8,7 @@ import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RoomService {
     public Boolean createRoom(Room room) {
@@ -54,13 +55,13 @@ public class RoomService {
         }
     }
 
-    public Room getRoom(Long id) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.find(Room.class, id);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+    public Room getRoom(Integer number) {
+        List<Room> t = getRooms();
+        for (Room room : t){
+            if (Objects.equals(room.getNumber(), number))
+                return room;
         }
+        return null;
     }
 
     public List<Room> getRooms() {

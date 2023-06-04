@@ -1,77 +1,48 @@
 package com.umler.warehouses.Services;
 
 
-//import com.umler.warehouses.Model.Warehouse;
 import com.umler.warehouses.Helpers.HibernateUtil;
-
+import com.umler.warehouses.Model.Company;
+import com.umler.warehouses.Model.Product;
+import com.umler.warehouses.Model.Shelf;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class WarehouseService {
-//    public Boolean createWarehouse(Warehouse warehouse) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            transaction = session.beginTransaction();
-//            session.saveOrUpdate(warehouse);
-//            transaction.commit();
-//            return transaction.getStatus() == TransactionStatus.COMMITTED;
-//        } catch (Exception ex) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            ex.printStackTrace();
-//        }
-//        return false;
-//    }
-//
-//    public void updateWarehouse(Warehouse warehouse) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            transaction = session.beginTransaction();
-//            session.update(warehouse);
-//            transaction.commit();
-//        } catch (Exception ex) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            ex.printStackTrace();
-//        }
-//    }
-//
-//    public void deleteWarehouse(Warehouse warehouse) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            transaction = session.beginTransaction();
-//            session.delete(warehouse);
-//            transaction.commit();
-//        } catch (Exception ex) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            ex.printStackTrace();
-//        }
-//    }
-//
-//    public Warehouse getWarehouse(Long id) {
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            return session.find(Warehouse.class, id);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            return null;
-//        }
-//    }
-//
-//    public List<Warehouse> getWarehouses() {
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            return session.createQuery("from Warehouse", Warehouse.class).list();
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            return new ArrayList<>();
-//        }
-//    }
 
+    ShelfService shelfService = new ShelfService();
+
+    ProductService productService = new ProductService();
+
+    public Integer getFullnessOfWarehouse()
+    {
+        try
+        {
+            Integer product_space = 0;
+            Integer warehouseCapacity = 0;
+            List<Shelf> shelves = shelfService.getShelves();
+            List<Product> products = productService.getProducts();
+
+            for (Shelf shelf : shelves) {
+                warehouseCapacity += shelf.getCapacity();
+            }
+
+            for (Product product : products) {
+                product_space += product.getQuantity();
+            }
+
+            return product_space*100/warehouseCapacity;
+        }
+        catch (NullPointerException ex)
+        {
+            System.out.println("NULL" + ex);
+        }
+        return null;
+    }
 }

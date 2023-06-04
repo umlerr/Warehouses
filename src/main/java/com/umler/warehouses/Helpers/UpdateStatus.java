@@ -7,6 +7,7 @@ public final class UpdateStatus {
     private static boolean isProductAdded;
     private static boolean isContractCompanyAdded;
     private static boolean isShelfAdded;
+    private static boolean isRoomAdded;
 
     public static boolean isIsContractCompanyAdded(){
         return isContractCompanyAdded;
@@ -30,5 +31,13 @@ public final class UpdateStatus {
 
     public static void setIsShelfAdded(boolean isShelfAdded) {
         UpdateStatus.isShelfAdded = isShelfAdded;
+    }
+
+    public static boolean isIsRoomAdded(){
+        return isRoomAdded;
+    }
+
+    public static void setIsRoomAdded(boolean isRoomAdded) {
+        UpdateStatus.isRoomAdded = isRoomAdded;
     }
 }

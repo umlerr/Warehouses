@@ -3,6 +3,7 @@ package com.umler.warehouses.Services;
 
 import com.umler.warehouses.Helpers.HibernateUtil;
 import com.umler.warehouses.Model.Company;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -70,7 +71,11 @@ public class CompanyService {
 
     public List<Company> getCompanies() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from Company", Company.class).list();
+            List<Company> companies = session.createQuery("from Company", Company.class).list();
+            for(Company company : companies){
+                Hibernate.initialize(company.getContractList());
+            }
+            return companies;
         } catch (Exception ex) {
             ex.printStackTrace();
             return new ArrayList<>();

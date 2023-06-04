@@ -17,7 +17,7 @@ public class ContractService {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(contract);
+            session.save(contract);
             transaction.commit();
             return transaction.getStatus() == TransactionStatus.COMMITTED;
         } catch (Exception ex) {

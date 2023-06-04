@@ -537,3 +537,32 @@
 {org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-02 14:29:10.175 [ERROR]: Data truncation: Data too long for column 'tin' at row 1
 {org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl} 2023-06-02 17:12:51.833 [ERROR]: Connection leak detected: there are 1 unclosed connections upon shutting down pool jdbc:mysql://localhost:3306/Warehouses
 {org.hibernate.orm.connections.pooling} 2023-06-02 17:12:51.841 [ERROR]: Connection leak detected: there are 1 unclosed connections!
+{Warehouse Logger} 2023-06-02 21:52:54.712 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{Warehouse Logger} 2023-06-02 21:52:56.854 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{Warehouse Logger} 2023-06-02 21:53:03.233 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{Warehouse Logger} 2023-06-02 21:53:49.338 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{Warehouse Logger} 2023-06-02 21:54:15.062 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{Warehouse Logger} 2023-06-02 21:54:23.048 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{Warehouse Logger} 2023-06-02 21:56:43.340 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{Warehouse Logger} 2023-06-02 21:57:17.645 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl} 2023-06-02 23:33:01.436 [ERROR]: Connection leak detected: there are 1 unclosed connections upon shutting down pool jdbc:mysql://localhost:3306/Warehouses
+{org.hibernate.orm.connections.pooling} 2023-06-02 23:33:01.441 [ERROR]: Connection leak detected: there are 1 unclosed connections!
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-03 00:47:50.973 [ERROR]: Column 'company_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-03 00:53:21.334 [ERROR]: Column 'company_id' cannot be null
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-03 18:57:23.182 [ERROR]: Unknown database 'warehouses'
+{org.hibernate.engine.jdbc.spi.SqlExceptionHelper} 2023-06-03 18:57:25.688 [ERROR]: Unknown database 'warehouses'
+{Warehouse Logger} 2023-06-04 01:19:04.424 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 01:20:21.010 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 01:20:40.664 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 01:21:43.056 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 01:21:55.822 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 01:22:43.045 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 01:22:57.733 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 01:24:28.173 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 01:27:47.568 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 03:57:05.652 [ERROR]: MyDeleteException com.umler.warehouses.Controllers.RoomsShelvesController$myDeleteException: Choose a row to delete
+{Warehouse Logger} 2023-06-04 04:58:33.078 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 04:58:58.341 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 04:59:01.309 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 04:59:23.040 [ERROR]: MyAddException
+{Warehouse Logger} 2023-06-04 04:59:27.955 [ERROR]: MyAddException

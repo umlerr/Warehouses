@@ -19,7 +19,6 @@ public class AppClass {
         contract.setEnddate(LocalDate.of(2025,12,1));
         contract.setNumber(231);
 
-
         Company company = new Company();
 
         company.setAddress("St.Petersburg, " + "st.Popova, " + "5, " + "194000");
@@ -27,9 +26,9 @@ public class AppClass {
         company.setPhoneNumber("9959895421");
         company.setTin("1234567891");
 
-
         Room room = new Room();
         room.setNumber(1);
+        room.setCapacity(100);
 
         Shelf shelf = new Shelf();
         shelf.setNumber(1);
@@ -37,18 +36,20 @@ public class AppClass {
         shelf.setRoom(room);
 
         Product product = new Product();
-        product.setName("Двустороний фалос с моторчиком");
-        product.setType("Вибратор");
-        product.setShelf(shelf);
-        product.setCompany(company);
+        product.setName("DDDD");
+        product.setType("dsadasddas");
 
+        product.setShelf(shelf);
+        product.setContract(contract);
 
         contract.setCompany(company);
         shelf.setRoom(room);
-        product.setShelf(shelf);
-        product.setCompany(company);
 
+        User user = new User();
+        user.setName("1");
+        user.setPassword("1");
 
+        session.save(user);
         session.save(company);
         session.save(contract);
         session.save(room);

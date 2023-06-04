@@ -23,8 +23,8 @@ public class Product {
     private Shelf shelf;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
+    @JoinColumn(name = "contract_id")
+    private Contract contract;
 
 
     public Integer getQuantity() {
@@ -35,12 +35,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Company getCompany() {
-        return company;
+    public Contract getContract() {
+        return contract;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setContract(Contract contract) {
+        this.contract = contract;
     }
 
     public Integer getId_product() {
@@ -75,8 +75,4 @@ public class Product {
         this.shelf = shelf;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s", this.type);
-    }
 }

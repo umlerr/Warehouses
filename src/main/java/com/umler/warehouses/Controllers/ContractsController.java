@@ -6,12 +6,12 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.umler.warehouses.Converters.CustomIntegerStringConverter;
-import com.umler.warehouses.Helpers.CurrentUser;
-import com.umler.warehouses.Helpers.LocalDateCellFactory;
+import com.umler.warehouses.Helpers.*;
 import com.umler.warehouses.Model.Company;
 import com.umler.warehouses.Model.Contract;
 import com.umler.warehouses.Services.CompanyService;
 import com.umler.warehouses.Services.ContractService;
+import com.umler.warehouses.Services.WarehouseService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -28,7 +28,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.umler.warehouses.Helpers.UpdateStatus;
 
 import java.awt.*;
 import java.io.*;
@@ -39,13 +38,24 @@ import java.util.ResourceBundle;
 
 public class ContractsController implements Initializable
 {
+
+    @FXML
     public Button exit_btn;
 
+    @FXML
     public Button wrap_btn;
+
     @FXML
     public Hyperlink current_user;
 
+    @FXML
     public Label search_invalid_label1;
+
+    @FXML
+    public Button refresh_btn;
+
+    @FXML
+    public Label fullness_label;
 
     @FXML
     private ChoiceBox<String> choice_box;
@@ -73,6 +83,8 @@ public class ContractsController implements Initializable
     ContractService contractService = new ContractService();
 
     CompanyService companyService = new CompanyService();
+
+    WarehouseService warehouseService = new WarehouseService();
 
     private static final Logger logger = LoggerFactory.getLogger("Warehouse Logger");
 
@@ -105,7 +117,7 @@ public class ContractsController implements Initializable
         }
     }
 
-    private final String[] choices = {"Contracts","Companies", "Products", "Shelves"};
+    private final String[] choices = {"Contracts","Companies", "Products", "Rooms/Shelves"};
 
     @FXML
     private void getChoices(ActionEvent event) throws IOException {
@@ -122,7 +134,7 @@ public class ContractsController implements Initializable
             logger.info("Choice box Managers selected");
             SceneController.getProductsScene(event);
         }
-        if (Objects.equals(choice, "Shelves"))
+        if (Objects.equals(choice, "Rooms/Shelves"))
         {
             logger.info("Choice box Managers selected");
             SceneController.getRoomsShelvesScene(event);
@@ -231,9 +243,9 @@ public class ContractsController implements Initializable
     }
 
     @FXML
-    public void editStartDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent)
-    {
+    public void editStartDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent) {
         Contract selectedContract = table.getSelectionModel().getSelectedItem();
+        System.out.println(editEvent.getNewValue());
         selectedContract.setStartdate(editEvent.getNewValue());
         contractService.updateContract(selectedContract);
 
@@ -299,7 +311,7 @@ public class ContractsController implements Initializable
                 my_report_table.addCell(table_cell);
                 table_cell=new PdfPCell(new Phrase(String.valueOf(contracts.getEnddate())));
                 my_report_table.addCell(table_cell);
-                table_cell=new PdfPCell(new Phrase(contracts.getNumber()));
+                table_cell=new PdfPCell(new Phrase(String.valueOf(contracts.getNumber())));
                 my_report_table.addCell(table_cell);
                 table_cell=new PdfPCell(new Phrase(contracts.getCompany().getName()));
                 my_report_table.addCell(table_cell);
@@ -330,7 +342,8 @@ public class ContractsController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
-    void refreshScreen(ActionEvent event) throws IOException {
+    @FXML
+    public void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getContractsScene(event);
     }
 
@@ -342,6 +355,9 @@ public class ContractsController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        warehouseService.getFullnessOfWarehouse();
+        fullness_label.setText("Fullness: " + warehouseService.getFullnessOfWarehouse() + "%");
+
         current_user.setVisited(true);
         current_user.setText("User: " + CurrentUser.getCurrentUser().getName() + " / Change");
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -360,8 +376,8 @@ public class ContractsController implements Initializable
 
         table.setEditable(true);
 
-        startdate_column.setCellFactory(new LocalDateCellFactory());
-        enddate_column.setCellFactory(new LocalDateCellFactory());
+        startdate_column.setCellFactory(new LocalStartDateCellFactory());
+        enddate_column.setCellFactory(new LocalEndDateCellFactory());
         number_column.setCellFactory(TextFieldTableCell.forTableColumn(new CustomIntegerStringConverter()));
         company_column.setCellFactory(ChoiceBoxTableCell.forTableColumn(companiesObservableList));
 

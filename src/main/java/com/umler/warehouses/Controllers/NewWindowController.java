@@ -20,6 +20,11 @@ public class NewWindowController {
         getPopUpWindow(ScenePath.ADDSHELF.getPath());
     }
 
+    public static void getNewRoomWindow() throws IOException {
+        getPopUpWindow(ScenePath.ADDROOM.getPath());
+    }
+
+
     public static void getNewProductWindow() throws IOException {
         getPopUpWindow(ScenePath.ADDPRODUCT.getPath());
     }

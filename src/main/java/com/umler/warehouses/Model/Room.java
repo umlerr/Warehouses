@@ -18,7 +18,7 @@ public class Room {
     @Column(name = "capacity")
     private Integer capacity;
 
-    @OneToMany(mappedBy = "room", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "room", cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Shelf> shelvesList = new ArrayList<>();
 

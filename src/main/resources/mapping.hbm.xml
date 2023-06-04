@@ -57,7 +57,7 @@
         </property>
 
         <many-to-one name="shelf" class="com.umler.warehouses.Model.Shelf" column="shelf_id" />
-        <many-to-one name="company" class="com.umler.warehouses.Model.Company" column="company_id" />
+        <many-to-one name="contract" class="com.umler.warehouses.Model.Contract" column="contract_id" />
     </class>
 
     <class name="com.umler.warehouses.Model.Contract" table="contract">
@@ -77,6 +77,10 @@
             <column name="enddate" />
         </property>
 
+        <set name="productList" inverse="true" cascade="all-delete-orphan">
+            <key column="contract_id" />
+            <one-to-many class="com.umler.warehouses.Model.Product" />
+        </set>
 
     </class>
 
@@ -96,11 +100,6 @@
         <property name="tin">
             <column name="tin"/>
         </property>
-
-        <set name="productList" inverse="true" cascade="all-delete-orphan">
-            <key column="company_id" />
-            <one-to-many class="com.umler.warehouses.Model.Product" />
-        </set>
 
         <set name="contractList" inverse="true" cascade="all-delete-orphan">
             <key column="company_id" />

@@ -3,6 +3,8 @@ package com.umler.warehouses.Model;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,15 +23,15 @@ public class Shelf {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToMany(mappedBy = "shelf", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "shelf", cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    private Set<Product> productList;
+    private List<Product> productList = new ArrayList<>();
 
-    public Set<Product> getProductList() {
+    public List<Product> getProductList() {
         return productList;
     }
 
-    public void setProductList(Set<Product> productList) {
+    public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
 

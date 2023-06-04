@@ -11,6 +11,7 @@ import com.umler.warehouses.Model.Room;
 import com.umler.warehouses.Model.Shelf;
 import com.umler.warehouses.Services.RoomService;
 import com.umler.warehouses.Services.ShelfService;
+import com.umler.warehouses.Services.WarehouseService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -42,13 +43,15 @@ public class RoomsShelvesController implements Initializable
     @FXML
     public Button wrap_btn;
     @FXML
-    public Hyperlink current_user;
-    @FXML
-    public Label search_invalid_label1;
-    @FXML
     public TableColumn<Shelf, Integer> capacity_column;
     @FXML
     public TableColumn<Shelf, Integer> number_column;
+    @FXML
+    public Label search_invalid_label11;
+    @FXML
+    public Label search_invalid_label111;
+    @FXML
+    public Button refresh_btn;
     @FXML
     private TableColumn<Shelf, Room> room_column;
     @FXML
@@ -56,9 +59,24 @@ public class RoomsShelvesController implements Initializable
     @FXML
     private TableView<Shelf> table_shelves;
     @FXML
-    private TextField search;
+    public TableView<Room> table_rooms;
+    @FXML
+    public TableColumn<Room, Integer> roomnumber_column;
+    @FXML
+    public TableColumn<Room, Integer> roomcapacity_column;
+    @FXML
+    private TextField searchRoom;
+    @FXML
+    private TextField searchShelves;
+
+    @FXML
+    public Label fullness_label;
+
+    WarehouseService warehouseService = new WarehouseService();
 
     ObservableList<Shelf> ShelfList = FXCollections.observableArrayList();
+
+    ObservableList<Room> RoomList = FXCollections.observableArrayList();
 
     ShelfService shelfService = new ShelfService();
 
@@ -66,18 +84,6 @@ public class RoomsShelvesController implements Initializable
 
 
     private static final Logger logger = LoggerFactory.getLogger("Warehouse Logger");
-
-    @FXML
-    private void add(ActionEvent event) throws IOException {
-        logger.debug("adding a room");
-
-        NewWindowController.getNewShelfWindow();
-        if(UpdateStatus.isIsShelfAdded()) {
-            refreshScreen(event);
-            UpdateStatus.setIsShelfAdded(false);
-        }
-        logger.info("room added");
-    }
 
 
     static class MyPDFException extends Exception
@@ -96,7 +102,7 @@ public class RoomsShelvesController implements Initializable
         }
     }
 
-    private final String[] choices = {"Shelves","Contracts","Companies", "Products"};
+    private final String[] choices = {"Rooms/Shelves","Products","Companies", "Contracts"};
 
     @FXML
     private void getChoices(ActionEvent event) throws IOException {
@@ -120,41 +126,50 @@ public class RoomsShelvesController implements Initializable
         }
     }
 
-    public void setShelfList() {
-        ShelfList.clear();
-        ShelfList.addAll(shelfService.getShelfs());
+    public void setRoomList() {
+        RoomList.clear();
+        RoomList.addAll(roomService.getRooms());
     }
 
-    private ObservableList<Shelf> getSortedList() {
-        SortedList<Shelf> sortedList = new SortedList<>(getFilteredList());
-        sortedList.comparatorProperty().bind(table_shelves.comparatorProperty());
+    private ObservableList<Room> getRoomsSortedList() {
+        SortedList<Room> sortedList = new SortedList<>(getRoomsFilteredList());
+        sortedList.comparatorProperty().bind(table_rooms.comparatorProperty());
         return sortedList;
     }
 
-    private FilteredList<Shelf> getFilteredList() {
-        FilteredList<Shelf> filteredList = new FilteredList<>(ShelfList, b -> true);
-        search.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(shelf -> {
+    private FilteredList<Room> getRoomsFilteredList() {
+        FilteredList<Room> filteredList = new FilteredList<>(RoomList, b -> true);
+        searchRoom.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(room -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if (String.valueOf(shelf.getNumber()).toLowerCase().contains(lowerCaseFilter)) {
+                    if (String.valueOf(room.getNumber()).toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (String.valueOf(shelf.getCapacity()).toLowerCase().contains(lowerCaseFilter)) {
-                        return true;
-                    } else return String.valueOf(shelf.getRoom().getNumber()).toLowerCase().contains(lowerCaseFilter);
+                    } else return (String.valueOf(room.getCapacity()).toLowerCase().contains(lowerCaseFilter));
                 }));
         return filteredList;
     }
 
     @FXML
-    private void delete(ActionEvent event)
+    private void addRoom(ActionEvent event) throws IOException {
+        logger.debug("adding a room");
+
+        NewWindowController.getNewRoomWindow();
+        if(UpdateStatus.isIsRoomAdded()) {
+            refreshScreen(event);
+            UpdateStatus.setIsRoomAdded(false);
+        }
+        logger.info("room added");
+    }
+
+    @FXML
+    private void deleteRooms(ActionEvent event)
     {
         try {
-
             logger.debug("deleting a shelf");
-            deleteRows(event);
+            deleteRoomRows(event);
             logger.info("shelf deleted");
         }
 
@@ -170,8 +185,166 @@ public class RoomsShelvesController implements Initializable
             }
         }
     }
+    private void deleteRoomRows(ActionEvent event) throws myDeleteException, IOException {
+        int selectedID = table_rooms.getSelectionModel().getSelectedIndex();
+        if (selectedID == -1) throw new myDeleteException();
+        else {
+            ObservableList<Room> selectedRows = table_rooms.getSelectionModel().getSelectedItems();
+            for (Room room : selectedRows) {
+                roomService.deleteRoom(room);
+            }
+            refreshScreen(event);
+        }
+    }
 
-    private void deleteRows(ActionEvent event) throws myDeleteException, IOException {
+    @FXML
+    private void saveRooms()
+    {
+        try
+        {
+//            logger.debug("saving to file");
+            BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save_rooms.csv"));
+            for(Room room : RoomList)
+            {
+                writer.write(room.getNumber() + ";" + room.getCapacity());
+                writer.newLine();
+            }
+            writer.close();
+            Desktop.getDesktop().open(new File("saves"));
+//            logger.info("saved to file");
+        }
+        catch (IOException e)
+        {
+//            logger.warn("Exception " + e);
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Error!", ButtonType.OK);
+            IOAlert.setContentText("Error");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+        }
+    }
+
+    @FXML
+    public void editRoomNumber(TableColumn.CellEditEvent<Room, Integer> editEvent)
+    {
+        Room selectedRoom = table_rooms.getSelectionModel().getSelectedItem();
+        selectedRoom.setNumber(editEvent.getNewValue());
+        roomService.updateRoom(selectedRoom);
+
+        logger.debug("Editing cell");
+    }
+
+    @FXML
+    public void editRoomCapacity(TableColumn.CellEditEvent<Room, Integer> editEvent)
+    {
+        Room selectedRoom = table_rooms.getSelectionModel().getSelectedItem();
+        selectedRoom.setCapacity(editEvent.getNewValue());
+        roomService.updateRoom(selectedRoom);
+
+        logger.debug("Editing cell");
+    }
+
+    @FXML
+    public void toPDFRooms(ActionEvent event) throws IOException {
+        try {
+            Document my_pdf_report1 = new Document();
+            PdfWriter.getInstance(my_pdf_report1, new FileOutputStream("report_rooms.pdf"));
+            my_pdf_report1.open();
+
+            PdfPTable my_report_table_rooms = new PdfPTable(2);
+
+            PdfPCell table_rooms_cell;
+            my_report_table_rooms.setHeaderRows(2);
+
+            my_report_table_rooms.addCell(new PdfPCell(new Phrase("Number", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+            my_report_table_rooms.addCell(new PdfPCell(new Phrase("Capacity", FontFactory.getFont(FontFactory.COURIER, 16, Font.BOLD))));
+
+
+            if (RoomList.isEmpty()) throw new MyPDFException();
+
+            for(Room rooms : RoomList)
+            {
+                table_rooms_cell=new PdfPCell(new Phrase(String.valueOf(rooms.getNumber())));
+                my_report_table_rooms.addCell(table_rooms_cell);
+                table_rooms_cell=new PdfPCell(new Phrase(String.valueOf(rooms.getCapacity())));
+                my_report_table_rooms.addCell(table_rooms_cell);
+            }
+            my_pdf_report1.add(my_report_table_rooms);
+            my_pdf_report1.close();
+
+        }
+        catch (FileNotFoundException | DocumentException | MyPDFException e)
+        {
+//            logger.warn("Exception " + e);
+            e.printStackTrace();
+        }
+        refreshScreen(event);
+    }
+
+    public void setShelfList() {
+        ShelfList.clear();
+        ShelfList.addAll(shelfService.getShelves());
+    }
+
+    private ObservableList<Shelf> getShelvesSortedList() {
+        SortedList<Shelf> sortedList = new SortedList<>(getShelvesFilteredList());
+        sortedList.comparatorProperty().bind(table_shelves.comparatorProperty());
+        return sortedList;
+    }
+
+    private FilteredList<Shelf> getShelvesFilteredList() {
+        FilteredList<Shelf> filteredList = new FilteredList<>(ShelfList, b -> true);
+        searchShelves.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(shelf -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (String.valueOf(shelf.getNumber()).toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    } else if (String.valueOf(shelf.getCapacity()).toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    } else return String.valueOf(shelf.getRoom().getNumber()).toLowerCase().contains(lowerCaseFilter);
+                }));
+        return filteredList;
+    }
+
+    @FXML
+    private void addShelves(ActionEvent event) throws IOException {
+        logger.debug("adding a shelf");
+
+        NewWindowController.getNewShelfWindow();
+        if(UpdateStatus.isIsShelfAdded()) {
+            refreshScreen(event);
+            UpdateStatus.setIsShelfAdded(false);
+        }
+        logger.info("room shelf");
+    }
+
+    @FXML
+    private void deleteShelves(ActionEvent event)
+    {
+        try {
+            logger.debug("deleting a shelf");
+            deleteShelveRows(event);
+            logger.info("shelf deleted");
+        }
+
+        catch (myDeleteException | IOException myEx){
+
+            logger.error("MyDeleteException " + myEx);
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, myEx.getMessage(), ButtonType.OK);
+            IOAlert.setContentText(myEx.getMessage());
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+        }
+    }
+    private void deleteShelveRows(ActionEvent event) throws myDeleteException, IOException {
 
         int selectedID = table_shelves.getSelectionModel().getSelectedIndex();
         if (selectedID == -1) throw new myDeleteException();
@@ -183,9 +356,8 @@ public class RoomsShelvesController implements Initializable
             refreshScreen(event);
         }
     }
-
     @FXML
-    private void save()
+    private void saveShelves()
     {
         try
         {
@@ -213,9 +385,8 @@ public class RoomsShelvesController implements Initializable
             }
         }
     }
-
     @FXML
-    public void editNumber(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
+    public void editShelfNumber(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
     {
         Shelf selectedShelf = table_shelves.getSelectionModel().getSelectedItem();
         selectedShelf.setNumber(editEvent.getNewValue());
@@ -225,7 +396,7 @@ public class RoomsShelvesController implements Initializable
     }
 
     @FXML
-    public void editCapacity(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
+    public void editShelfCapacity(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
     {
         Shelf selectedShelf = table_shelves.getSelectionModel().getSelectedItem();
         selectedShelf.setCapacity(editEvent.getNewValue());
@@ -246,7 +417,7 @@ public class RoomsShelvesController implements Initializable
     }
 
     @FXML
-    public void toPDF(ActionEvent event) throws IOException {
+    public void toPDFShelves(ActionEvent event) throws IOException {
         try {
 //            logger.debug("Saving to PDF");
             Document my_pdf_report = new Document();
@@ -267,11 +438,11 @@ public class RoomsShelvesController implements Initializable
 
             for(Shelf shelfs : ShelfList)
             {
-                table_shelves_cell=new PdfPCell(new Phrase(shelfs.getNumber()));
+                table_shelves_cell=new PdfPCell(new Phrase(String.valueOf(shelfs.getNumber())));
                 my_report_table_shelves.addCell(table_shelves_cell);
-                table_shelves_cell=new PdfPCell(new Phrase(shelfs.getCapacity()));
+                table_shelves_cell=new PdfPCell(new Phrase(String.valueOf(shelfs.getCapacity())));
                 my_report_table_shelves.addCell(table_shelves_cell);
-                table_shelves_cell=new PdfPCell(new Phrase(shelfs.getRoom().getNumber()));
+                table_shelves_cell=new PdfPCell(new Phrase(String.valueOf(shelfs.getRoom().getNumber())));
                 my_report_table_shelves.addCell(table_shelves_cell);
             }
             my_pdf_report.add(my_report_table_shelves);
@@ -285,6 +456,7 @@ public class RoomsShelvesController implements Initializable
         }
         refreshScreen(event);
     }
+
 
     public void ExitMainWindow() {
 
@@ -300,6 +472,7 @@ public class RoomsShelvesController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    @FXML
     void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getRoomsShelvesScene(event);
     }
@@ -312,18 +485,23 @@ public class RoomsShelvesController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        current_user.setVisited(true);
-        current_user.setText("User: " + CurrentUser.getCurrentUser().getName() + " / Change");
+        warehouseService.getFullnessOfWarehouse();
+        fullness_label.setText("Fullness: " + warehouseService.getFullnessOfWarehouse() + "%");
+
         table_shelves.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        choice_box.setValue("Shelves");
+        choice_box.setValue("Rooms/Shelves");
         choice_box.getItems().addAll(choices);
 
         setShelfList();
+        setRoomList();
 
         number_column.setCellValueFactory(new PropertyValueFactory<>("number"));
         capacity_column.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         room_column.setCellValueFactory(new PropertyValueFactory<>("room"));
+
+        roomnumber_column.setCellValueFactory(new PropertyValueFactory<>("number"));
+        roomcapacity_column.setCellValueFactory(new PropertyValueFactory<>("capacity"));
 
         ObservableList<Room> roomsObservableList = FXCollections.observableArrayList(roomService.getRooms());
 
@@ -333,7 +511,11 @@ public class RoomsShelvesController implements Initializable
         capacity_column.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         room_column.setCellFactory(ChoiceBoxTableCell.forTableColumn(roomsObservableList));
 
-        table_shelves.setItems(getSortedList());
+        roomnumber_column.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        roomcapacity_column.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+        table_shelves.setItems(getShelvesSortedList());
+        table_rooms.setItems(getRoomsSortedList());
     }
 }
 
