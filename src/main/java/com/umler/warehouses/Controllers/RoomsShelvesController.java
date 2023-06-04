@@ -5,8 +5,8 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.umler.warehouses.Helpers.CurrentUser;
 import com.umler.warehouses.Helpers.UpdateStatus;
+import com.umler.warehouses.Model.Product;
 import com.umler.warehouses.Model.Room;
 import com.umler.warehouses.Model.Shelf;
 import com.umler.warehouses.Services.RoomService;
@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -126,7 +127,7 @@ public class RoomsShelvesController implements Initializable
         }
     }
 
-    public void setRoomList() {
+    private void setRoomList() {
         RoomList.clear();
         RoomList.addAll(roomService.getRooms());
     }
@@ -227,7 +228,7 @@ public class RoomsShelvesController implements Initializable
     }
 
     @FXML
-    public void editRoomNumber(TableColumn.CellEditEvent<Room, Integer> editEvent)
+    private void editRoomNumber(TableColumn.CellEditEvent<Room, Integer> editEvent)
     {
         Room selectedRoom = table_rooms.getSelectionModel().getSelectedItem();
         selectedRoom.setNumber(editEvent.getNewValue());
@@ -237,7 +238,7 @@ public class RoomsShelvesController implements Initializable
     }
 
     @FXML
-    public void editRoomCapacity(TableColumn.CellEditEvent<Room, Integer> editEvent)
+    private void editRoomCapacity(TableColumn.CellEditEvent<Room, Integer> editEvent)
     {
         Room selectedRoom = table_rooms.getSelectionModel().getSelectedItem();
         selectedRoom.setCapacity(editEvent.getNewValue());
@@ -247,7 +248,7 @@ public class RoomsShelvesController implements Initializable
     }
 
     @FXML
-    public void toPDFRooms(ActionEvent event) throws IOException {
+    private void toPDFRooms(ActionEvent event) throws IOException {
         try {
             Document my_pdf_report1 = new Document();
             PdfWriter.getInstance(my_pdf_report1, new FileOutputStream("report_rooms.pdf"));
@@ -283,7 +284,7 @@ public class RoomsShelvesController implements Initializable
         refreshScreen(event);
     }
 
-    public void setShelfList() {
+    private void setShelfList() {
         ShelfList.clear();
         ShelfList.addAll(shelfService.getShelves());
     }
@@ -386,7 +387,7 @@ public class RoomsShelvesController implements Initializable
         }
     }
     @FXML
-    public void editShelfNumber(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
+    private void editShelfNumber(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
     {
         Shelf selectedShelf = table_shelves.getSelectionModel().getSelectedItem();
         selectedShelf.setNumber(editEvent.getNewValue());
@@ -396,17 +397,39 @@ public class RoomsShelvesController implements Initializable
     }
 
     @FXML
-    public void editShelfCapacity(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
+    private void editShelfCapacity(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
     {
         Shelf selectedShelf = table_shelves.getSelectionModel().getSelectedItem();
-        selectedShelf.setCapacity(editEvent.getNewValue());
-        shelfService.updateShelf(selectedShelf);
+        Integer product_space = 0;
+        List<Product> products = selectedShelf.getProductList();
+
+        for(Product product : products)
+        {
+            product_space += product.getQuantity();
+        }
+        if (editEvent.getNewValue() >= product_space)
+        {
+            selectedShelf.setCapacity(editEvent.getNewValue());
+            shelfService.updateShelf(selectedShelf);
+        }
+        else
+        {
+            logger.error("MyAddException");
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "MyAddException", ButtonType.OK);
+            IOAlert.setContentText("You can't put this capacity products occupy much more space / Retry!");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+            table_shelves.refresh();
+        }
 
         logger.debug("Editing cell");
     }
 
     @FXML
-    public void editRoom(TableColumn.CellEditEvent<Shelf, Room> editEvent)
+    private void editRoom(TableColumn.CellEditEvent<Shelf, Room> editEvent)
     {
         Shelf selectedShelf = table_shelves.getSelectionModel().getSelectedItem();
         Room room = editEvent.getNewValue();
@@ -417,7 +440,7 @@ public class RoomsShelvesController implements Initializable
     }
 
     @FXML
-    public void toPDFShelves(ActionEvent event) throws IOException {
+    private void toPDFShelves(ActionEvent event) throws IOException {
         try {
 //            logger.debug("Saving to PDF");
             Document my_pdf_report = new Document();
@@ -473,13 +496,8 @@ public class RoomsShelvesController implements Initializable
     }
 
     @FXML
-    void refreshScreen(ActionEvent event) throws IOException {
+    private void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getRoomsShelvesScene(event);
-    }
-
-    @FXML
-    public void changeUser(ActionEvent event) throws IOException {
-        SceneController.getLoginScene(event);
     }
 
     @Override

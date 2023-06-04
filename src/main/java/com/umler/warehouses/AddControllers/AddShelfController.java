@@ -117,7 +117,7 @@ public class AddShelfController implements Initializable {
         return shelves.size() + 1 <= room.getCapacity();
     }
 
-    public boolean isNumeric(String str) {
+    private boolean isNumeric(String str) {
         try {
             return Double.parseDouble(str) <= 0;
         } catch(NumberFormatException e){

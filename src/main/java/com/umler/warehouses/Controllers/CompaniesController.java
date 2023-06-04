@@ -124,7 +124,7 @@ public class CompaniesController implements Initializable
         }
     }
 
-    public void setCompanyList() {
+    private void setCompanyList() {
         CompanyList.clear();
         CompanyList.addAll(companyService.getCompanies());
     }
@@ -178,7 +178,6 @@ public class CompaniesController implements Initializable
     }
 
     private void deleteRows(ActionEvent event) throws myDeleteException, IOException {
-
         int selectedID = table.getSelectionModel().getSelectedIndex();
         if (selectedID == -1) throw new myDeleteException();
         else {
@@ -195,8 +194,7 @@ public class CompaniesController implements Initializable
     {
         try
         {
-//            log.debug("saving to file");
-
+            logger.debug("saving to file");
             BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save_company.csv"));
             for(Company companies : CompanyList)
             {
@@ -207,11 +205,11 @@ public class CompaniesController implements Initializable
             }
             writer.close();
             Desktop.getDesktop().open(new File("saves"));
-//            log.info("saved to file");
+            logger.info("saved to file");
         }
         catch (IOException e)
         {
-//            log.warn("Exception " + e);
+            logger.warn("Exception " + e);
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Error!", ButtonType.OK);
             IOAlert.setContentText("Error");
             IOAlert.showAndWait();
@@ -223,7 +221,7 @@ public class CompaniesController implements Initializable
     }
 
     @FXML
-    public void editName(TableColumn.CellEditEvent<Company, String> editEvent)
+    private void editName(TableColumn.CellEditEvent<Company, String> editEvent)
     {
         Company selectedCompany = table.getSelectionModel().getSelectedItem();
         selectedCompany.setName(editEvent.getNewValue());
@@ -233,7 +231,7 @@ public class CompaniesController implements Initializable
     }
 
     @FXML
-    public void editAddress(TableColumn.CellEditEvent<Company, String> editEvent)
+    private void editAddress(TableColumn.CellEditEvent<Company, String> editEvent)
     {
         Company selectedCompany = table.getSelectionModel().getSelectedItem();
         selectedCompany.setAddress(editEvent.getNewValue());
@@ -243,27 +241,55 @@ public class CompaniesController implements Initializable
     }
 
     @FXML
-    public void editPhone(TableColumn.CellEditEvent<Company, String> editEvent)
+    private void editPhone(TableColumn.CellEditEvent<Company, String> editEvent)
     {
         Company selectedCompany = table.getSelectionModel().getSelectedItem();
-        selectedCompany.setPhoneNumber(editEvent.getNewValue());
-        companyService.updateCompany(selectedCompany);
-
+        if(editEvent.getNewValue().length() == 10 && editEvent.getNewValue().matches("\\d+"))
+        {
+            selectedCompany.setPhoneNumber(editEvent.getNewValue());
+            companyService.updateCompany(selectedCompany);
+        }
+        else
+        {
+            logger.warn("Editing failing");
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "EditException", ButtonType.OK);
+            IOAlert.setContentText("You must input number witch length 10");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+            table.refresh();
+        }
         logger.debug("Editing cell");
     }
 
     @FXML
-    public void editTIN(TableColumn.CellEditEvent<Company, String> editEvent)
+    private void editTIN(TableColumn.CellEditEvent<Company, String> editEvent)
     {
         Company selectedCompany = table.getSelectionModel().getSelectedItem();
-        selectedCompany.setTin(editEvent.getNewValue());
-        companyService.updateCompany(selectedCompany);
-
+        if(editEvent.getNewValue().length() == 10 && editEvent.getNewValue().matches("\\d+"))
+        {
+            selectedCompany.setTin(editEvent.getNewValue());
+            companyService.updateCompany(selectedCompany);
+        }
+        else
+        {
+            logger.warn("Editing failing");
+            Alert IOAlert = new Alert(Alert.AlertType.ERROR, "EditException", ButtonType.OK);
+            IOAlert.setContentText("You must input number witch length 10");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+            table.refresh();
+        }
         logger.debug("Editing cell");
     }
 
     @FXML
-    public void toPDF(ActionEvent event) throws IOException {
+    private void toPDF(ActionEvent event) throws IOException {
         try {
 //            log.debug("Saving to PDF");
             Document my_pdf_report = new Document();
@@ -321,12 +347,12 @@ public class CompaniesController implements Initializable
     }
 
     @FXML
-    void refreshScreen(ActionEvent event) throws IOException {
+    private void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getCompaniesScene(event);
     }
 
     @FXML
-    public void changeUser(ActionEvent event) throws IOException {
+    private void changeUser(ActionEvent event) throws IOException {
         SceneController.getLoginScene(event);
     }
 

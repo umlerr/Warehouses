@@ -7,7 +7,7 @@ import javafx.util.StringConverter;
 
 public class ComboBoxUtil {
     public static void configureNameComboBox(ComboBox<Product> nameComboBox) {
-        nameComboBox.setCellFactory(param -> new ListCell<Product>() {
+        nameComboBox.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Product item, boolean empty) {
                 super.updateItem(item, empty);
@@ -19,7 +19,7 @@ public class ComboBoxUtil {
             }
         });
 
-        nameComboBox.setConverter(new StringConverter<Product>() {
+        nameComboBox.setConverter(new StringConverter<>() {
             @Override
             public String toString(Product product) {
                 return product == null ? "" : product.getName();
@@ -33,7 +33,7 @@ public class ComboBoxUtil {
     }
 
     public static void configureTypeComboBox(ComboBox<Product> typeComboBox) {
-        typeComboBox.setCellFactory(param -> new ListCell<Product>() {
+        typeComboBox.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Product item, boolean empty) {
                 super.updateItem(item, empty);
@@ -45,7 +45,7 @@ public class ComboBoxUtil {
             }
         });
 
-        typeComboBox.setConverter(new StringConverter<Product>() {
+        typeComboBox.setConverter(new StringConverter<>() {
             @Override
             public String toString(Product product) {
                 return product == null ? "" : product.getType();

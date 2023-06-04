@@ -13,7 +13,7 @@ public enum SceneName {
 
     private final String name;
 
-    private SceneName(String name) {
+    SceneName(String name) {
         this.name = name;
     }
 

@@ -7,7 +7,6 @@ import javafx.util.Callback;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class LocalStartDateCellFactory implements Callback<TableColumn<Contract, LocalDate>, TableCell<Contract, LocalDate>> {
     ContractService contractService = new ContractService();
@@ -19,13 +18,11 @@ public class LocalStartDateCellFactory implements Callback<TableColumn<Contract,
 
             {
                 datePicker.editableProperty().set(false);
-                datePicker.setOnAction((e) -> {
-                    commitEdit(datePicker.getValue());
-                });
+                datePicker.setOnAction((e) -> commitEdit(datePicker.getValue()));
                 this.setGraphic(datePicker);
 
                 // задаем диапазон дат для выбора значения EndDate
-                Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+                Callback<DatePicker, DateCell> dayCellFactory = new Callback<>() {
                     @Override
                     public DateCell call(final DatePicker datePicker) {
                         return new DateCell() {
@@ -79,15 +76,12 @@ public class LocalStartDateCellFactory implements Callback<TableColumn<Contract,
                 LocalDate endDate = contract.getStartdate();
                 maxDate = endDate.minusDays(1);
                 Callback<DatePicker, DateCell> dayCellFactory = datePicker.getDayCellFactory();
-                datePicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
-                    @Override
-                    public DateCell call(DatePicker param) {
-                        DateCell cell = dayCellFactory.call(param);
-                        if (cell.getItem().isAfter(maxDate)) {
-                            cell.setDisable(true);
-                        }
-                        return cell;
+                datePicker.setDayCellFactory(param -> {
+                    DateCell cell = dayCellFactory.call(param);
+                    if (cell.getItem().isAfter(maxDate)) {
+                        cell.setDisable(true);
                     }
+                    return cell;
                 });
             }
 

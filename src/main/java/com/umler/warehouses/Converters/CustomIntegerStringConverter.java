@@ -12,7 +12,7 @@ public class CustomIntegerStringConverter extends IntegerStringConverter {
         try {
             return converter.toString(object);
         } catch (NumberFormatException e) {
-            showAlert(e);
+            showAlert();
         }
         return null;
     }
@@ -22,13 +22,12 @@ public class CustomIntegerStringConverter extends IntegerStringConverter {
         try {
             return converter.fromString(string);
         } catch (NumberFormatException e) {
-            showAlert(e);
+            showAlert();
         }
         return -1;
     }
 
-    private void showAlert(Exception e){
-        //log.warn("Exception " + e);
+    private void showAlert(){
         Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Input Error", ButtonType.OK);
         IOAlert.setContentText("Incorrect input, you need to input a number");
         IOAlert.showAndWait();

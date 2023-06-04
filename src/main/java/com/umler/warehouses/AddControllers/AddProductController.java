@@ -6,7 +6,6 @@ import com.umler.warehouses.Helpers.UpdateStatus;
 import com.umler.warehouses.Helpers.ComboBoxUtil;
 import com.umler.warehouses.Model.Contract;
 import com.umler.warehouses.Model.Product;
-import com.umler.warehouses.Model.Room;
 import com.umler.warehouses.Model.Shelf;
 import com.umler.warehouses.Services.ContractService;
 import com.umler.warehouses.Services.ProductService;
@@ -149,7 +148,7 @@ public class AddProductController implements Initializable {
         return product;
     }
 
-    public static String capitalize(String str)
+    private static String capitalize(String str)
     {
         if (str == null || str.length() == 0) {
             return str;
@@ -166,7 +165,7 @@ public class AddProductController implements Initializable {
         }
         return fullness + quantity <= shelf.getCapacity();
     }
-    public static boolean isNumeric(String str) {
+    private static boolean isNumeric(String str) {
         try {
             return Double.parseDouble(str) <= 0;
         } catch(NumberFormatException e){

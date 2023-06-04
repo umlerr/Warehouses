@@ -31,30 +31,12 @@ public class Contract {
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Product> productList = new ArrayList<>();
 
-
-    public void addProduct(Product product) {
-        productList.add(product);
-        product.setContract(this);
-    }
-    public void removeProduct(Product product) {
-        productList.remove(product);
-        product.setContract(null);
-    }
-
     public List<Product> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
-
     public Integer getId_contract() {
         return id_contract;
-    }
-
-    public void setId_contract(Integer id_contract) {
-        this.id_contract = id_contract;
     }
 
     public LocalDate getStartdate() {

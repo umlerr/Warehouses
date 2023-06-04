@@ -6,16 +6,22 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Properties;
 
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 
+    private static final Logger logger = LoggerFactory.getLogger("Hibernate Logger");
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
+                logger.debug("SessionFactory opened");
+
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
                 settings.put(Environment.URL, "jdbc:mysql://localhost:3306/Warehouses");
@@ -26,6 +32,7 @@ public class HibernateUtil {
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 settings.put(Environment.HBM2DDL_AUTO, "update");
 
+                logger.debug("Settings put");
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
                 configuration.addAnnotatedClass(Contract.class);
@@ -34,7 +41,9 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Shelf.class);
                 configuration.addAnnotatedClass(Product.class);
 
+                logger.debug("Configuration added");
 
+                logger.debug("ServiceRegistry");
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);

@@ -45,34 +45,34 @@ public class SceneController {
 
     public static void getCompaniesScene(ActionEvent event) throws IOException {
 
-        logger.debug("Transition to warehouses list scene");
+        logger.debug("Transition to Companies scene");
 
         changeScreen(event, ScenePath.COMPANIES.getPath());
     }
 
     public static void getProductsScene(ActionEvent event) throws IOException {
 
-        logger.debug("Transition to warehouses list scene");
+        logger.debug("Transition to Products scene");
 
         changeScreen(event, ScenePath.PRODUCTS.getPath());
     }
 
     public static void getRoomsShelvesScene(ActionEvent event) throws IOException {
 
-        logger.debug("Transition to warehouses list scene");
+        logger.debug("Transition to RoomsShelves scene");
 
         changeScreen(event, ScenePath.ROOMSSHELVES.getPath());
     }
 
     public static void getContractsScene(ActionEvent event) throws IOException {
 
-        logger.debug("Transition to warehouses list scene");
+        logger.debug("Transition to Contracts scene");
         changeScreen(event, ScenePath.CONTRACTS.getPath());
     }
 
     public static void getLoginScene(ActionEvent event) throws IOException {
 
-        logger.debug("Transition to warehouses list scene");
+        logger.debug("Transition to Login scene");
 
         changeScreen(event, ScenePath.LOGIN.getPath());
     }

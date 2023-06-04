@@ -2,27 +2,17 @@ package com.umler.warehouses.AddControllers;
 
 import com.umler.warehouses.Controllers.SceneController;
 import com.umler.warehouses.Helpers.UpdateStatus;
-import com.umler.warehouses.Model.Company;
 import com.umler.warehouses.Model.Room;
-import com.umler.warehouses.Model.Shelf;
-import com.umler.warehouses.Services.CompanyService;
 import com.umler.warehouses.Services.RoomService;
-import com.umler.warehouses.Services.ShelfService;
 import javafx.animation.PauseTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
-import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 
 public class AddRoomController {
@@ -104,7 +94,7 @@ public class AddRoomController {
         return room;
     }
 
-    public boolean isNumeric(String str) {
+    private boolean isNumeric(String str) {
         try {
             return Double.parseDouble(str) <= 0;
         } catch(NumberFormatException e){

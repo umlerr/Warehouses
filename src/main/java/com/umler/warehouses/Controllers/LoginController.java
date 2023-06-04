@@ -2,11 +2,7 @@ package com.umler.warehouses.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 import com.umler.warehouses.Helpers.CurrentUser;
 import com.umler.warehouses.Model.User;

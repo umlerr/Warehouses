@@ -136,7 +136,7 @@ public class ProductsController implements Initializable
         }
     }
 
-    public void setProductList() {
+    private void setProductList() {
         ProductList.clear();
         ProductList.addAll(productService.getProducts());
     }
@@ -233,7 +233,7 @@ public class ProductsController implements Initializable
     }
 
     @FXML
-    public void editName(TableColumn.CellEditEvent<Product, String> editEvent)
+    private void editName(TableColumn.CellEditEvent<Product, String> editEvent)
     {
         Product selectedProduct = table.getSelectionModel().getSelectedItem();
         selectedProduct.setName(editEvent.getNewValue());
@@ -243,7 +243,7 @@ public class ProductsController implements Initializable
     }
 
     @FXML
-    public void editType(TableColumn.CellEditEvent<Product, String> editEvent)
+    private void editType(TableColumn.CellEditEvent<Product, String> editEvent)
     {
         Product selectedProduct = table.getSelectionModel().getSelectedItem();
         selectedProduct.setType(editEvent.getNewValue());
@@ -253,7 +253,7 @@ public class ProductsController implements Initializable
     }
 
     @FXML
-    public void editQuantity(TableColumn.CellEditEvent<Product, Integer> editEvent)
+    private void editQuantity(TableColumn.CellEditEvent<Product, Integer> editEvent)
     {
         Product selectedProduct = table.getSelectionModel().getSelectedItem();
         Shelf shelf = selectedProduct.getShelf();
@@ -284,7 +284,7 @@ public class ProductsController implements Initializable
     }
 
     @FXML
-    public void editShelf(TableColumn.CellEditEvent<Product, Shelf> editEvent)
+    private void editShelf(TableColumn.CellEditEvent<Product, Shelf> editEvent)
     {
         Product selectedProduct = table.getSelectionModel().getSelectedItem();
         Shelf shelf = editEvent.getNewValue();
@@ -316,7 +316,7 @@ public class ProductsController implements Initializable
     }
 
     @FXML
-    public void editContract(TableColumn.CellEditEvent<Product, Contract> editEvent)
+    private void editContract(TableColumn.CellEditEvent<Product, Contract> editEvent)
     {
         Product selectedProduct = table.getSelectionModel().getSelectedItem();
         Contract contract = editEvent.getNewValue();
@@ -328,7 +328,7 @@ public class ProductsController implements Initializable
 
 
     @FXML
-    public void toPDF(ActionEvent event) throws IOException {
+    private void toPDF(ActionEvent event) throws IOException {
         try {
 //            logger.debug("Saving to PDF");
             Document my_pdf_report = new Document();
@@ -389,12 +389,12 @@ public class ProductsController implements Initializable
     }
 
     @FXML
-    void refreshScreen(ActionEvent event) throws IOException {
+    private void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getProductsScene(event);
     }
 
     @FXML
-    public void changeUser(ActionEvent event) throws IOException {
+    private void changeUser(ActionEvent event) throws IOException {
         SceneController.getLoginScene(event);
     }
 

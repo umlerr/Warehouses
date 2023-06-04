@@ -130,7 +130,7 @@ public class AddContractCompanyController implements Initializable {
         }
 
         if (isNumeric(phone_field.getText()) || isCorrectTINorPhone(phone_field.getText())){
-            IOAlert.setContentText("Incorrect input for index number - you must put a number with 10 symbols");
+            IOAlert.setContentText("Incorrect input for phone number - you must put a number with 10 symbols");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -140,7 +140,7 @@ public class AddContractCompanyController implements Initializable {
         }
 
         if (isNumeric(tin_field.getText()) || isCorrectTINorPhone(tin_field.getText())){
-            IOAlert.setContentText("Incorrect input for phone number - you must put a number with 10 symbols");
+            IOAlert.setContentText("Incorrect input for TIN - you must put a number with 10 symbols");
             IOAlert.showAndWait();
             if(IOAlert.getResult() == ButtonType.OK)
             {
@@ -172,7 +172,7 @@ public class AddContractCompanyController implements Initializable {
         return company;
     }
 
-    public static String capitalize(String str)
+    private static String capitalize(String str)
     {
         if (str == null || str.length() == 0) {
             return str;
@@ -181,7 +181,7 @@ public class AddContractCompanyController implements Initializable {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
-    public static String capitalizeAfterDot(String str) {
+    private static String capitalizeAfterDot(String str) {
         StringBuilder result = new StringBuilder();
         boolean capitalizeNext = false;
         for (int i = 0; i < str.length(); i++) {
@@ -246,7 +246,7 @@ public class AddContractCompanyController implements Initializable {
         }
     }
 
-    public static boolean isNumeric(String str) {
+    private static boolean isNumeric(String str) {
         try {
             return Double.parseDouble(str) <= 0;
         } catch(NumberFormatException e){
@@ -254,7 +254,7 @@ public class AddContractCompanyController implements Initializable {
         }
     }
 
-    public static boolean isCorrectIndex(String str) {
+    private static boolean isCorrectIndex(String str) {
         try {
             return str.length()!=6;
         } catch(NumberFormatException e){
@@ -262,7 +262,7 @@ public class AddContractCompanyController implements Initializable {
         }
     }
 
-    public static boolean isCorrectTINorPhone(String str) {
+    private static boolean isCorrectTINorPhone(String str) {
         try {
             return str.length()!=10;
         } catch(NumberFormatException e){
@@ -289,7 +289,6 @@ public class AddContractCompanyController implements Initializable {
         startdate_field.setStyle("-fx-opacity: 0.9;");
         startdate_field.setValue(LocalDate.now());
 
-        DatePickerCellFactory enddate_field = new DatePickerCellFactory(enddatepicker);
 
         ObservableList<Company> roomObservableList = FXCollections.observableArrayList(companyService.getCompanies());
         roomObservableList.add(null);

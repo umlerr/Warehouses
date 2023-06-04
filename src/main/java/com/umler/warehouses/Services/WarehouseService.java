@@ -1,43 +1,42 @@
 package com.umler.warehouses.Services;
 
-
-import com.umler.warehouses.Helpers.HibernateUtil;
-import com.umler.warehouses.Model.Company;
 import com.umler.warehouses.Model.Product;
+import com.umler.warehouses.Model.Room;
 import com.umler.warehouses.Model.Shelf;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class WarehouseService {
 
-    ShelfService shelfService = new ShelfService();
-
-    ProductService productService = new ProductService();
+    RoomService roomService = new RoomService();
 
     public Integer getFullnessOfWarehouse()
     {
         try
         {
-            Integer product_space = 0;
-            Integer warehouseCapacity = 0;
-            List<Shelf> shelves = shelfService.getShelves();
-            List<Product> products = productService.getProducts();
-
-            for (Shelf shelf : shelves) {
-                warehouseCapacity += shelf.getCapacity();
+            int roomcapacity = 0;
+            List<Room> rooms = roomService.getRooms();
+            if(rooms.size() != 0)
+            {
+                for (Room room : rooms){
+                    List<Shelf> shelves = room.getShelvesList();
+                    int shelfcapacity = 0;
+                    if(shelves.size()!=0)
+                    {
+                        for (Shelf shelf : shelves) {
+                            List<Product> products = shelf.getProductList();
+                            Integer product_space = 0;
+                            for (Product product : products) {
+                                product_space += product.getQuantity();
+                            }
+                            shelfcapacity += product_space * 100 / shelf.getCapacity();
+                        }
+                        roomcapacity += shelfcapacity / shelves.size();
+                    }
+                }
+                return roomcapacity / rooms.size();
             }
-
-            for (Product product : products) {
-                product_space += product.getQuantity();
-            }
-
-            return product_space*100/warehouseCapacity;
         }
         catch (NullPointerException ex)
         {

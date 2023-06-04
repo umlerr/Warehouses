@@ -33,17 +33,9 @@ public class Company {
         contractList.add(contract);
         contract.setCompany(this);
     }
-    public void removeClient(Contract contract) {
-        contractList.remove(contract);
-        contract.setCompany(null);
-    }
 
     public Integer getId_company() {
         return id_company;
-    }
-
-    public void setId_company(Integer id_company) {
-        this.id_company = id_company;
     }
 
     public String getName() {
@@ -80,10 +72,6 @@ public class Company {
 
     public List<Contract> getContractList() {
         return contractList;
-    }
-
-    public void setContractList(List<Contract> contractList) {
-        this.contractList = contractList;
     }
 
     @Override

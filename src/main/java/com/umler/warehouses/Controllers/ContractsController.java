@@ -86,18 +86,18 @@ public class ContractsController implements Initializable
 
     WarehouseService warehouseService = new WarehouseService();
 
-    private static final Logger logger = LoggerFactory.getLogger("Warehouse Logger");
+    private static final Logger logger = LoggerFactory.getLogger("Contracts Logger");
 
     @FXML
     private void add(ActionEvent event) throws IOException {
-        logger.debug("adding a room");
+        logger.debug("adding a contract");
 
         NewWindowController.getNewContractCompanyWindow();
         if(UpdateStatus.isIsContractCompanyAdded()) {
             refreshScreen(event);
             UpdateStatus.setIsContractCompanyAdded(false);
         }
-        logger.info("room added");
+        logger.info("contract added");
     }
 
 
@@ -126,33 +126,36 @@ public class ContractsController implements Initializable
         String choice = choice_box.getValue();
         if (Objects.equals(choice, "Companies"))
         {
-            logger.info("Choice box Managers selected");
+            logger.info("Choice box Companies selected");
             SceneController.getCompaniesScene(event);
         }
         if (Objects.equals(choice, "Products"))
         {
-            logger.info("Choice box Managers selected");
+            logger.info("Choice box Products selected");
             SceneController.getProductsScene(event);
         }
         if (Objects.equals(choice, "Rooms/Shelves"))
         {
-            logger.info("Choice box Managers selected");
+            logger.info("Choice box RoomsShelves selected");
             SceneController.getRoomsShelvesScene(event);
         }
     }
 
-    public void setContractList() {
+    private void setContractList() {
+        logger.info("Contract list get from DB");
         ContractList.clear();
         ContractList.addAll(contractService.getContracts());
     }
 
     private ObservableList<Contract> getSortedList() {
+        logger.info("ObservableList get");
         SortedList<Contract> sortedList = new SortedList<>(getFilteredList());
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         return sortedList;
     }
 
     private FilteredList<Contract> getFilteredList() {
+        logger.info("Filtering list with search");
         FilteredList<Contract> filteredList = new FilteredList<>(ContractList, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) ->
                 filteredList.setPredicate(contract -> {
@@ -172,6 +175,7 @@ public class ContractsController implements Initializable
     }
 
     private String date_converter(String temp){
+        logger.info("Date converting for the search in Russian style");
         String[] temp2 = temp.split("-");
         return temp2[2] + '.' + temp2[1] + '.' + temp2[0];
     }
@@ -180,7 +184,6 @@ public class ContractsController implements Initializable
     private void delete(ActionEvent event)
     {
         try {
-
             logger.debug("deleting a contract");
             deleteRows(event);
             logger.info("contract deleted");
@@ -200,7 +203,7 @@ public class ContractsController implements Initializable
     }
 
     private void deleteRows(ActionEvent event) throws myDeleteException, IOException {
-
+        logger.info("Deleting rows");
         int selectedID = table.getSelectionModel().getSelectedIndex();
         if (selectedID == -1) throw new myDeleteException();
         else {
@@ -217,7 +220,7 @@ public class ContractsController implements Initializable
     {
         try
         {
-//            logger.debug("saving to file");
+            logger.debug("saving to file");
             BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save_contract.csv"));
             for(Contract companies : ContractList)
             {
@@ -227,11 +230,11 @@ public class ContractsController implements Initializable
             }
             writer.close();
             Desktop.getDesktop().open(new File("saves"));
-//            logger.info("saved to file");
+            logger.info("saved to file");
         }
         catch (IOException e)
         {
-//            logger.warn("Exception " + e);
+            logger.warn("Exception " + e);
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Error!", ButtonType.OK);
             IOAlert.setContentText("Error");
             IOAlert.showAndWait();
@@ -243,7 +246,7 @@ public class ContractsController implements Initializable
     }
 
     @FXML
-    public void editStartDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent) {
+    private void editStartDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent) {
         Contract selectedContract = table.getSelectionModel().getSelectedItem();
         System.out.println(editEvent.getNewValue());
         selectedContract.setStartdate(editEvent.getNewValue());
@@ -253,7 +256,7 @@ public class ContractsController implements Initializable
     }
 
     @FXML
-    public void editEndDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent)
+    private void editEndDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent)
     {
         Contract selectedContract = table.getSelectionModel().getSelectedItem();
         selectedContract.setEnddate(editEvent.getNewValue());
@@ -263,7 +266,7 @@ public class ContractsController implements Initializable
     }
 
     @FXML
-    public void editNumber(TableColumn.CellEditEvent<Contract, Integer> editEvent)
+    private void editNumber(TableColumn.CellEditEvent<Contract, Integer> editEvent)
     {
         Contract selectedContract = table.getSelectionModel().getSelectedItem();
         selectedContract.setNumber(editEvent.getNewValue());
@@ -273,7 +276,7 @@ public class ContractsController implements Initializable
     }
 
     @FXML
-    public void editCompany(TableColumn.CellEditEvent<Contract, Company> editEvent)
+    private void editCompany(TableColumn.CellEditEvent<Contract, Company> editEvent)
     {
         Contract selectedContract = table.getSelectionModel().getSelectedItem();
         Company company = editEvent.getNewValue();
@@ -285,9 +288,9 @@ public class ContractsController implements Initializable
 
 
     @FXML
-    public void toPDF(ActionEvent event) throws IOException {
+    private void toPDF(ActionEvent event) throws IOException {
         try {
-//            logger.debug("Saving to PDF");
+            logger.debug("Saving to PDF");
             Document my_pdf_report = new Document();
             PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report_contracts.pdf"));
             my_pdf_report.open();
@@ -318,11 +321,11 @@ public class ContractsController implements Initializable
             }
             my_pdf_report.add(my_report_table);
             my_pdf_report.close();
-//            logger.info("Saved to PDF");
+            logger.info("Saved to PDF");
         }
         catch (FileNotFoundException | DocumentException | MyPDFException e)
         {
-//            logger.warn("Exception " + e);
+            logger.warn("Exception " + e);
             e.printStackTrace();
         }
         refreshScreen(event);
@@ -343,44 +346,56 @@ public class ContractsController implements Initializable
     }
 
     @FXML
-    public void refreshScreen(ActionEvent event) throws IOException {
+    private void refreshScreen(ActionEvent event) throws IOException {
+        logger.info("Refreshing screen");
         SceneController.getContractsScene(event);
     }
 
     @FXML
-    public void changeUser(ActionEvent event) throws IOException {
+    private void changeUser(ActionEvent event) throws IOException {
+        logger.info("Changing user");
         SceneController.getLoginScene(event);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        logger.info("Contract initializing");
+
+        logger.debug("Fullness getting");
         warehouseService.getFullnessOfWarehouse();
         fullness_label.setText("Fullness: " + warehouseService.getFullnessOfWarehouse() + "%");
 
+        logger.debug("Current user getting");
         current_user.setVisited(true);
         current_user.setText("User: " + CurrentUser.getCurrentUser().getName() + " / Change");
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+        logger.debug("Contract getting");
         choice_box.setValue("Contracts");
         choice_box.getItems().addAll(choices);
 
         setContractList();
 
+        logger.debug("CellValueFactory setting");
         startdate_column.setCellValueFactory(new PropertyValueFactory<>("startdate"));
         enddate_column.setCellValueFactory(new PropertyValueFactory<>("enddate"));
         number_column.setCellValueFactory(new PropertyValueFactory<>("number"));
         company_column.setCellValueFactory(new PropertyValueFactory<>("company"));
 
+        logger.debug("Company list setting");
         ObservableList<Company> companiesObservableList = FXCollections.observableArrayList(companyService.getCompanies());
 
+        logger.debug("Editable table setting");
         table.setEditable(true);
 
+        logger.debug("CellFactory setting");
         startdate_column.setCellFactory(new LocalStartDateCellFactory());
         enddate_column.setCellFactory(new LocalEndDateCellFactory());
         number_column.setCellFactory(TextFieldTableCell.forTableColumn(new CustomIntegerStringConverter()));
         company_column.setCellFactory(ChoiceBoxTableCell.forTableColumn(companiesObservableList));
 
+        logger.info("Table setting items");
         table.setItems(getSortedList());
     }
 }
