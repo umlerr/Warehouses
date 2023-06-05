@@ -54,15 +54,6 @@ public class ProductService {
         }
     }
 
-    public Product getProduct(Long id) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.find(Product.class, id);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
     public List<Product> getProducts() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Product ", Product.class).list();

@@ -6,12 +6,10 @@ import com.umler.warehouses.Model.Company;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class CompanyService {
@@ -57,15 +55,6 @@ public class CompanyService {
                 transaction.rollback();
             }
             ex.printStackTrace();
-        }
-    }
-
-    public Company getCompany(Long id) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.find(Company.class, id);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
         }
     }
 

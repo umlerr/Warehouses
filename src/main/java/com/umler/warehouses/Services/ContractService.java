@@ -2,13 +2,10 @@ package com.umler.warehouses.Services;
 
 import com.umler.warehouses.Helpers.HibernateUtil;
 import com.umler.warehouses.Model.Contract;
-import org.hibernate.Criteria;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
 
-import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,15 +51,6 @@ public class ContractService {
                 transaction.rollback();
             }
             ex.printStackTrace();
-        }
-    }
-
-    public Contract getContract(Long id) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.find(Contract.class, id);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
         }
     }
 

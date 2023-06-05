@@ -45,11 +45,7 @@ public class AppClass {
         contract.setCompany(company);
         shelf.setRoom(room);
 
-        User user = new User();
-        user.setName("1");
-        user.setPassword("1");
 
-        session.save(user);
         session.save(company);
         session.save(contract);
         session.save(room);

@@ -11,7 +11,7 @@ public class DatePickerCellFactory implements Callback<DatePicker, DateCell> {
     private final LocalDate selectedDate;
 
     public DatePickerCellFactory(DatePicker datePicker) {
-        selectedDate = LocalDate.now();
+        selectedDate = datePicker.getValue();
         datePicker.setDayCellFactory(this);
     }
 
