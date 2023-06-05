@@ -791,3 +791,217 @@
 {Contracts Logger} 2023-06-05 16:48:53.636 [INFO ]: ObservableList get
 {Contracts Logger} 2023-06-05 16:48:53.636 [INFO ]: Filtering list with search
 {Contracts Logger} 2023-06-05 16:48:53.663 [INFO ]: contract added
+{Contracts Logger} 2023-06-05 16:51:20.011 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 16:51:20.048 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:51:20.048 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 16:51:20.082 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 16:51:20.083 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 16:51:20.083 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 16:51:39.849 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-05 16:51:39.858 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 16:51:39.883 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:51:39.883 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 16:51:39.910 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 16:51:39.911 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 16:51:39.911 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 16:51:39.972 [INFO ]: contract added
+{Contracts Logger} 2023-06-05 16:51:45.504 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:51:45.505 [INFO ]: Choice box Companies selected
+{Warehouse Logger} 2023-06-05 16:51:45.529 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:51:49.243 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:51:49.270 [INFO ]: worker deleted
+{Warehouse Logger} 2023-06-05 16:51:50.593 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:51:50.593 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-06-05 16:51:50.612 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:51:51.854 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:51:51.854 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-06-05 16:51:51.873 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:51:54.079 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:51:54.080 [INFO ]: Choice box Contracts selected
+{Contracts Logger} 2023-06-05 16:51:54.084 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 16:51:54.094 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:51:54.094 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 16:51:54.103 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 16:51:54.103 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 16:51:54.103 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 16:53:57.784 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:53:57.784 [INFO ]: Choice box Companies selected
+{Warehouse Logger} 2023-06-05 16:53:57.799 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:54:07.659 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:54:07.659 [INFO ]: Choice box Contracts selected
+{Contracts Logger} 2023-06-05 16:54:07.663 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 16:54:07.673 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:54:07.673 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 16:54:07.682 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 16:54:07.682 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 16:54:07.682 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 16:54:08.881 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:54:08.881 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 16:54:08.900 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:54:54.989 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 16:54:56.645 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:54:56.645 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-06-05 16:54:56.657 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:55:00.444 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:55:00.467 [INFO ]: shelf deleted
+{Warehouse Logger} 2023-06-05 16:55:18.307 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:55:18.334 [INFO ]: room shelf
+{Warehouse Logger} 2023-06-05 16:55:22.708 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:55:22.708 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 16:55:22.718 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:55:33.272 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:55:33.293 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 16:56:39.064 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:56:39.090 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 16:57:22.323 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:57:22.351 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 16:58:08.234 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:58:08.234 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-06-05 16:58:08.247 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:58:31.723 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:58:33.335 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:58:33.336 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 16:58:33.346 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:58:38.871 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 16:58:42.969 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 16:58:49.591 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 16:58:50.947 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:58:50.947 [INFO ]: Choice box Managers selected
+{Contracts Logger} 2023-06-05 16:58:50.951 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 16:58:50.960 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:58:50.960 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 16:58:50.966 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 16:58:50.977 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 16:58:50.977 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 16:58:57.039 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 16:58:57.039 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 16:58:57.051 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 16:59:24.367 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 17:01:48.050 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:01:48.051 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-06-05 17:01:48.066 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:01:56.400 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:01:56.441 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:01:56.441 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:01:56.474 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:01:56.474 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:01:56.474 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:02:00.419 [INFO ]: contract added
+{Contracts Logger} 2023-06-05 17:02:04.969 [INFO ]: contract added
+{Contracts Logger} 2023-06-05 17:02:08.262 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:02:08.262 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 17:02:08.292 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:02:53.766 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:02:53.810 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:02:53.811 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:02:53.842 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:02:53.842 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:02:53.843 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:02:55.757 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:02:55.757 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 17:02:55.789 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:03:09.655 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 17:04:55.208 [INFO ]: room added
+{Contracts Logger} 2023-06-05 17:11:30.696 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:11:30.736 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:11:30.736 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:11:30.768 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:11:30.768 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:11:30.768 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:11:32.029 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:11:32.030 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 17:11:32.063 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:11:46.001 [INFO ]: room added
+{Contracts Logger} 2023-06-05 17:12:00.674 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:12:00.716 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:12:00.717 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:12:00.747 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:12:00.747 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:12:00.747 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:12:02.677 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:12:02.678 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 17:12:02.715 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:12:05.129 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:12:05.130 [INFO ]: Choice box Managers selected
+{Contracts Logger} 2023-06-05 17:12:05.135 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:12:05.157 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:12:05.157 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:12:05.174 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:12:05.174 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:12:05.174 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:12:11.580 [INFO ]: contract added
+{Contracts Logger} 2023-06-05 17:12:14.575 [INFO ]: contract added
+{Contracts Logger} 2023-06-05 17:14:05.229 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:14:05.268 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:14:05.268 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:14:05.301 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:14:05.301 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:14:05.301 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:14:31.253 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-05 17:14:31.273 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:14:31.303 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:14:31.303 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:14:31.320 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:14:31.320 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:14:31.321 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:14:31.391 [INFO ]: contract added
+{Contracts Logger} 2023-06-05 17:19:03.444 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:19:03.484 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:19:03.485 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:19:03.515 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:19:03.515 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:19:03.515 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:19:05.644 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:19:05.644 [INFO ]: Choice box RoomsShelves selected
+{Warehouse Logger} 2023-06-05 17:19:05.675 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:19:12.144 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:19:12.204 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 17:19:28.716 [WARN ]: Room with this number already exist
+{Warehouse Logger} 2023-06-05 17:19:30.792 [WARN ]: Room with this number already exist
+{Warehouse Logger} 2023-06-05 17:19:37.215 [WARN ]: Room with this number already exist
+{Warehouse Logger} 2023-06-05 17:19:38.583 [WARN ]: Room with this number already exist
+{Contracts Logger} 2023-06-05 17:19:52.152 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:19:52.197 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:19:52.198 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:19:52.228 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:19:52.228 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:19:52.229 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:19:54.576 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:19:54.576 [INFO ]: Choice box RoomsShelves selected
+{Warehouse Logger} 2023-06-05 17:19:54.611 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:19:56.348 [WARN ]: Room with this number already exist
+{Warehouse Logger} 2023-06-05 17:20:00.902 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:20:00.960 [INFO ]: shelf deleted
+{Warehouse Logger} 2023-06-05 17:20:05.361 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:20:05.409 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 17:20:06.846 [WARN ]: Room with this number already exist
+{Warehouse Logger} 2023-06-05 17:20:11.409 [WARN ]: Room with this number already exist
+{Contracts Logger} 2023-06-05 17:21:53.896 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:21:53.941 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:21:53.941 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:21:53.972 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:21:53.972 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:21:53.972 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:21:58.721 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:21:58.722 [INFO ]: Choice box RoomsShelves selected
+{Warehouse Logger} 2023-06-05 17:21:58.755 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:22:00.583 [WARN ]: Room with this number already exist
+{Warehouse Logger} 2023-06-05 17:22:04.925 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:22:42.858 [INFO ]: room added
+{Contracts Logger} 2023-06-05 17:24:49.722 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-05 17:24:49.766 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:24:49.766 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-05 17:24:49.797 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-05 17:24:49.797 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-05 17:24:49.797 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-05 17:24:51.824 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-05 17:24:51.824 [INFO ]: Choice box RoomsShelves selected
+{Warehouse Logger} 2023-06-05 17:24:51.867 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:24:58.901 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:24:58.962 [INFO ]: room shelf
+{Warehouse Logger} 2023-06-05 17:25:15.166 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:25:15.166 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-05 17:25:15.192 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:26:16.260 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-05 17:26:16.291 [INFO ]: room added
+{Warehouse Logger} 2023-06-05 17:28:27.982 [INFO ]: Choice box action
