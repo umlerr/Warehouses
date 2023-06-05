@@ -200,6 +200,9 @@ public class AddProductController implements Initializable {
         name_comboBox.getItems().addAll(distinctListNames.getFilteredList());
         type_comboBox.getItems().addAll(distinctListTypes.getFilteredList());
 
+        name_comboBox.getItems().add(null);
+        type_comboBox.getItems().add(null);
+
         ComboBoxUtil.configureNameComboBox(name_comboBox);
         ComboBoxUtil.configureTypeComboBox(type_comboBox);
 

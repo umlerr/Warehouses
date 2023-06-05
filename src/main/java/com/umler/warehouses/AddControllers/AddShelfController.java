@@ -111,6 +111,7 @@ public class AddShelfController implements Initializable {
         return true;
     }
 
+
     private boolean isRoomFree(Integer number){
         Room room = roomService.getRoom(number);
         List<Shelf> shelves = room.getShelvesList();

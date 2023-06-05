@@ -73,6 +73,6 @@ public class Contract {
 
     @Override
     public String toString() {
-        return String.format("%s", this.number);
+        return String.format("%s | %s", this.number, this.company.getName());
     }
 }

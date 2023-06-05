@@ -50,6 +50,8 @@ public class AddContractCompanyController implements Initializable {
 
     CompanyService companyService = new CompanyService();
 
+    ContractService contractService = new ContractService();
+
     @FXML
     private void saveNewContractCompanyToDb(ActionEvent event){
         if (validateInputs()) {
@@ -138,7 +140,15 @@ public class AddContractCompanyController implements Initializable {
             }
             return false;
         }
-
+        if (!isNumberExist(Integer.valueOf(number_field.getText()))){
+            IOAlert.setContentText("Incorrect input for CONTRACT NUMBER - CONTRACT with this number already exists");
+            IOAlert.showAndWait();
+            if(IOAlert.getResult() == ButtonType.OK)
+            {
+                IOAlert.close();
+            }
+            return false;
+        }
         if (isNumeric(tin_field.getText()) || isCorrectTINorPhone(tin_field.getText())){
             IOAlert.setContentText("Incorrect input for TIN - you must put a number with 10 symbols");
             IOAlert.showAndWait();
@@ -268,6 +278,14 @@ public class AddContractCompanyController implements Initializable {
         } catch(NumberFormatException e){
             return true;
         }
+    }
+
+    private boolean isNumberExist(Integer number){
+        for (Contract contracts : contractService.getContracts()){
+            if (Objects.equals(contracts.getNumber(), number))
+                return false;
+        }
+        return true;
     }
 
     private void delayWindowClose(ActionEvent event) {

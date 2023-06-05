@@ -231,10 +231,26 @@ public class RoomsShelvesController implements Initializable
     private void editRoomNumber(TableColumn.CellEditEvent<Room, Integer> editEvent)
     {
         Room selectedRoom = table_rooms.getSelectionModel().getSelectedItem();
-        selectedRoom.setNumber(editEvent.getNewValue());
-        roomService.updateRoom(selectedRoom);
 
-        logger.debug("Editing cell");
+        for (Room rooms : roomService.getRooms()){
+            if (!Objects.equals(editEvent.getNewValue(), rooms.getNumber()))
+            {
+                selectedRoom.setNumber(editEvent.getNewValue());
+                roomService.updateRoom(selectedRoom);
+            }
+            else
+            {
+                logger.warn("Room with this number already exist");
+                Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Room existence", ButtonType.OK);
+                IOAlert.setContentText("Room with this number already exist / Click the refresh button and try again");
+                IOAlert.showAndWait();
+                if(IOAlert.getResult() == ButtonType.OK)
+                {
+                    IOAlert.close();
+                }
+                break;
+            }
+        }
     }
 
     @FXML
@@ -362,7 +378,7 @@ public class RoomsShelvesController implements Initializable
     {
         try
         {
-//            logger.debug("saving to file");
+            logger.debug("saving to file");
             BufferedWriter writer = new BufferedWriter(new FileWriter("saves/save_shelf.csv"));
             for(Shelf shelves : ShelfList)
             {
@@ -372,11 +388,11 @@ public class RoomsShelvesController implements Initializable
             }
             writer.close();
             Desktop.getDesktop().open(new File("saves"));
-//            logger.info("saved to file");
+            logger.info("saved to file");
         }
         catch (IOException e)
         {
-//            logger.warn("Exception " + e);
+            logger.warn("Exception " + e);
             Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Error!", ButtonType.OK);
             IOAlert.setContentText("Error");
             IOAlert.showAndWait();
@@ -390,8 +406,26 @@ public class RoomsShelvesController implements Initializable
     private void editShelfNumber(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
     {
         Shelf selectedShelf = table_shelves.getSelectionModel().getSelectedItem();
-        selectedShelf.setNumber(editEvent.getNewValue());
-        shelfService.updateShelf(selectedShelf);
+
+        for (Shelf shelves : shelfService.getShelves()){
+            if (!Objects.equals(editEvent.getNewValue(), shelves.getNumber()))
+            {
+                selectedShelf.setNumber(editEvent.getNewValue());
+                shelfService.updateShelf(selectedShelf);
+            }
+            else
+            {
+                logger.warn("Shelf with this number already exist");
+                Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Shelf existence", ButtonType.OK);
+                IOAlert.setContentText("Shelf with this number already exist / Click the refresh button and try again");
+                IOAlert.showAndWait();
+                if(IOAlert.getResult() == ButtonType.OK)
+                {
+                    IOAlert.close();
+                }
+                break;
+            }
+        }
 
         logger.debug("Editing cell");
     }
