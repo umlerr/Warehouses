@@ -32,6 +32,11 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+
+/**
+ * Контроллер для таблицы компаний.
+ * @author Umler
+ */
 public class CompaniesController implements Initializable
 {
     @FXML
@@ -82,6 +87,9 @@ public class CompaniesController implements Initializable
     private static final Logger logger = LoggerFactory.getLogger("Warehouse Logger");
 
 
+    /**
+     * Мое исключение для записи в PDF файл
+     */
     static class MyPDFException extends Exception
     {
         public MyPDFException()
@@ -90,6 +98,9 @@ public class CompaniesController implements Initializable
         }
     }
 
+    /**
+     * Мое исключение для записи в удаления строк таблицы
+     */
     static class myDeleteException extends Exception
     {
         public myDeleteException()
@@ -98,9 +109,15 @@ public class CompaniesController implements Initializable
         }
     }
 
+
     private final String[] choices = {"Companies","Contracts","Products","Rooms/Shelves"};
 
-
+    /**
+     * Обработчик события выбора значения в выпадающем списке.
+     * Получает выбранное значение и вызывает соответствующий метод в классе SceneController для отображения соответствующей сцены.
+     * @param event событие выбора значения в выпадающем списке
+     * @throws IOException если возникает ошибка ввода-вывода при отображении сцены
+     */
     @FXML
     private void getChoices(ActionEvent event) throws IOException {
 
@@ -124,17 +141,33 @@ public class CompaniesController implements Initializable
         }
     }
 
+    /**
+     * Устанавливает список компаний.
+     * Добавляет в список компании из БД.
+     */
     private void setCompanyList() {
         CompanyList.clear();
         CompanyList.addAll(companyService.getCompanies());
     }
 
+    /**
+     * Метод для получения отфильтрованного и отсортированного списка отчетов.
+     * Создает новый отфильтрованный список на основе исходного списка компании, используя фильтр из searchField.
+     * Затем создает новый отсортированный список на основе отфильтрованного списка и связывает его с компаратором таблицы.
+     * @return Отсортированный список компании.
+     */
     private ObservableList<Company> getSortedList() {
         SortedList<Company> sortedList = new SortedList<>(getFilteredList());
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         return sortedList;
     }
 
+    /**
+     * Метод для получения отфильтрованного списка компаний на основе заданного текстового фильтра.
+     * Создает новый отфильтрованный список на основе исходного списка компаний, используя заданный текстовый фильтр.
+     * Фильтр применяется к полям "Название компании", "Адресс компании", "Номер телефона компании", "ИНН" каждой компании.
+     * @return Отфильтрованный список компаний.
+     */
     private FilteredList<Company> getFilteredList() {
         FilteredList<Company> filteredList = new FilteredList<>(CompanyList, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) ->
@@ -154,6 +187,13 @@ public class CompaniesController implements Initializable
         return filteredList;
     }
 
+    /**
+     * Обработчик события удаления выбранных компаний из таблицы.
+     * Удаляет выбранные компании из таблицы.
+     * Если ни одна компания не выбрана, выбрасывает исключение myDeleteException.
+     * После удаления компаний обновляет экран.
+     * @param event Событие удаления компаний.
+     */
     @FXML
     private void delete(ActionEvent event)
     {
@@ -177,6 +217,15 @@ public class CompaniesController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события удаления выбранных компаний из таблицы.
+     * Удаляет выбранные компании из таблицы.
+     * Если ни одна компания не выбрана, выбрасывает исключение myDeleteException.
+     * После удаления компаний обновляет экран.
+     * @param event Событие удаления компаний.
+     * @throws myDeleteException Если ни одна компания не выбрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     private void deleteRows(ActionEvent event) throws myDeleteException, IOException {
         int selectedID = table.getSelectionModel().getSelectedIndex();
         if (selectedID == -1) throw new myDeleteException();
@@ -189,6 +238,12 @@ public class CompaniesController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события сохранения списка компаний в файл.
+     * Сохраняет список компаний в файл "saves/save_company.csv".
+     * Если произошла ошибка ввода-вывода при сохранении, выбрасывает исключение IOException.
+     * После сохранения открывает папку "saves".
+     */
     @FXML
     private void save()
     {
@@ -220,6 +275,10 @@ public class CompaniesController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события изменения названия компании в таблице.
+     * @param editEvent Событие изменения названия компании в таблице.
+     */
     @FXML
     private void editName(TableColumn.CellEditEvent<Company, String> editEvent)
     {
@@ -230,6 +289,10 @@ public class CompaniesController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения адресса компании в таблице.
+     * @param editEvent Событие изменения адресса компании в таблице.
+     */
     @FXML
     private void editAddress(TableColumn.CellEditEvent<Company, String> editEvent)
     {
@@ -240,6 +303,10 @@ public class CompaniesController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения телефона компании в таблице.
+     * @param editEvent Событие изменения телефона компании в таблице.
+     */
     @FXML
     private void editPhone(TableColumn.CellEditEvent<Company, String> editEvent)
     {
@@ -264,6 +331,10 @@ public class CompaniesController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения ИНН компании в таблице.
+     * @param editEvent Событие изменения ИНН компании в таблице.
+     */
     @FXML
     private void editTIN(TableColumn.CellEditEvent<Company, String> editEvent)
     {
@@ -288,6 +359,12 @@ public class CompaniesController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события нажатия на кнопку сохранения таблицы компаний в PDF файл.
+     * Сохраняет данные из таблицы в файл "pdf/report_companies.pdf".
+     * Если список компаний пуст, выбрасывает исключение MyPDFException.
+     * Если возникает ошибка ввода-вывода, выводит сообщение об ошибке.
+     */
     @FXML
     private void toPDF(ActionEvent event) throws IOException {
         try {
@@ -332,6 +409,9 @@ public class CompaniesController implements Initializable
         refreshScreen(event);
     }
 
+    /**
+     * Выход из окна программы.
+     */
     public void ExitMainWindow() {
 
         logger.debug("Closing main window");
@@ -339,6 +419,9 @@ public class CompaniesController implements Initializable
         exit_btn.setOnAction(SceneController::close);
     }
 
+    /**
+     * Сворачивание окна программы.
+     */
     public void WrapMainWindow() {
 
         logger.debug("Wrapping main window");
@@ -346,16 +429,31 @@ public class CompaniesController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    /**
+     * Обработчик события обновления экрана.
+     * Вызывает метод SceneController для отображения сцены с компаниями.
+     * @param event Событие обновления экрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getCompaniesScene(event);
     }
 
+    /**
+     * Обработчик события смены экрана.
+     * Вызывает метод SceneController для отображения сцены с авторизацией.
+     * @param event Событие обновления экрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void changeUser(ActionEvent event) throws IOException {
         SceneController.getLoginScene(event);
     }
 
+    /**
+     * Инициализация.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {

@@ -1,7 +1,6 @@
 package com.umler.warehouses.Services;
 
 import com.umler.warehouses.Helpers.HibernateUtil;
-import com.umler.warehouses.Model.Room;
 import com.umler.warehouses.Model.Shelf;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,7 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Класс для работы с таблицей Shelf в базе данных
+ * @author Umler
+ */
+
 public class ShelfService {
+
+    /**
+     * Создает новый стеллаж или обновляет существующую в базе данных.
+     * @param shelf объект, представляющий стеллаж
+     * @return true, если операция выполнена успешно, false в противном случае
+     */
     public Boolean createShelf(Shelf shelf) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -28,6 +38,10 @@ public class ShelfService {
         return false;
     }
 
+    /**
+     * Обновляет информацию о стеллаже в базе данных.
+     * @param shelf объект, представляющий стеллаж с обновленными данными
+     */
     public void updateShelf(Shelf shelf) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -42,6 +56,10 @@ public class ShelfService {
         }
     }
 
+    /**
+     * Удаляет информацию о стеллаже из базы данных.
+     * @param shelf объект, представляющий стеллаж, который нужно удалить
+     */
     public void deleteShelf(Shelf shelf) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -56,6 +74,11 @@ public class ShelfService {
         }
     }
 
+    /**
+     * Возвращает стеллаж по номеру.
+     * @param number номер стеллажа для поиска в БД.
+     * @return стеллаж по номеру
+     */
     public Shelf getShelf(Integer number) {
         List<Shelf> shelves = getShelves();
         for (Shelf shelf : shelves){
@@ -65,6 +88,10 @@ public class ShelfService {
         return null;
     }
 
+    /**
+     * Возвращает список всех стеллажей из базы данных.
+     * @return список объектов, представляющих стеллажи
+     */
     public List<Shelf> getShelves() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Shelf ", Shelf.class).list();

@@ -8,6 +8,11 @@ import javafx.util.Callback;
 import java.sql.Date;
 import java.time.LocalDate;
 
+/**
+ * Класс для переопределения вида ячеек даты подписания договора под тип LocalDate.
+ * @author Umler
+ */
+
 public class LocalStartDateCellFactory implements Callback<TableColumn<Contract, LocalDate>, TableCell<Contract, LocalDate>> {
     ContractService contractService = new ContractService();
     @Override

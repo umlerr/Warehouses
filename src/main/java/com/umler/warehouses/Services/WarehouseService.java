@@ -6,11 +6,19 @@ import com.umler.warehouses.Model.Shelf;
 
 import java.util.List;
 
+/**
+ * Класс для подсчета обзей заполненности склада
+ * @author Umler
+ */
 
 public class WarehouseService {
 
     RoomService roomService = new RoomService();
 
+    /**
+     * Возвращает заполенность склада.
+     * @return заполенность склада
+     */
     public Integer getFullnessOfWarehouse()
     {
         try

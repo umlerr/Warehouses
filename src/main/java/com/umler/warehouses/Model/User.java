@@ -1,7 +1,11 @@
 package com.umler.warehouses.Model;
 
-
 import javax.persistence.*;
+
+/**
+ * Класс пользователя
+ * @author Umler
+ */
 
 @Entity
 @Table(name="User")

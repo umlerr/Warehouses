@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Класс компании
+ * @author Umler
+ */
+
 @Entity
 @Table(name="Company")
 public class Company {
@@ -28,7 +33,9 @@ public class Company {
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Contract> contractList = new ArrayList<>();
 
-
+    /**
+     * Добавляет контракт в список контрактов, привязывает контракт к компании.
+     */
     public void addContract(Contract contract) {
         contractList.add(contract);
         contract.setCompany(this);
@@ -74,11 +81,17 @@ public class Company {
         return contractList;
     }
 
+    /**
+     * Переопределение метода toString для корректного вывода объектов класса.
+     */
     @Override
     public String toString() {
         return String.format("%s", this.name);
     }
 
+    /**
+     * Переопределение метода equals для корректного сравнения объектов класса.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,6 +104,9 @@ public class Company {
                 Objects.equals(tin, company.tin);
     }
 
+    /**
+     * Переопределение метода hashCode для корректного сравнения объектов класса.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, address, phoneNumber,tin);

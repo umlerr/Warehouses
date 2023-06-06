@@ -5,6 +5,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.util.StringConverter;
 
+/**
+ * Класс для переопределения вида ComboBox,
+ * для вывода разных параметров одного класса в разные ComboBox.
+ * @author Umler
+ */
+
 public class ComboBoxUtil {
     public static void configureNameComboBox(ComboBox<Product> nameComboBox) {
         nameComboBox.setCellFactory(param -> new ListCell<>() {

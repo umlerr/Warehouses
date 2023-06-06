@@ -7,8 +7,18 @@ import org.hibernate.Session;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
+
+/**
+ * Класс для работы с таблицей User в базе данных
+ * @author Umler
+ */
+
 public class UserService {
 
+    /**
+     * Возвращает данные пользователя по введным логину и паролю.
+     * @return данные о пользователе
+     */
     public User getConnectedUser(String name, String password) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             TypedQuery<User> query = session.createQuery("SELECT u FROM User u " +

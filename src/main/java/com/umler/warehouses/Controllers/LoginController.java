@@ -16,6 +16,10 @@ import javafx.scene.control.TextField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Контроллер для таблицы пользователей.
+ * @author Umler
+ */
 public class LoginController implements Initializable {
 
     public Button LoginButton;
@@ -37,6 +41,12 @@ public class LoginController implements Initializable {
 
     private static final Logger logger = LoggerFactory.getLogger("LoginScene Logger");
 
+    /**
+     * Обработчик события открытия главного интерфейса программы.
+     * Получает выбранное значение и вызывает соответствующий метод в классе SceneController для отображения соответствующей сцены.
+     * @param event событие открытия главного интерфейса программы.
+     * @throws IOException если возникает ошибка ввода-вывода при отображении сцены.
+     */
     @FXML
     void showVisitScreen(ActionEvent event) throws IOException {
         if (validateLogin())
@@ -55,6 +65,11 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * Проверяет корректность введенных данных.
+     * Если введеные данные для входа есть в базе, возвращает true.
+     * Если есть незаполненные поля или данные введенные не соответсвуют БД, выводит сообщение об ошибке и возвращает false.
+     */
     private boolean validateLogin() {
         User user = userService.getConnectedUser(username_box.getText(), password_box.getText());
         if (user == null) {
@@ -64,16 +79,25 @@ public class LoginController implements Initializable {
         return true;
     }
 
+    /**
+     * Выход из окна программы.
+     */
     public void ExitLoginWindow() {
         logger.debug("Closing login window");
         exit_btn.setOnAction(SceneController::close);
     }
 
+    /**
+     * Сворачивание окна программы.
+     */
     public void WrapLoginWindow() {
         logger.debug("Wrapping login window");
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    /**
+     * Инициализация.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

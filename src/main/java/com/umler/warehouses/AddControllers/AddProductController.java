@@ -47,6 +47,11 @@ public class AddProductController implements Initializable {
     ProductService productService = new ProductService();
     ShelfService shelfService = new ShelfService();
 
+    /**
+     * Сохраняет изменения в базе данных после добавления продукта.
+     * Если данные введены корректно, то создается новый объект компании и контракта и происходит обновление базы данных.
+     * Если данные введены некорректно, то выводится сообщение об ошибке.
+     */
     @FXML
     private void saveNewProductToDb(ActionEvent event){
         if (validateInputs()) {
@@ -60,6 +65,9 @@ public class AddProductController implements Initializable {
         }
     }
 
+    /**
+     * Выбор названия продукта и блокировка изменения поля если выбран уже существующий тип.
+     */
     @FXML
     private void getChoicesName() {
         Product product = name_comboBox.getValue();
@@ -76,6 +84,9 @@ public class AddProductController implements Initializable {
         }
     }
 
+    /**
+     * Выбор типа продукта и блокировка изменения поля если выбран уже существующий тип.
+     */
     @FXML
     private void getChoicesType() {
         Product product = type_comboBox.getValue();
@@ -92,6 +103,11 @@ public class AddProductController implements Initializable {
         }
     }
 
+    /**
+     * Проверяет корректность введенных данных.
+     * Если все поля заполнены корректно, возвращает true.
+     * Если есть незаполненные поля или данные введены некорректно, выводит сообщение об ошибке и возвращает false.
+     */
     private boolean validateInputs() {
         Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Input Error", ButtonType.OK);
         if (name_field.getText().equals("")
@@ -138,6 +154,10 @@ public class AddProductController implements Initializable {
         return true;
     }
 
+    /**
+     * Создает новый объект товара на основе введенных данных.
+     * @return новый объект товара
+     */
     private Product createProductFromInput() {
         Product product = new Product();
         product.setName(capitalize(name_field.getText().toLowerCase()));
@@ -148,6 +168,10 @@ public class AddProductController implements Initializable {
         return product;
     }
 
+    /**
+     * Делает первую букву строки прописной.
+     * @return Строка с большой буквы
+     */
     private static String capitalize(String str)
     {
         if (str == null || str.length() == 0) {
@@ -156,6 +180,11 @@ public class AddProductController implements Initializable {
 
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
+
+    /**
+     * Проверка стеллажа на вместимость добавляемого товара.
+     * @return Заполненность стеллажа
+     */
     private boolean isShelfFree(Integer number, Integer quantity){
         Shelf shelf = shelfService.getShelf(number);
         List<Product> products = shelf.getProductList();
@@ -165,6 +194,11 @@ public class AddProductController implements Initializable {
         }
         return fullness + quantity <= shelf.getCapacity();
     }
+
+    /**
+     * Проверка введенной строки на число.
+     * @return true - число больше 0/false
+     */
     private static boolean isNumeric(String str) {
         try {
             return Double.parseDouble(str) <= 0;
@@ -173,17 +207,26 @@ public class AddProductController implements Initializable {
         }
     }
 
+    /**
+     * Задержка закрытия окна добавления до нажатия клавишы сохранения.
+     */
     private void delayWindowClose(ActionEvent event) {
         PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished(event2 -> closeWindow(event));
         delay.play();
     }
 
+    /**
+     * Закрытия окна по кнопке.
+     */
     @FXML
     private void closeWindow(ActionEvent event) {
         SceneController.close(event);
     }
 
+    /**
+     * Инициализация.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {

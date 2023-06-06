@@ -6,6 +6,11 @@ import javafx.util.Callback;
 
 import java.time.LocalDate;
 
+/**
+ * Класс для переопределения вида ячеек таблицы под DatePicker календарь.
+ * @author Umler
+ */
+
 public class DatePickerCellFactory implements Callback<DatePicker, DateCell> {
 
     private final LocalDate selectedDate;

@@ -11,12 +11,24 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
+
+/**
+ * Класс HibernateUtil предоставляет методы для работы с Hibernate.
+ * Он содержит методы для создания объекта SessionFactory и закрытия его.
+ * @author Umler
+ */
+
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 
     private static final Logger logger = LoggerFactory.getLogger("Hibernate Logger");
 
+    /**
+     * Возвращает объект SessionFactory, который используется для создания сессий Hibernate.
+     * Если объект SessionFactory еще не создан, то создает его с помощью настроек, указанных в методе.
+     * @return объект SessionFactory
+     */
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -54,6 +66,9 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
+    /**
+     * Закрывает объект SessionFactory и освобождает все связанные с ним ресурсы.
+     */
     public static void shutdown() {
         getSessionFactory().close();
     }

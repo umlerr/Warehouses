@@ -1,7 +1,8 @@
 package com.umler.warehouses.Enums;
 
 /**
- * Code created by Umler on 2023-04-30
+ * Enum для хранения путей к частям интерфейса.
+ * @author Umler
  */
 public enum ScenePath {
 

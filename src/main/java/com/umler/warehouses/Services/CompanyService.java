@@ -12,8 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Класс для работы с таблицей Company в базе данных
+ * @author Umler
+ */
+
 public class CompanyService {
 
+    /**
+     * Создает новой компании или обновляет существующую в базе данных.
+     * @param company объект, представляющий компанию
+     * @return true, если операция выполнена успешно, false в противном случае
+     */
     public Boolean createCompany(Company company) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -30,6 +40,10 @@ public class CompanyService {
         return false;
     }
 
+    /**
+     * Обновляет информацию о компании в базе данных.
+     * @param company объект, представляющий компанию с обновленными данными
+     */
     public void updateCompany(Company company) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -44,6 +58,10 @@ public class CompanyService {
         }
     }
 
+    /**
+     * Удаляет информацию о компании из базы данных.
+     * @param company объект, представляющий компанию, которую нужно удалить
+     */
     public void deleteCompany(Company company) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -58,6 +76,10 @@ public class CompanyService {
         }
     }
 
+    /**
+     * Возвращает список всех компаний из базы данных.
+     * @return список объектов, представляющих компаний
+     */
     public List<Company> getCompanies() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             List<Company> companies = session.createQuery("from Company", Company.class).list();

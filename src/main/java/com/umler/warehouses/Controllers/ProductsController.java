@@ -39,6 +39,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+
+/**
+ * Контроллер для таблицы товаров.
+ * @author Umler
+ */
 public class ProductsController implements Initializable
 {
     @FXML
@@ -84,18 +89,9 @@ public class ProductsController implements Initializable
 
     private static final Logger logger = LoggerFactory.getLogger("Warehouse Logger");
 
-    @FXML
-    private void add(ActionEvent event) throws IOException {
-        logger.debug("adding a room");
-        NewWindowController.getNewProductWindow();
-        if(UpdateStatus.isIsProductAdded()) {
-            refreshScreen(event);
-            UpdateStatus.setIsProductAdded(false);
-        }
-        logger.info("room added");
-    }
-
-
+    /**
+     * Мое исключение для записи в PDF файл
+     */
     static class MyPDFException extends Exception
     {
         public MyPDFException()
@@ -104,6 +100,9 @@ public class ProductsController implements Initializable
         }
     }
 
+    /**
+     * Мое исключение для записи в удаления строк таблицы
+     */
     static class myDeleteException extends Exception
     {
         public myDeleteException()
@@ -114,6 +113,12 @@ public class ProductsController implements Initializable
 
     private final String[] choices = {"Products","Companies", "Contracts", "Rooms/Shelves"};
 
+    /**
+     * Обработчик события выбора значения в выпадающем списке.
+     * Получает выбранное значение и вызывает соответствующий метод в классе SceneController для отображения соответствующей сцены.
+     * @param event событие выбора значения в выпадающем списке
+     * @throws IOException если возникает ошибка ввода-вывода при отображении сцены
+     */
     @FXML
     private void getChoices(ActionEvent event) throws IOException {
         logger.info("Choice box action");
@@ -136,17 +141,51 @@ public class ProductsController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события добавления нового товара.
+     * Вызывает метод NewWindowController для отображения окна добавления нового товара.
+     * Если товар был успешно добавлен, обновляет экран с товарами.
+     * @param event Событие добавления нового товара.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
+    @FXML
+    private void add(ActionEvent event) throws IOException {
+        logger.debug("adding a room");
+        NewWindowController.getNewProductWindow();
+        if(UpdateStatus.isIsProductAdded()) {
+            refreshScreen(event);
+            UpdateStatus.setIsProductAdded(false);
+        }
+        logger.info("room added");
+    }
+
+    /**
+     * Устанавливает список товаров.
+     * Добавляет список товаров из БД.
+     */
     private void setProductList() {
         ProductList.clear();
         ProductList.addAll(productService.getProducts());
     }
 
+    /**
+     * Метод для получения отфильтрованного и отсортированного списка товаров.
+     * Создает новый отфильтрованный список на основе исходного списка товаров, используя фильтр из searchField.
+     * Затем создает новый отсортированный список на основе отфильтрованного списка и связывает его с компаратором таблицы.
+     * @return Отсортированный список товаров.
+     */
     private ObservableList<Product> getSortedList() {
         SortedList<Product> sortedList = new SortedList<>(getFilteredList());
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         return sortedList;
     }
 
+    /**
+     * Метод для получения отфильтрованного списка товаров на основе заданного текстового фильтра.
+     * Создает новый отфильтрованный список на основе исходного списка товаров, используя заданный текстовый фильтр.
+     * Фильтр применяется к полям "Название товара", "Тип товара", "Кол-во товара определенного вида", "Контракт, по которому товары добавлены на склад" каждого товара.
+     * @return Отфильтрованный список товаров.
+     */
     private FilteredList<Product> getFilteredList() {
         FilteredList<Product> filteredList = new FilteredList<>(ProductList, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) ->
@@ -166,6 +205,13 @@ public class ProductsController implements Initializable
         return filteredList;
     }
 
+    /**
+     * Обработчик события удаления выбранных товаров из таблицы.
+     * Удаляет выбранные товары из таблицы.
+     * Если ни один товар не выбран, выбрасывает исключение myDeleteException.
+     * После удаления товаров обновляет экран.
+     * @param event Событие удаления товаров.
+     */
     @FXML
     private void delete(ActionEvent event)
     {
@@ -189,6 +235,15 @@ public class ProductsController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события удаления выбранных товаров из таблицы.
+     * Удаляет выбранные товары из таблицы.
+     * Если ни один товар не выбран, выбрасывает исключение myDeleteException.
+     * После удаления товаров обновляет экран.
+     * @param event Событие удаления товаров.
+     * @throws ProductsController.myDeleteException Если ни один товар не выбран.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     private void deleteRows(ActionEvent event) throws myDeleteException, IOException {
 
         int selectedID = table.getSelectionModel().getSelectedIndex();
@@ -202,6 +257,12 @@ public class ProductsController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события сохранения списка товаров в файл.
+     * Сохраняет список товаров в файл "saves/save_contract.csv".
+     * Если произошла ошибка ввода-вывода при сохранении, выбрасывает исключение IOException.
+     * После сохранения открывает папку "saves".
+     */
     @FXML
     private void save()
     {
@@ -232,6 +293,10 @@ public class ProductsController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события изменения названия товара в таблице.
+     * @param editEvent Событие изменения названия товара в таблице.
+     */
     @FXML
     private void editName(TableColumn.CellEditEvent<Product, String> editEvent)
     {
@@ -242,6 +307,10 @@ public class ProductsController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения типа товара в таблице.
+     * @param editEvent Событие изменения типа товара в таблице.
+     */
     @FXML
     private void editType(TableColumn.CellEditEvent<Product, String> editEvent)
     {
@@ -252,6 +321,10 @@ public class ProductsController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения кол-ва товара в таблице.
+     * @param editEvent Событие изменения кол-ва товара в таблице.
+     */
     @FXML
     private void editQuantity(TableColumn.CellEditEvent<Product, Integer> editEvent)
     {
@@ -283,6 +356,10 @@ public class ProductsController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения стеллажа на котором находится товар.
+     * @param editEvent Событие изменения стеллажа на котором находится товар.
+     */
     @FXML
     private void editShelf(TableColumn.CellEditEvent<Product, Shelf> editEvent)
     {
@@ -315,6 +392,10 @@ public class ProductsController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения контракта по которому товар находится на складе.
+     * @param editEvent Событие изменения контракта по которому товар находится на складе.
+     */
     @FXML
     private void editContract(TableColumn.CellEditEvent<Product, Contract> editEvent)
     {
@@ -326,11 +407,16 @@ public class ProductsController implements Initializable
         logger.debug("Editing cell");
     }
 
-
+    /**
+     * Обработчик события нажатия на кнопку сохранения таблицы товаров в PDF файл.
+     * Сохраняет данные из таблицы в файл "pdf/report_products.pdf".
+     * Если список товаров пуст, выбрасывает исключение MyPDFException.
+     * Если возникает ошибка ввода-вывода, выводит сообщение об ошибке.
+     */
     @FXML
     private void toPDF(ActionEvent event) throws IOException {
         try {
-//            logger.debug("Saving to PDF");
+            logger.debug("Saving to PDF");
             Document my_pdf_report = new Document();
             PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report_products.pdf"));
             my_pdf_report.open();
@@ -364,16 +450,19 @@ public class ProductsController implements Initializable
             }
             my_pdf_report.add(my_report_table);
             my_pdf_report.close();
-//            logger.info("Saved to PDF");
+            logger.info("Saved to PDF");
         }
         catch (FileNotFoundException | DocumentException | MyPDFException e)
         {
-//            logger.warn("Exception " + e);
+            logger.warn("Exception " + e);
             e.printStackTrace();
         }
         refreshScreen(event);
     }
 
+    /**
+     * Выход из окна программы.
+     */
     public void ExitMainWindow() {
 
         logger.debug("Closing main window");
@@ -381,6 +470,9 @@ public class ProductsController implements Initializable
         exit_btn.setOnAction(SceneController::close);
     }
 
+    /**
+     * Сворачивание окна программы.
+     */
     public void WrapMainWindow() {
 
         logger.debug("Wrapping main window");
@@ -388,16 +480,31 @@ public class ProductsController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    /**
+     * Обработчик события обновления экрана.
+     * Вызывает метод SceneController для отображения сцены с товарами.
+     * @param event Событие обновления экрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getProductsScene(event);
     }
 
+    /**
+     * Обработчик события смены экрана.
+     * Вызывает метод SceneController для отображения сцены с авторизацией.
+     * @param event Событие обновления экрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void changeUser(ActionEvent event) throws IOException {
         SceneController.getLoginScene(event);
     }
 
+    /**
+     * Инициализация.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {

@@ -7,6 +7,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Класс контракта
+ * @author Umler
+ */
+
 @Entity
 @Table(name="Contract")
 
@@ -71,6 +77,9 @@ public class Contract {
         this.company = company;
     }
 
+    /**
+     * Переопределение метода toString для корректного вывода объектов класса.
+     */
     @Override
     public String toString() {
         return String.format("%s | %s", this.number, this.company.getName());

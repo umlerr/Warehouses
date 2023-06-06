@@ -9,7 +9,18 @@ import org.hibernate.resource.transaction.spi.TransactionStatus;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс для работы с таблицей Product в базе данных
+ * @author Umler
+ */
+
 public class ProductService {
+
+    /**
+     * Создает новый товар или обновляет существующую в базе данных.
+     * @param product объект, представляющий товар
+     * @return true, если операция выполнена успешно, false в противном случае
+     */
     public Boolean createProduct(Product product) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -26,6 +37,10 @@ public class ProductService {
         return false;
     }
 
+    /**
+     * Обновляет информацию о товаре в базе данных.
+     * @param product объект, представляющий товар с обновленными данными
+     */
     public void updateProduct(Product product) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -40,6 +55,10 @@ public class ProductService {
         }
     }
 
+    /**
+     * Удаляет информацию о товаре из базы данных.
+     * @param product объект, представляющий товаре, который нужно удалить
+     */
     public void deleteProduct(Product product) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -54,6 +73,10 @@ public class ProductService {
         }
     }
 
+    /**
+     * Возвращает список всех товаров из базы данных.
+     * @return список объектов, представляющих товары
+     */
     public List<Product> getProducts() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Product ", Product.class).list();

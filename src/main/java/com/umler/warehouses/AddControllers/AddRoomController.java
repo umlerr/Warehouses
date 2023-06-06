@@ -24,6 +24,11 @@ public class AddRoomController {
 
     RoomService roomService = new RoomService();
 
+    /**
+     * Сохраняет изменения в базе данных после добавления комнаты.
+     * Если данные введены корректно, то создается новый объект компании и контракта и происходит обновление базы данных.
+     * Если данные введены некорректно, то выводится сообщение об ошибке.
+     */
     @FXML
     private void saveNewRoomToDb(ActionEvent event){
         if (validateInputs()) {
@@ -37,6 +42,11 @@ public class AddRoomController {
         }
     }
 
+    /**
+     * Проверяет корректность введенных данных.
+     * Если все поля заполнены корректно, возвращает true.
+     * Если есть незаполненные поля или данные введены некорректно, выводит сообщение об ошибке и возвращает false.
+     */
     private boolean validateInputs() {
         Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Input Error", ButtonType.OK);
         if (number_field.getText().equals("")
@@ -79,6 +89,9 @@ public class AddRoomController {
         return true;
     }
 
+    /**
+     * Проверка что введеный номер помещения уже существует.
+     */
     private boolean isNumberExist(Integer number){
         for (Room rooms : roomService.getRooms()){
             if (Objects.equals(rooms.getNumber(), number))
@@ -87,6 +100,10 @@ public class AddRoomController {
         return true;
     }
 
+    /**
+     * Создает новый объект помещения на основе введенных данных.
+     * @return новый объект помещения
+     */
     private Room createRoomFromInput() {
         Room room = new Room();
         room.setNumber(Integer.valueOf(number_field.getText()));
@@ -94,6 +111,10 @@ public class AddRoomController {
         return room;
     }
 
+    /**
+     * Проверка введенной строки на число.
+     * @return true - число больше 0/false
+     */
     private boolean isNumeric(String str) {
         try {
             return Double.parseDouble(str) <= 0;
@@ -102,12 +123,18 @@ public class AddRoomController {
         }
     }
 
+    /**
+     * Задержка закрытия окна добавления до нажатия клавишы сохранения.
+     */
     private void delayWindowClose(ActionEvent event) {
         PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished(event2 -> closeWindow(event));
         delay.play();
     }
 
+    /**
+     * Закрытия окна по кнопке.
+     */
     @FXML
     private void closeWindow(ActionEvent event) {
         SceneController.close(event);

@@ -9,16 +9,27 @@ import java.io.IOException;
 
 import org.slf4j.*;
 
+/**
+ * Стартовый класс для запуска приложения
+ * @author Umler
+ */
+
 public class App extends Application {
 
     private static final Logger logger = LoggerFactory.getLogger("Main Logger");
 
+    /**
+     * Начало программы
+     */
     @Override
     public void start(Stage stage) throws IOException {
         SceneController.getInitialScene(stage);
         logger.debug("Start of a program");
     }
 
+    /**
+     * Конец программы
+     */
     @Override
     public void stop() throws Exception {
         logger.debug("End of a program");
@@ -29,5 +40,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }

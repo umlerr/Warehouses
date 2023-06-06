@@ -37,6 +37,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+
+/**
+ * Контроллер для таблицы помещений и стеллажей.
+ * @author Umler
+ */
 public class RoomsShelvesController implements Initializable
 {
     @FXML
@@ -86,7 +91,9 @@ public class RoomsShelvesController implements Initializable
 
     private static final Logger logger = LoggerFactory.getLogger("Warehouse Logger");
 
-
+    /**
+     * Мое исключение для записи в PDF файл
+     */
     static class MyPDFException extends Exception
     {
         public MyPDFException()
@@ -95,6 +102,9 @@ public class RoomsShelvesController implements Initializable
         }
     }
 
+    /**
+     * Мое исключение для записи в удаления строк таблицы
+     */
     static class myDeleteException extends Exception
     {
         public myDeleteException()
@@ -105,6 +115,12 @@ public class RoomsShelvesController implements Initializable
 
     private final String[] choices = {"Rooms/Shelves","Products","Companies", "Contracts"};
 
+    /**
+     * Обработчик события выбора значения в выпадающем списке.
+     * Получает выбранное значение и вызывает соответствующий метод в классе SceneController для отображения соответствующей сцены.
+     * @param event событие выбора значения в выпадающем списке
+     * @throws IOException если возникает ошибка ввода-вывода при отображении сцены
+     */
     @FXML
     private void getChoices(ActionEvent event) throws IOException {
         logger.info("Choice box action");
@@ -127,17 +143,33 @@ public class RoomsShelvesController implements Initializable
         }
     }
 
+    /**
+     * Устанавливает список помещений.
+     * Добавляет список помещений из БД.
+     */
     private void setRoomList() {
         RoomList.clear();
         RoomList.addAll(roomService.getRooms());
     }
 
+    /**
+     * Метод для получения отфильтрованного и отсортированного списка помещений.
+     * Создает новый отфильтрованный список на основе исходного списка помещений, используя фильтр из searchField.
+     * Затем создает новый отсортированный список на основе отфильтрованного списка и связывает его с компаратором таблицы.
+     * @return Отсортированный список помещений.
+     */
     private ObservableList<Room> getRoomsSortedList() {
         SortedList<Room> sortedList = new SortedList<>(getRoomsFilteredList());
         sortedList.comparatorProperty().bind(table_rooms.comparatorProperty());
         return sortedList;
     }
 
+    /**
+     * Метод для получения отфильтрованного списка помещений на основе заданного текстового фильтра.
+     * Создает новый отфильтрованный список на основе исходного списка помещений, используя заданный текстовый фильтр.
+     * Фильтр применяется к полям "Номер", "Вместимость" каждого помещения.
+     * @return Отфильтрованный список помещений.
+     */
     private FilteredList<Room> getRoomsFilteredList() {
         FilteredList<Room> filteredList = new FilteredList<>(RoomList, b -> true);
         searchRoom.textProperty().addListener((observable, oldValue, newValue) ->
@@ -153,6 +185,13 @@ public class RoomsShelvesController implements Initializable
         return filteredList;
     }
 
+    /**
+     * Обработчик события добавления нового помещения.
+     * Вызывает метод NewWindowController для отображения окна добавления нового помещения.
+     * Если помещение был успешно добавлено, обновляет экран с помещениями.
+     * @param event Событие добавления нового помещения.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void addRoom(ActionEvent event) throws IOException {
         logger.debug("adding a room");
@@ -165,6 +204,13 @@ public class RoomsShelvesController implements Initializable
         logger.info("room added");
     }
 
+    /**
+     * Обработчик события удаления выбранных помещений из таблицы.
+     * Удаляет выбранные помещения из таблицы.
+     * Если ни одно помещение не выбрано, выбрасывает исключение myDeleteException.
+     * После удаления помещений обновляет экран.
+     * @param event Событие удаления помещений.
+     */
     @FXML
     private void deleteRooms(ActionEvent event)
     {
@@ -186,6 +232,15 @@ public class RoomsShelvesController implements Initializable
             }
         }
     }
+
+    /**
+     * Обработчик события удаления выбранных помещений из таблицы.
+     * Удаляет выбранные помещения из таблицы.
+     * Если ни одно помещение не выбрано, выбрасывает исключение myDeleteException.
+     * @param event После удаления помещений обновляет экран.
+     * @throws RoomsShelvesController.myDeleteException Если ни одно помещение не выбрано.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     private void deleteRoomRows(ActionEvent event) throws myDeleteException, IOException {
         int selectedID = table_rooms.getSelectionModel().getSelectedIndex();
         if (selectedID == -1) throw new myDeleteException();
@@ -198,6 +253,12 @@ public class RoomsShelvesController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события сохранения списка помещений в файл.
+     * Сохраняет список помещений в файл "saves/save_room.csv".
+     * Если произошла ошибка ввода-вывода при сохранении, выбрасывает исключение IOException.
+     * После сохранения открывает папку "saves".
+     */
     @FXML
     private void saveRooms()
     {
@@ -227,6 +288,12 @@ public class RoomsShelvesController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события изменения номера помещения в таблице.
+     * Проверка на существования помещения с введеным для изменения номером.
+     * Вывод ошибки если помещение с таким номером уже существует.
+     * @param editEvent Событие изменения названия помещения в таблице.
+     */
     @FXML
     private void editRoomNumber(TableColumn.CellEditEvent<Room, Integer> editEvent)
     {
@@ -253,6 +320,10 @@ public class RoomsShelvesController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события изменения вместительности помещения в таблице.
+     * @param editEvent Событие изменения вместительности помещения в таблице.
+     */
     @FXML
     private void editRoomCapacity(TableColumn.CellEditEvent<Room, Integer> editEvent)
     {
@@ -263,6 +334,12 @@ public class RoomsShelvesController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события нажатия на кнопку сохранения таблицы помещений в PDF файл.
+     * Сохраняет данные из таблицы в файл "pdf/report_rooms.pdf".
+     * Если список помещений пуст, выбрасывает исключение MyPDFException.
+     * Если возникает ошибка ввода-вывода, выводит сообщение об ошибке.
+     */
     @FXML
     private void toPDFRooms(ActionEvent event) throws IOException {
         try {
@@ -294,23 +371,39 @@ public class RoomsShelvesController implements Initializable
         }
         catch (FileNotFoundException | DocumentException | MyPDFException e)
         {
-//            logger.warn("Exception " + e);
+            logger.warn("Exception " + e);
             e.printStackTrace();
         }
         refreshScreen(event);
     }
 
+    /**
+     * Устанавливает список стеллажей.
+     * Добавляет список товаров из БД.
+     */
     private void setShelfList() {
         ShelfList.clear();
         ShelfList.addAll(shelfService.getShelves());
     }
 
+    /**
+     * Метод для получения отфильтрованного и отсортированного списка стеллажей.
+     * Создает новый отфильтрованный список на основе исходного списка стеллажей, используя фильтр из searchField.
+     * Затем создает новый отсортированный список на основе отфильтрованного списка и связывает его с компаратором таблицы.
+     * @return Отсортированный список стеллажей.
+     */
     private ObservableList<Shelf> getShelvesSortedList() {
         SortedList<Shelf> sortedList = new SortedList<>(getShelvesFilteredList());
         sortedList.comparatorProperty().bind(table_shelves.comparatorProperty());
         return sortedList;
     }
 
+    /**
+     * Метод для получения отфильтрованного списка стеллажей на основе заданного текстового фильтра.
+     * Создает новый отфильтрованный список на основе исходного списка стеллажей, используя заданный текстовый фильтр.
+     * Фильтр применяется к полям "Номер", "Вместительность", "Помещение, в котором стоит стеллаж" каждого стеллажа.
+     * @return Отфильтрованный список стеллажей.
+     */
     private FilteredList<Shelf> getShelvesFilteredList() {
         FilteredList<Shelf> filteredList = new FilteredList<>(ShelfList, b -> true);
         searchShelves.textProperty().addListener((observable, oldValue, newValue) ->
@@ -328,6 +421,13 @@ public class RoomsShelvesController implements Initializable
         return filteredList;
     }
 
+    /**
+     * Обработчик события добавления нового стеллажа.
+     * Вызывает метод NewWindowController для отображения окна добавления нового стеллажа.
+     * Если стеллаж был успешно добавлен, обновляет экран с стеллажами.
+     * @param event Событие добавления нового стеллажа.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void addShelves(ActionEvent event) throws IOException {
         logger.debug("adding a shelf");
@@ -340,6 +440,13 @@ public class RoomsShelvesController implements Initializable
         logger.info("room shelf");
     }
 
+    /**
+     * Обработчик события удаления выбранных стеллажей из таблицы.
+     * Удаляет выбранные стеллажи из таблицы.
+     * Если ни один стеллаж не выбран, выбрасывает исключение myDeleteException.
+     * После удаления стеллажей обновляет экран.
+     * @param event Событие удаления стеллажей.
+     */
     @FXML
     private void deleteShelves(ActionEvent event)
     {
@@ -361,6 +468,16 @@ public class RoomsShelvesController implements Initializable
             }
         }
     }
+
+    /**
+     * Обработчик события удаления выбранных стеллажей из таблицы.
+     * Удаляет выбранные стеллажи из таблицы.
+     * Если ни один стеллаж не выбран, выбрасывает исключение myDeleteException.
+     * После удаления стеллажей обновляет экран.
+     * @param event Событие удаления стеллажей.
+     * @throws RoomsShelvesController.myDeleteException Если ни один стеллаж не выбран.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     private void deleteShelveRows(ActionEvent event) throws myDeleteException, IOException {
 
         int selectedID = table_shelves.getSelectionModel().getSelectedIndex();
@@ -373,6 +490,12 @@ public class RoomsShelvesController implements Initializable
             refreshScreen(event);
         }
     }
+    /**
+     * Обработчик события сохранения списка стеллажей в файл.
+     * Сохраняет список стеллажей в файл "saves/save_shelf.csv".
+     * Если произошла ошибка ввода-вывода при сохранении, выбрасывает исключение IOException.
+     * После сохранения открывает папку "saves".
+     */
     @FXML
     private void saveShelves()
     {
@@ -402,6 +525,13 @@ public class RoomsShelvesController implements Initializable
             }
         }
     }
+
+    /**
+     * Обработчик события изменения номера стеллажа в таблице.
+     * Проверка на существования стеллажа с введеным для изменения номером.
+     * Вывод ошибки если стеллаж с таким номером уже существует.
+     * @param editEvent Событие изменения названия стеллажа в таблице.
+     */
     @FXML
     private void editShelfNumber(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
     {
@@ -430,6 +560,12 @@ public class RoomsShelvesController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения вместительности стеллажа в таблице.
+     * Проверка на кол-во товара уже на стеллаже.
+     * Вывод ошибки если стеллаж заполнен больше чем пользователь пытается ввести.
+     * @param editEvent Событие изменения вместительности стеллажа в таблице.
+     */
     @FXML
     private void editShelfCapacity(TableColumn.CellEditEvent<Shelf, Integer> editEvent)
     {
@@ -462,6 +598,10 @@ public class RoomsShelvesController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения помещения в котором находится стеллаж.
+     * @param editEvent Событие изменения помещения в котором находится стеллаж.
+     */
     @FXML
     private void editRoom(TableColumn.CellEditEvent<Shelf, Room> editEvent)
     {
@@ -473,12 +613,18 @@ public class RoomsShelvesController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события нажатия на кнопку сохранения таблицы товаров в PDF файл.
+     * Сохраняет данные из таблицы в файл "pdf/report_shelves.pdf".
+     * Если список товаров пуст, выбрасывает исключение MyPDFException.
+     * Если возникает ошибка ввода-вывода, выводит сообщение об ошибке.
+     */
     @FXML
     private void toPDFShelves(ActionEvent event) throws IOException {
         try {
 //            logger.debug("Saving to PDF");
             Document my_pdf_report = new Document();
-            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report_shelfs.pdf"));
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("report_shelves.pdf"));
             my_pdf_report.open();
 
             PdfPTable my_report_table_shelves = new PdfPTable(3);
@@ -504,17 +650,19 @@ public class RoomsShelvesController implements Initializable
             }
             my_pdf_report.add(my_report_table_shelves);
             my_pdf_report.close();
-//            logger.info("Saved to PDF");
+            logger.info("Saved to PDF");
         }
         catch (FileNotFoundException | DocumentException | MyPDFException e)
         {
-//            logger.warn("Exception " + e);
+            logger.warn("Exception " + e);
             e.printStackTrace();
         }
         refreshScreen(event);
     }
 
-
+    /**
+     * Выход из окна программы.
+     */
     public void ExitMainWindow() {
 
         logger.debug("Closing main window");
@@ -522,6 +670,9 @@ public class RoomsShelvesController implements Initializable
         exit_btn.setOnAction(SceneController::close);
     }
 
+    /**
+     * Сворачивание окна программы.
+     */
     public void WrapMainWindow() {
 
         logger.debug("Wrapping main window");
@@ -529,11 +680,20 @@ public class RoomsShelvesController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    /**
+     * Обработчик события обновления экрана.
+     * Вызывает метод SceneController для отображения сцены с помещениями и стеллажами.
+     * @param event Событие обновления экрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getRoomsShelvesScene(event);
     }
 
+    /**
+     * Инициализация.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {

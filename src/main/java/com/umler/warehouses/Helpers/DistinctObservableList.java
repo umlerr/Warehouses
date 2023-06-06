@@ -8,6 +8,12 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+/**
+ * Класс для отбрасывания повторов с списке с типом объекта.
+ * Используется для корректного отображения ComboBox, для вывода разных параметров одного класса в разные ComboBox.
+ * @author Umler
+ */
+
 public class DistinctObservableList<T> {
 
     private final FilteredList<T> filteredList;

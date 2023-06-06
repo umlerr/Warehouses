@@ -36,6 +36,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+
+/**
+ * Контроллер для таблицы контрактов.
+ * @author Umler
+ */
 public class ContractsController implements Initializable
 {
 
@@ -88,19 +93,10 @@ public class ContractsController implements Initializable
 
     private static final Logger logger = LoggerFactory.getLogger("Contracts Logger");
 
-    @FXML
-    private void add(ActionEvent event) throws IOException {
-        logger.debug("adding a contract");
 
-        NewWindowController.getNewContractCompanyWindow();
-        if(UpdateStatus.isIsContractCompanyAdded()) {
-            refreshScreen(event);
-            UpdateStatus.setIsContractCompanyAdded(false);
-        }
-        logger.info("contract added");
-    }
-
-
+    /**
+     * Мое исключение для записи в PDF файл
+     */
     static class MyPDFException extends Exception
     {
         public MyPDFException()
@@ -109,6 +105,9 @@ public class ContractsController implements Initializable
         }
     }
 
+    /**
+     * Мое исключение для записи в удаления строк таблицы
+     */
     static class myDeleteException extends Exception
     {
         public myDeleteException()
@@ -119,6 +118,12 @@ public class ContractsController implements Initializable
 
     private final String[] choices = {"Contracts","Companies", "Products", "Rooms/Shelves"};
 
+    /**
+     * Обработчик события выбора значения в выпадающем списке.
+     * Получает выбранное значение и вызывает соответствующий метод в классе SceneController для отображения соответствующей сцены.
+     * @param event событие выбора значения в выпадающем списке
+     * @throws IOException если возникает ошибка ввода-вывода при отображении сцены
+     */
     @FXML
     private void getChoices(ActionEvent event) throws IOException {
         logger.info("Choice box action");
@@ -141,12 +146,41 @@ public class ContractsController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события добавления нового контракта.
+     * Вызывает метод NewWindowController для отображения окна добавления нового контракта.
+     * Если контракт был успешно добавлен, обновляет экран с контрактами.
+     * @param event Событие добавления нового контракта.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
+    @FXML
+    private void add(ActionEvent event) throws IOException {
+        logger.debug("adding a contract");
+
+        NewWindowController.getNewContractCompanyWindow();
+        if(UpdateStatus.isIsContractCompanyAdded()) {
+            refreshScreen(event);
+            UpdateStatus.setIsContractCompanyAdded(false);
+        }
+        logger.info("contract added");
+    }
+
+    /**
+     * Устанавливает список контрактов.
+     * Добавляет список контрактов из БД.
+     */
     private void setContractList() {
         logger.info("Contract list get from DB");
         ContractList.clear();
         ContractList.addAll(contractService.getContracts());
     }
 
+    /**
+     * Метод для получения отфильтрованного и отсортированного списка контрактов.
+     * Создает новый отфильтрованный список на основе исходного списка контрактов, используя фильтр из searchField.
+     * Затем создает новый отсортированный список на основе отфильтрованного списка и связывает его с компаратором таблицы.
+     * @return Отсортированный список контрактов.
+     */
     private ObservableList<Contract> getSortedList() {
         logger.info("ObservableList get");
         SortedList<Contract> sortedList = new SortedList<>(getFilteredList());
@@ -154,6 +188,12 @@ public class ContractsController implements Initializable
         return sortedList;
     }
 
+    /**
+     * Метод для получения отфильтрованного списка контрактов на основе заданного текстового фильтра.
+     * Создает новый отфильтрованный список на основе исходного списка контрактов, используя заданный текстовый фильтр.
+     * Фильтр применяется к полям "Дата подписания", "Дата оканчания", "Номер контракта", "Компания, с которой заключен договор" каждого контракта.
+     * @return Отфильтрованный список контрактов.
+     */
     private FilteredList<Contract> getFilteredList() {
         logger.info("Filtering list with search");
         FilteredList<Contract> filteredList = new FilteredList<>(ContractList, b -> true);
@@ -174,12 +214,22 @@ public class ContractsController implements Initializable
         return filteredList;
     }
 
+    /**
+     * Конвертация даты для поиска в Российском формте dd.MM.yyyy.
+     */
     private String date_converter(String temp){
         logger.info("Date converting for the search in Russian style");
         String[] temp2 = temp.split("-");
         return temp2[2] + '.' + temp2[1] + '.' + temp2[0];
     }
 
+    /**
+     * Обработчик события удаления выбранных контрактов из таблицы.
+     * Удаляет выбранные контракты из таблицы.
+     * Если ни один контракт не выбран, выбрасывает исключение myDeleteException.
+     * После удаления контрактов обновляет экран.
+     * @param event Событие удаления контрактов.
+     */
     @FXML
     private void delete(ActionEvent event)
     {
@@ -202,6 +252,15 @@ public class ContractsController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события удаления выбранных контрактов из таблицы.
+     * Удаляет выбранные контракты из таблицы.
+     * Если ни один контракт не выбран, выбрасывает исключение myDeleteException.
+     * После удаления контрактов обновляет экран.
+     * @param event Событие удаления контрактов.
+     * @throws ContractsController.myDeleteException Если ни один контракт не выбрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     private void deleteRows(ActionEvent event) throws myDeleteException, IOException {
         logger.info("Deleting rows");
         int selectedID = table.getSelectionModel().getSelectedIndex();
@@ -215,6 +274,12 @@ public class ContractsController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события сохранения списка контрактов в файл.
+     * Сохраняет список контрактов в файл "saves/save_contract.csv".
+     * Если произошла ошибка ввода-вывода при сохранении, выбрасывает исключение IOException.
+     * После сохранения открывает папку "saves".
+     */
     @FXML
     private void save()
     {
@@ -245,6 +310,10 @@ public class ContractsController implements Initializable
         }
     }
 
+    /**
+     * Обработчик события изменения даты подписания контракта в таблице.
+     * @param editEvent Событие изменения даты подписания компании в таблице.
+     */
     @FXML
     private void editStartDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent) {
         Contract selectedContract = table.getSelectionModel().getSelectedItem();
@@ -255,6 +324,10 @@ public class ContractsController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения даты окончания контракта в таблице.
+     * @param editEvent Событие изменения даты окончания компании в таблице.
+     */
     @FXML
     private void editEndDate(TableColumn.CellEditEvent<Contract, LocalDate> editEvent)
     {
@@ -265,6 +338,10 @@ public class ContractsController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения номера контракта в таблице.
+     * @param editEvent Событие изменения ИНН компании в таблице.
+     */
     @FXML
     private void editNumber(TableColumn.CellEditEvent<Contract, Integer> editEvent)
     {
@@ -275,6 +352,10 @@ public class ContractsController implements Initializable
         logger.debug("Editing cell");
     }
 
+    /**
+     * Обработчик события изменения компании привязанной к контракту в таблице.
+     * @param editEvent Событие изменения компании привязанной к контракту в таблице.
+     */
     @FXML
     private void editCompany(TableColumn.CellEditEvent<Contract, Company> editEvent)
     {
@@ -287,6 +368,12 @@ public class ContractsController implements Initializable
     }
 
 
+    /**
+     * Обработчик события нажатия на кнопку сохранения таблицы контрактов в PDF файл.
+     * Сохраняет данные из таблицы в файл "pdf/report_contracts.pdf".
+     * Если список контрактов пуст, выбрасывает исключение MyPDFException.
+     * Если возникает ошибка ввода-вывода, выводит сообщение об ошибке.
+     */
     @FXML
     private void toPDF(ActionEvent event) throws IOException {
         try {
@@ -331,6 +418,9 @@ public class ContractsController implements Initializable
         refreshScreen(event);
     }
 
+    /**
+     * Выход из окна программы.
+     */
     public void ExitMainWindow() {
 
         logger.debug("Closing main window");
@@ -338,6 +428,9 @@ public class ContractsController implements Initializable
         exit_btn.setOnAction(SceneController::close);
     }
 
+    /**
+     * Сворачивание окна программы.
+     */
     public void WrapMainWindow() {
 
         logger.debug("Wrapping main window");
@@ -345,18 +438,33 @@ public class ContractsController implements Initializable
         wrap_btn.setOnAction(SceneController::wrap);
     }
 
+    /**
+     * Обработчик события обновления экрана.
+     * Вызывает метод SceneController для отображения сцены с контрактами.
+     * @param event Событие обновления экрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void refreshScreen(ActionEvent event) throws IOException {
         logger.info("Refreshing screen");
         SceneController.getContractsScene(event);
     }
 
+    /**
+     * Обработчик события смены экрана.
+     * Вызывает метод SceneController для отображения сцены с авторизацией.
+     * @param event Событие обновления экрана.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     @FXML
     private void changeUser(ActionEvent event) throws IOException {
         logger.info("Changing user");
         SceneController.getLoginScene(event);
     }
 
+    /**
+     * Инициализация.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {

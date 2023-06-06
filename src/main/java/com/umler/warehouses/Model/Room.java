@@ -6,6 +6,12 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Класс помещения
+ * @author Umler
+ */
+
 @Entity
 @Table(name="Room")
 public class Room {
@@ -26,16 +32,8 @@ public class Room {
         return shelvesList;
     }
 
-    public void setShelvesList(List<Shelf> shelvesList) {
-        this.shelvesList = shelvesList;
-    }
-
     public Integer getId_room() {
         return id_room;
-    }
-
-    public void setId_room(Integer id_room) {
-        this.id_room = id_room;
     }
 
     public Integer getNumber() {
@@ -54,6 +52,9 @@ public class Room {
         this.capacity = capacity;
     }
 
+    /**
+     * Переопределение метода toString для корректного вывода объектов класса.
+     */
     @Override
     public String toString() {
         return String.format("%s", this.number);

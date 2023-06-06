@@ -1,8 +1,11 @@
 package com.umler.warehouses.Model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
+
+/**
+ * Класс товара
+ * @author Umler
+ */
 
 @Entity
 @Table(name="Product")
@@ -45,10 +48,6 @@ public class Product {
 
     public Integer getId_product() {
         return id_product;
-    }
-
-    public void setId_product(Integer id_product) {
-        this.id_product = id_product;
     }
 
     public String getName() {

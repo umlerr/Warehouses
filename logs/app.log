@@ -1005,3 +1005,9 @@
 {Warehouse Logger} 2023-06-05 17:26:16.260 [INFO ]: Choice box action
 {Warehouse Logger} 2023-06-05 17:26:16.291 [INFO ]: room added
 {Warehouse Logger} 2023-06-05 17:28:27.982 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-06 04:50:38.292 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-06 04:50:38.341 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-06 04:50:38.342 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-06 04:50:38.377 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-06 04:50:38.377 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-06 04:50:38.377 [INFO ]: Filtering list with search

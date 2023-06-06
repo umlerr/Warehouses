@@ -5,7 +5,11 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
+/**
+ * Класс стеллажа
+ * @author Umler
+ */
 
 @Entity
 @Table(name="Shelf")
@@ -31,10 +35,6 @@ public class Shelf {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
-
     public Room getRoom() {
         return room;
     }
@@ -45,10 +45,6 @@ public class Shelf {
 
     public Integer getId_shelf() {
         return id_shelf;
-    }
-
-    public void setId_shelf(Integer id_shelf) {
-        this.id_shelf = id_shelf;
     }
 
     public Integer getNumber() {
@@ -67,6 +63,9 @@ public class Shelf {
         this.capacity = capacity;
     }
 
+    /**
+     * Переопределение метода toString для корректного вывода объектов класса.
+     */
     @Override
     public String toString() {
         return String.format("%s", this.number);

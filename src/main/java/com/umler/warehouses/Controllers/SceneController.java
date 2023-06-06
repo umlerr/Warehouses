@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * Code created by Umler on 2023-04-30
+ * Контроллер для переключения сцен интерфейса.
+ * @author Umler
  */
 public class SceneController {
 
@@ -26,6 +27,11 @@ public class SceneController {
 
     private static final Logger logger = LoggerFactory.getLogger("Scene Logger");
 
+    /**
+     * Метод для перехода на сцену с авторизицией / Создание главной сцены.
+     * @param stage Главная сцена.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     public static void getInitialScene(Stage stage) throws IOException {
 
         logger.debug("InitialScene");
@@ -43,6 +49,11 @@ public class SceneController {
         stage.show();
     }
 
+    /**
+     * Метод для перехода на сцену со списком компаний.
+     * @param event Событие, вызвавшее переход.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     public static void getCompaniesScene(ActionEvent event) throws IOException {
 
         logger.debug("Transition to Companies scene");
@@ -50,6 +61,11 @@ public class SceneController {
         changeScreen(event, ScenePath.COMPANIES.getPath());
     }
 
+    /**
+     * Метод для перехода на сцену со списком товаров.
+     * @param event Событие, вызвавшее переход.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     public static void getProductsScene(ActionEvent event) throws IOException {
 
         logger.debug("Transition to Products scene");
@@ -57,6 +73,11 @@ public class SceneController {
         changeScreen(event, ScenePath.PRODUCTS.getPath());
     }
 
+    /**
+     * Метод для перехода на сцену со списком помещений и стеллажей.
+     * @param event Событие, вызвавшее переход.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     public static void getRoomsShelvesScene(ActionEvent event) throws IOException {
 
         logger.debug("Transition to RoomsShelves scene");
@@ -64,12 +85,22 @@ public class SceneController {
         changeScreen(event, ScenePath.ROOMSSHELVES.getPath());
     }
 
+    /**
+     * Метод для перехода на сцену со списком контрактов.
+     * @param event Событие, вызвавшее переход.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     public static void getContractsScene(ActionEvent event) throws IOException {
 
         logger.debug("Transition to Contracts scene");
         changeScreen(event, ScenePath.CONTRACTS.getPath());
     }
 
+    /**
+     * Метод для перехода на сцену с авторизацией.
+     * @param event Событие, вызвавшее переход.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     public static void getLoginScene(ActionEvent event) throws IOException {
 
         logger.debug("Transition to Login scene");
@@ -77,7 +108,12 @@ public class SceneController {
         changeScreen(event, ScenePath.LOGIN.getPath());
     }
 
-
+    /**
+     * Метод для смены сцены на заданную.
+     * @param event Событие, вызвавшее смену сцены.
+     * @param path Путь к файлу FXML новой сцены из класса Enum ScenePath.
+     * @throws IOException Если произошла ошибка ввода-вывода при загрузке сцены.
+     */
     private static void changeScreen(ActionEvent event, String path) throws IOException
     {
         logger.debug("Changing scene");
@@ -93,6 +129,9 @@ public class SceneController {
         window.show();
     }
 
+    /**
+     * Окно можно перетаскивать по экрану при зажатии ЛКМ по окну.
+     */
     public static void controlDrag(Stage stage) {
         main.setOnMousePressed(event -> {
             x = stage.getX() - event.getScreenX();
@@ -103,6 +142,10 @@ public class SceneController {
             stage.setY(event.getScreenY() + y);
         });
     }
+
+    /**
+     * Метод для закрытия окон по нажатию кнопки.
+     */
     public static void close(ActionEvent actionEvent) {
 
         logger.debug("Closing window");
@@ -112,6 +155,9 @@ public class SceneController {
         stage.close();
     }
 
+    /**
+     * Метод для сворачивания окон по нажатию кнопки.
+     */
     public static void wrap(ActionEvent actionEvent) {
 
         logger.debug("Wrapping window");

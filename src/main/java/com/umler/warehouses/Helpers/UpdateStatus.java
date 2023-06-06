@@ -1,5 +1,11 @@
 package com.umler.warehouses.Helpers;
 
+
+/**
+ * Класс для проверки на добавление элемента в базу данных
+ * @author Umler
+ */
+
 public final class UpdateStatus {
 
     private UpdateStatus() {

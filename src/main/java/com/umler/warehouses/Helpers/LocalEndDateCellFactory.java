@@ -11,8 +11,10 @@ import com.umler.warehouses.Services.ContractService;
 import java.time.LocalDate;
 import java.sql.Date;
 
-
-
+/**
+ * Класс для переопределения вида ячеек даты окончания договора под тип LocalDate.
+ * @author Umler
+ */
 public class LocalEndDateCellFactory implements Callback<TableColumn<Contract, LocalDate>, TableCell<Contract, LocalDate>> {
     ContractService contractService = new ContractService();
     @Override

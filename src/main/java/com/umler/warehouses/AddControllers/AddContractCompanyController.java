@@ -52,6 +52,13 @@ public class AddContractCompanyController implements Initializable {
 
     ContractService contractService = new ContractService();
 
+
+    /**
+     * Сохраняет изменения в базе данных после добавления компании и контракта.
+     * Если данные введены корректно, то создается новый объект компании и контракта и происходит обновление базы данных.
+     * Если компания уже была создана, и ее выбрали, новый контракт присоеденяется к этой компании.
+     * Если данные введены некорректно, то выводится сообщение об ошибке.
+     */
     @FXML
     private void saveNewContractCompanyToDb(ActionEvent event){
         if (validateInputs()) {
@@ -89,6 +96,11 @@ public class AddContractCompanyController implements Initializable {
         }
     }
 
+    /**
+     * Проверяет корректность введенных данных.
+     * Если все поля заполнены корректно, возвращает true.
+     * Если есть незаполненные поля или данные введены некорректно, выводит сообщение об ошибке и возвращает false.
+     */
     private boolean validateInputs() {
         DatePickerCellFactory enddate_field = new DatePickerCellFactory(enddatepicker);
         Alert IOAlert = new Alert(Alert.AlertType.ERROR, "Input Error", ButtonType.OK);
@@ -161,6 +173,10 @@ public class AddContractCompanyController implements Initializable {
         return true;
     }
 
+    /**
+     * Создает новый объект контракта на основе введенных данных.
+     * @return новый объект контракта
+     */
     private Contract createContractFromInput() {
         DatePickerCellFactory enddate_field = new DatePickerCellFactory(enddatepicker);
         Contract contract = new Contract();
@@ -170,6 +186,10 @@ public class AddContractCompanyController implements Initializable {
         return contract;
     }
 
+    /**
+     * Создает новый объект компании на основе введенных данных.
+     * @return новый объект компании
+     */
     private Company createCompanyFromInput() {
         Company company = new Company();
         company.setName(name_field.getText());
@@ -182,6 +202,10 @@ public class AddContractCompanyController implements Initializable {
         return company;
     }
 
+    /**
+     * Делает первую букву строки прописной.
+     * @return строку с большой буквы
+     */
     private static String capitalize(String str)
     {
         if (str == null || str.length() == 0) {
@@ -191,6 +215,10 @@ public class AddContractCompanyController implements Initializable {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
+    /**
+     * Делает букву после точки прописной.
+     * @return строку с большой буквы после точки для проверки городов по типу St.Petersburg
+     */
     private static String capitalizeAfterDot(String str) {
         StringBuilder result = new StringBuilder();
         boolean capitalizeNext = false;
@@ -209,6 +237,10 @@ public class AddContractCompanyController implements Initializable {
         return result.toString();
     }
 
+    /**
+     * Выбор уже существующей компании.
+     * Блокировка полей если компания выбрана
+     */
     @FXML
     private void getChoices() {
         Company company = company_choicebox.getValue();
@@ -256,6 +288,9 @@ public class AddContractCompanyController implements Initializable {
         }
     }
 
+    /**
+     * Проверка введенной строки на число.
+     */
     private static boolean isNumeric(String str) {
         try {
             return Double.parseDouble(str) <= 0;
@@ -264,6 +299,9 @@ public class AddContractCompanyController implements Initializable {
         }
     }
 
+    /**
+     * Проверка введеного почтового индекса на кол-во символов.
+     */
     private static boolean isCorrectIndex(String str) {
         try {
             return str.length()!=6;
@@ -272,6 +310,9 @@ public class AddContractCompanyController implements Initializable {
         }
     }
 
+    /**
+     * Проверка введеного ИНН на кол-во символов.
+     */
     private static boolean isCorrectTINorPhone(String str) {
         try {
             return str.length()!=10;
@@ -280,6 +321,9 @@ public class AddContractCompanyController implements Initializable {
         }
     }
 
+    /**
+     * Проверка что введеный номер контракта уже существует.
+     */
     private boolean isNumberExist(Integer number){
         for (Contract contracts : contractService.getContracts()){
             if (Objects.equals(contracts.getNumber(), number))
@@ -288,17 +332,26 @@ public class AddContractCompanyController implements Initializable {
         return true;
     }
 
+    /**
+     * Задержка закрытия окна добавления до нажатия клавишы сохранения.
+     */
     private void delayWindowClose(ActionEvent event) {
         PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished(event2 -> closeWindow(event));
         delay.play();
     }
 
+    /**
+     * Закрытия окна по кнопке.
+     */
     @FXML
     private void closeWindow(ActionEvent event) {
         SceneController.close(event);
     }
 
+    /**
+     * Инициализация.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
