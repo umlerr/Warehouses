@@ -1070,3 +1070,149 @@
 {Warehouse Logger} 2023-06-06 05:23:21.834 [INFO ]: Choice box action
 {Warehouse Logger} 2023-06-06 05:23:22.371 [INFO ]: Saved to PDF
 {Warehouse Logger} 2023-06-06 05:23:22.385 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:02:49.900 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:02:49.970 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:02:49.971 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:02:50.054 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:02:50.054 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:02:50.054 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:02:52.960 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:02:52.960 [INFO ]: Choice box RoomsShelves selected
+{Warehouse Logger} 2023-06-09 19:02:53.030 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:02:54.587 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:02:54.587 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-09 19:02:54.666 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:02:56.308 [INFO ]: room added
+{Warehouse Logger} 2023-06-09 19:02:57.595 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:02:57.595 [INFO ]: Choice box Managers selected
+{Contracts Logger} 2023-06-09 19:02:57.601 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:02:57.621 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:02:57.621 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:02:57.634 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:02:57.634 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:02:57.634 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:03:04.254 [INFO ]: contract added
+{Contracts Logger} 2023-06-09 19:03:07.123 [INFO ]: contract added
+{Contracts Logger} 2023-06-09 19:06:18.580 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:06:18.626 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:06:18.626 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:06:18.657 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:06:18.658 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:06:18.658 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:06:30.176 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:06:30.200 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:06:30.235 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:06:30.235 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:06:30.253 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:06:30.253 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:06:30.253 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:06:30.321 [INFO ]: contract added
+{Contracts Logger} 2023-06-09 19:06:41.168 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:06:41.215 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:06:41.216 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:06:41.246 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:06:41.246 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:06:41.246 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:05.863 [INFO ]: contract added
+{Contracts Logger} 2023-06-09 19:08:17.067 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:17.073 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:17.097 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:17.098 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:17.116 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:17.116 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:17.116 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:17.814 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:17.820 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:17.842 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:17.842 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:17.860 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:17.860 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:17.860 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:17.979 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:17.984 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:18.004 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:18.004 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:18.020 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:18.020 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:18.020 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:18.138 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:18.142 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:18.166 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:18.166 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:18.183 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:18.183 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:18.183 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:18.281 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:18.286 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:18.310 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:18.310 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:18.328 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:18.328 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:18.328 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:18.562 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:18.567 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:18.582 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:18.582 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:18.595 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:18.595 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:18.595 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:18.729 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:18.734 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:18.750 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:18.750 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:18.760 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:18.761 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:18.761 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:18.860 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:18.863 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:18.882 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:18.882 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:18.897 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:18.897 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:18.897 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:19.007 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:19.009 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:19.022 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:19.023 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:19.031 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:19.031 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:19.031 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:19.136 [INFO ]: Refreshing screen
+{Contracts Logger} 2023-06-09 19:08:19.139 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:19.155 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:19.155 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:19.165 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:19.165 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:19.165 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:08:36.179 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:08:36.226 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:08:36.226 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:08:36.258 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:08:36.258 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:08:36.258 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:10:14.755 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:10:14.755 [INFO ]: Choice box Companies selected
+{Warehouse Logger} 2023-06-09 19:10:14.827 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:10:16.485 [WARN ]: Editing failing
+{Warehouse Logger} 2023-06-09 19:10:19.798 [WARN ]: Editing failing
+{Warehouse Logger} 2023-06-09 19:10:24.934 [WARN ]: Editing failing
+{Warehouse Logger} 2023-06-09 19:10:37.422 [WARN ]: Editing failing
+{Contracts Logger} 2023-06-09 19:11:29.312 [INFO ]: Contract initializing
+{Contracts Logger} 2023-06-09 19:11:29.362 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:11:29.362 [INFO ]: Contract list get from DB
+{Contracts Logger} 2023-06-09 19:11:29.393 [INFO ]: Table setting items
+{Contracts Logger} 2023-06-09 19:11:29.393 [INFO ]: ObservableList get
+{Contracts Logger} 2023-06-09 19:11:29.393 [INFO ]: Filtering list with search
+{Contracts Logger} 2023-06-09 19:11:31.770 [INFO ]: Choice box action
+{Contracts Logger} 2023-06-09 19:11:31.770 [INFO ]: Choice box Companies selected
+{Warehouse Logger} 2023-06-09 19:11:31.805 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:11:34.806 [WARN ]: Editing failing
+{Warehouse Logger} 2023-06-09 19:11:37.904 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:11:37.904 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-06-09 19:11:37.933 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:11:39.682 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:11:39.682 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2023-06-09 19:11:39.711 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:11:41.437 [INFO ]: Choice box action
+{Warehouse Logger} 2023-06-09 19:11:41.437 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2023-06-09 19:11:41.461 [INFO ]: Choice box action

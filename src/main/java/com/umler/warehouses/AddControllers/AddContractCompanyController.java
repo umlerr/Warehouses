@@ -360,6 +360,7 @@ public class AddContractCompanyController implements Initializable {
         startdate_field.setStyle("-fx-opacity: 0.9;");
         startdate_field.setValue(LocalDate.now());
 
+        DatePickerCellFactory enddate_field = new DatePickerCellFactory(enddatepicker);
 
         ObservableList<Company> roomObservableList = FXCollections.observableArrayList(companyService.getCompanies());
         roomObservableList.add(null);
