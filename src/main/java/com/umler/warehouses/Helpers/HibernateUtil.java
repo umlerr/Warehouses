@@ -36,8 +36,8 @@ public class HibernateUtil {
 
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/Warehouses");
-                settings.put(Environment.USER, "Umler");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/warehouses");
+                settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "Umler1337228");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
                 settings.put(Environment.SHOW_SQL, "false");

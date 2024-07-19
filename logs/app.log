@@ -1216,3 +1216,63 @@
 {Warehouse Logger} 2023-06-09 19:11:41.437 [INFO ]: Choice box action
 {Warehouse Logger} 2023-06-09 19:11:41.437 [INFO ]: Choice box Products selected
 {Warehouse Logger} 2023-06-09 19:11:41.461 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:56:46.379 [INFO ]: Contract initializing
+{Contracts Logger} 2024-07-19 15:56:46.387 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:56:46.388 [INFO ]: Contract list get from DB
+{Contracts Logger} 2024-07-19 15:56:46.401 [INFO ]: Table setting items
+{Contracts Logger} 2024-07-19 15:56:46.401 [INFO ]: ObservableList get
+{Contracts Logger} 2024-07-19 15:56:46.401 [INFO ]: Filtering list with search
+{Contracts Logger} 2024-07-19 15:58:42.789 [INFO ]: Refreshing screen
+{Contracts Logger} 2024-07-19 15:58:42.797 [INFO ]: Contract initializing
+{Contracts Logger} 2024-07-19 15:58:42.803 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:58:42.803 [INFO ]: Contract list get from DB
+{Contracts Logger} 2024-07-19 15:58:42.828 [INFO ]: Table setting items
+{Contracts Logger} 2024-07-19 15:58:42.828 [INFO ]: ObservableList get
+{Contracts Logger} 2024-07-19 15:58:42.828 [INFO ]: Filtering list with search
+{Contracts Logger} 2024-07-19 15:58:42.944 [INFO ]: contract added
+{Contracts Logger} 2024-07-19 15:59:02.485 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:59:02.485 [INFO ]: Choice box Companies selected
+{Warehouse Logger} 2024-07-19 15:59:02.500 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 15:59:06.243 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 15:59:06.244 [INFO ]: Choice box Contracts selected
+{Contracts Logger} 2024-07-19 15:59:06.251 [INFO ]: Contract initializing
+{Contracts Logger} 2024-07-19 15:59:06.256 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:59:06.256 [INFO ]: Contract list get from DB
+{Contracts Logger} 2024-07-19 15:59:06.267 [INFO ]: Table setting items
+{Contracts Logger} 2024-07-19 15:59:06.267 [INFO ]: ObservableList get
+{Contracts Logger} 2024-07-19 15:59:06.267 [INFO ]: Filtering list with search
+{Contracts Logger} 2024-07-19 15:59:10.499 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:59:10.499 [INFO ]: Choice box Companies selected
+{Warehouse Logger} 2024-07-19 15:59:10.509 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 15:59:12.643 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 15:59:12.644 [INFO ]: Choice box Contracts selected
+{Contracts Logger} 2024-07-19 15:59:12.649 [INFO ]: Contract initializing
+{Contracts Logger} 2024-07-19 15:59:12.654 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:59:12.655 [INFO ]: Contract list get from DB
+{Contracts Logger} 2024-07-19 15:59:12.666 [INFO ]: Table setting items
+{Contracts Logger} 2024-07-19 15:59:12.666 [INFO ]: ObservableList get
+{Contracts Logger} 2024-07-19 15:59:12.666 [INFO ]: Filtering list with search
+{Contracts Logger} 2024-07-19 15:59:15.818 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:59:15.818 [INFO ]: Choice box Companies selected
+{Warehouse Logger} 2024-07-19 15:59:15.827 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 15:59:19.191 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 15:59:19.191 [INFO ]: Choice box Contracts selected
+{Contracts Logger} 2024-07-19 15:59:19.196 [INFO ]: Contract initializing
+{Contracts Logger} 2024-07-19 15:59:19.201 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:59:19.201 [INFO ]: Contract list get from DB
+{Contracts Logger} 2024-07-19 15:59:19.212 [INFO ]: Table setting items
+{Contracts Logger} 2024-07-19 15:59:19.213 [INFO ]: ObservableList get
+{Contracts Logger} 2024-07-19 15:59:19.213 [INFO ]: Filtering list with search
+{Contracts Logger} 2024-07-19 15:59:22.044 [INFO ]: contract added
+{Contracts Logger} 2024-07-19 15:59:26.243 [INFO ]: Choice box action
+{Contracts Logger} 2024-07-19 15:59:26.243 [INFO ]: Choice box Companies selected
+{Warehouse Logger} 2024-07-19 15:59:26.253 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 16:00:01.171 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 16:00:01.172 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2024-07-19 16:00:01.185 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 16:00:04.756 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 16:00:04.756 [INFO ]: Choice box Products selected
+{Warehouse Logger} 2024-07-19 16:00:04.769 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 16:00:06.153 [INFO ]: Choice box action
+{Warehouse Logger} 2024-07-19 16:00:06.153 [INFO ]: Choice box Managers selected
+{Warehouse Logger} 2024-07-19 16:00:06.161 [INFO ]: Choice box action
