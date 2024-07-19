@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  javafx-app:
+    image: openjdk:17-jdk-slim
+    container_name: javafx-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-db
+    environment:
+      - MYSQL_HOST=mysql-db
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=warehouses
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Umler1337228
+    command: ["java", "-jar", "/app/your-javafx-app.jar"]
+    volumes:
+      - ./target:/app
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: your_database
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+
+volumes:
+  mysql_data:
