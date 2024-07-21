@@ -13,8 +13,17 @@
     <developers>
         <developer>
             <id>umlerr</id>
-            <name>Umler</name>
+            <name>Mikhail Ugryumov</name>
             <email>ugrumov.misha@yandex.ru</email>
+            <timezone>+3</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>lebibop</id>
+            <name>Klim Nikolaev</name>
+            <email>nikolaevklim@gmail.com</email>
             <timezone>+3</timezone>
             <roles>
                 <role>developer</role>
